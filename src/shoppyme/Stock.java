@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+import org.json.*;
 
 public class Stock {
     private static HashMap<Product, Integer> inventory = new HashMap<>();
@@ -36,44 +33,44 @@ public class Stock {
         initSupervisors();
     }
 
-    private void initInventory() {
-        JSONParser jsonParser = new JSONParser();
-        String filename = "src/shoppyme/db/products.json";
+    public JSONArray fetchJsonFile(String filename) {
         try (FileReader reader = new FileReader(filename)) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray productsList = (JSONArray) obj;
-            productsList.forEach( product -> parseProductObject((JSONObject) product));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
+            JSONTokener tokener = new JSONTokener(reader);
+            Object obj = tokener.nextValue();
+            return (JSONArray) obj;
+        } catch (IOException | JSONException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    private void initInventory() {
+        JSONArray productsList = fetchJsonFile("src/shoppyme/db/products.json");
+        productsList.forEach( product -> parseProductObject((JSONObject) product));
     }
 
     private static void parseProductObject(JSONObject product)
     {
-        int quantity = ((Long) product.get("quantity")).intValue();
+        int quantity = product.getInt("quantity");
 
-        JSONObject productObj = (JSONObject) product.get("product");
-        int id = ((Long) productObj.get("id")).intValue();
-        String name = (String) productObj.get("name");
-        String brand = (String) productObj.get("brand");
-        ProductType type = ProductType.valueOf((String) productObj.get("type"));
+        JSONObject productObj = product.getJSONObject("product");
+        int id = productObj.getInt("id");
+        String name = productObj.getString("name");
+        String brand = productObj.getString("brand");
+        ProductType type = ProductType.valueOf(productObj.getString("type"));
 
-        JSONArray propertiesList = (JSONArray) productObj.get("properties");
+        JSONArray propertiesList = productObj.getJSONArray("properties");
         List<ProductProperty> properties = new ArrayList<ProductProperty>();
         propertiesList.forEach( prop -> {
             JSONObject j = (JSONObject) prop;
-            String p = (String) j.get("name");
+            String p = j.getString("name");
             ProductProperty e = ProductProperty.valueOf(p);
             properties.add(e);
         });
 
-        int package_quantity = ((Long) productObj.get("package_quantity")).intValue();
-        float price = ((Double)productObj.get("price")).floatValue();
-        String image = (String) productObj.get("image");
+        int package_quantity = productObj.getInt("package_quantity");
+        float price = productObj.getFloat("price");
+        String image = productObj.getString("image");
 
         Product p = new Product(id, name, brand, type, properties, package_quantity, price, image);
 
@@ -81,60 +78,38 @@ public class Stock {
     }
 
     private void initFidelity() {
-        JSONParser jsonParser = new JSONParser();
-        String filename = "src/shoppyme/db/fidelitycard.json";
-        try (FileReader reader = new FileReader(filename)) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray fidelityList = (JSONArray) obj;
-            fidelityList.forEach( fidelity -> parseFidelityObject((JSONObject) fidelity));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        JSONArray fidelityList = fetchJsonFile("src/shoppyme/db/fidelitycard.json");
+        fidelityList.forEach( fidelity -> parseFidelityObject((JSONObject) fidelity));
     }
 
     private static void parseFidelityObject(JSONObject fidelity)
     {
-        int id = ((Long) fidelity.get("id")).intValue();
-        LocalDate emission_date = LocalDate.ofEpochDay((Long) fidelity.get("emission_date"));
-        int points = ((Long) fidelity.get("id")).intValue();
+        int id = fidelity.getInt("id");
+        LocalDate emission_date = LocalDate.ofEpochDay(fidelity.getLong("emission_date"));
+        int points = fidelity.getInt("id");
 
         FidelityCard c = new FidelityCard(id, emission_date, points);
         fidelity_cards.add(c);
     }
 
     private void initUsers() {
-        JSONParser jsonParser = new JSONParser();
-        String filename = "src/shoppyme/db/users.json";
-        try (FileReader reader = new FileReader(filename)) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray usersList = (JSONArray) obj;
-            usersList.forEach( user -> parseUserObject((JSONObject) user));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        JSONArray usersList = fetchJsonFile("src/shoppyme/db/users.json");
+        usersList.forEach( user -> parseUserObject((JSONObject) user));
     }
 
     private static void parseUserObject(JSONObject user)
     {
-        int id = ((Long) user.get("id")).intValue();
-        String name = (String) user.get("name");
-        String surname = (String) user.get("surname");
-        String address = (String) user.get("address");
-        String cap = (String) user.get("cap");
-        String phone = (String) user.get("phone");
-        String email = (String) user.get("email");
-        String city = (String) user.get("city");
-        String password = (String) user.get("password");
-        PaymentType payment_type = PaymentType.valueOf((String) user.get("payment_type"));
-        int card_id = ((Long) user.get("card_id")).intValue();
+        int id = user.getInt("id");
+        String name = user.getString("name");
+        String surname = user.getString("surname");
+        String address = user.getString("address");
+        String cap = user.getString("cap");
+        String phone = user.getString("phone");
+        String email = user.getString("email");
+        String city = user.getString("city");
+        String password = user.getString("password");
+        PaymentType payment_type = PaymentType.valueOf(user.getString("payment_type"));
+        int card_id = user.getInt("card_id");
         FidelityCard card = null;
 
         for(FidelityCard f : fidelity_cards) {
@@ -149,35 +124,25 @@ public class Stock {
     }
 
     private void initOrders() {
-        JSONParser jsonParser = new JSONParser();
-        String filename = "src/shoppyme/db/orders.json";
-        try (FileReader reader = new FileReader(filename)) {
-            Object obj = jsonParser.parse(reader);
-            JSONArray usersList = (JSONArray) obj;
-            usersList.forEach( user -> parseOrderObject((JSONObject) user));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        JSONArray ordersList = fetchJsonFile("src/shoppyme/db/orders.json");
+        ordersList.forEach( order -> parseOrderObject((JSONObject) order));
     }
 
     private static void parseOrderObject(JSONObject order)
     {
-        int id = ((Long) order.get("id")).intValue();
-        LocalDate deliveryDate = LocalDate.ofEpochDay((Long) order.get("deliveryDate"));
+        int id = order.getInt("id");
+        LocalDate deliveryDate = LocalDate.ofEpochDay(order.getInt("deliveryDate"));
 
-        JSONArray deliveryIntervalObj = (JSONArray) order.get("deliveryInterval");
-        ArrayList<Integer> deliveryInterval = deliveryIntervalObj;
+        JSONArray deliveryIntervalObj = order.getJSONArray("deliveryInterval");
+        List<Integer> deliveryInterval = new ArrayList<>();
+        deliveryIntervalObj.forEach(time -> deliveryInterval.add((Integer) time));
 
-        JSONArray productsList = (JSONArray) order.get("products");
+        JSONArray productsList = order.getJSONArray("products");
         Map<Product, Integer> products = new HashMap<>();
         productsList.forEach( prod -> {
             JSONObject j = (JSONObject) prod;
-            int id_product = ((Long) j.get("id_product")).intValue();
-            int quantity = ((Long) j.get("quantity")).intValue();
+            int id_product = j.getInt("id_product");
+            int quantity = j.getInt("quantity");
             for(Product p : inventory.keySet()) {
                 if(p.id == id_product){
                     products.put(p, quantity);
@@ -186,9 +151,9 @@ public class Stock {
             }
         });
 
-        PaymentType payment_type = PaymentType.valueOf((String) order.get("payment_type"));
-        Status status = Status.valueOf((String) order.get("status"));
-        int user_id = ((Long) order.get("user_id")).intValue();
+        PaymentType payment_type = PaymentType.valueOf(order.getString("payment_type"));
+        Status status = Status.valueOf(order.getString("status"));
+        int user_id = order.getInt("user_id");
 
         Order o = new Order(id, deliveryDate, deliveryInterval, products, payment_type, status, user_id);
         orders.add(o);
