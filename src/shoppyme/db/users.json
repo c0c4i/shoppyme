@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "name": "Stefano",
+    "surname": "Caldana",
+    "address": "Piazza Erbon",
+    "cap": "666",
+    "phone": "0444059685",
+    "email": "stefanoc@labizza.it",
+    "city": "Verona",
+    "password": "123",
+    "payment_type": "PAYPAL",
+    "card_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Stefano",
+    "surname": "Caldana",
+    "address": "Piazza Erbon",
+    "cap": "666",
+    "phone": "0444059685",
+    "email": "stefanoc@labizza.it",
+    "city": "Verona",
+    "password": "123",
+    "payment_type": "PAYPAL",
+    "card_id": 1
+  }
+]
