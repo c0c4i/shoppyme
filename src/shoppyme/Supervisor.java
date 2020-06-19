@@ -4,7 +4,7 @@ public class Supervisor {
     public final int id;
     private String username;
     private String password;
-    private String rule;
+    private Role role;
     private String name;
     private String surname;
     private String address;
@@ -13,11 +13,11 @@ public class Supervisor {
     private String phone;
     private String email;
 
-    public Supervisor(int id, String username, String password, String rule, String name, String surname, String address, String cap, String city, String phone, String email) {
+    public Supervisor(int id, String username, String password, Role role, String name, String surname, String address, String cap, String city, String phone, String email) {
         this.id = id;
         this.username = username;
         this.password = password;
-        this.rule = rule;
+        this.role = role;
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -31,8 +31,8 @@ public class Supervisor {
         return username;
     }
 
-    public String getRule() {
-        return rule;
+    public Role getRole() {
+        return role;
     }
 
     public String getName() {
@@ -71,8 +71,8 @@ public class Supervisor {
         this.password = password;
     }
 
-    public void setRule(String rule) {
-        this.rule = rule;
+    public void setRole(Role role) {
+        this.role = role;
     }
 
     public void setName(String name) {
@@ -101,5 +101,22 @@ public class Supervisor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Supervisor{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address='" + address + '\'' +
+                ", cap='" + cap + '\'' +
+                ", city='" + city + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                '}';
     }
 }

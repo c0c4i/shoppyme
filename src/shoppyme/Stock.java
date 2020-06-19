@@ -60,7 +60,7 @@ public class Stock {
         ProductType type = ProductType.valueOf(productObj.getString("type"));
 
         JSONArray propertiesList = productObj.getJSONArray("properties");
-        List<ProductProperty> properties = new ArrayList<ProductProperty>();
+        List<ProductProperty> properties = new ArrayList<>();
         propertiesList.forEach( prop -> {
             JSONObject j = (JSONObject) prop;
             String p = j.getString("name");
@@ -160,7 +160,26 @@ public class Stock {
     }
 
     private void initSupervisors() {
+        JSONArray supervisorsList = fetchJsonFile("src/shoppyme/db/supervisors.json");
+        supervisorsList.forEach( supervisor -> parseSupervisorObject((JSONObject) supervisor));
+    }
 
+    private static void parseSupervisorObject(JSONObject supervisor)
+    {
+        int id = supervisor.getInt("id");
+        String username = supervisor.getString("username");
+        String password = supervisor.getString("password");
+        Role role = Role.valueOf(supervisor.getString("role"));
+        String name = supervisor.getString("name");
+        String surname = supervisor.getString("surname");
+        String address = supervisor.getString("address");
+        String cap = supervisor.getString("cap");
+        String city = supervisor.getString("city");
+        String phone = supervisor.getString("phone");
+        String email = supervisor.getString("email");
+
+        Supervisor s = new Supervisor(id, username, password, role, name, surname, address, cap, city, phone, email);
+        supervisors.add(s);
     }
 
     public int getNewOrderID() {
