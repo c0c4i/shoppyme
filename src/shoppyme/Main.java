@@ -1,33 +1,21 @@
 package shoppyme;
 
-import java.util.List;
-import java.util.Map;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 
-public class Main {
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
+    }
+
     public static void main(String[] args) {
-        //Stock m = Stock.getInstance();
-//        Map<Product, Integer> inventory = Stock.getInventory();
-//        inventory.forEach((product, quantity) -> {
-//            System.out.println(product);
-//            System.out.println(String.format("Quantity: %d\n", quantity));
-//        });
-//
-//        List<FidelityCard> fidelity_cards = Stock.getFidelityCards();
-//        fidelity_cards.forEach((fidelity) -> {
-//            System.out.println(fidelity);
-//        });
-
-//        List<User> users = Stock.getUsers();
-//        users.forEach((user) -> {
-//            System.out.println(user);
-//        });
-//
-//        List<Order> users = Stock.getOrders();
-//        users.forEach((order) -> {
-//            System.out.println(order);
-//        });
-
-        List<Supervisor> supervisors = Stock.getSupervisors();
-        supervisors.forEach(System.out::println);
+        launch(args);
     }
 }
