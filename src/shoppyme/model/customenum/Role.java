@@ -1,4 +1,4 @@
-package shoppyme;
+package shoppyme.model.customenum;
 
 public enum Role {
     STAGISTA,
