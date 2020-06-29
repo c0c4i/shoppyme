@@ -209,4 +209,12 @@ public class Stock {
     public static List<Supervisor> getSupervisors() {
         return supervisors;
     }
+
+    public static User userAuthentication (String email, String password){
+        for (User u : users) {
+            if(u.getEmail().equals(email) && u.getPassword().equals(password))
+                return u;
+        }
+        return null;
+    }
 }
