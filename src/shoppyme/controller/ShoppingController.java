@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import shoppyme.model.Order;
 import shoppyme.model.Product;
 import shoppyme.model.Stock;
 import shoppyme.model.User;
@@ -22,15 +23,13 @@ import java.util.ResourceBundle;
 
 public class ShoppingController implements Initializable {
 
-    private User currentUser;
+    private Order currentOrder = Controller.getCurrentOrder();
 
     @FXML
     private JFXListView<HBox> productsList = new JFXListView<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println(currentUser);
-
         for(Product p: Stock.getInventory().keySet()) {
             Label name = new Label(p.getName());
             Label brand = new Label(p.getBrand());
@@ -40,34 +39,12 @@ public class ShoppingController implements Initializable {
         }
     }
 
-//    static class ProductCell extends ListCell<String> {
-//        HBox hbox = new HBox();
-//        Label name = new Label("Penne");
-//        Label brand = new Label("Barilla");
-//        Label type = new Label("Pasta");
-//
-//        public ProductCell() {
-//            super();
-//            hbox.getChildren().addAll(name, brand, type);
-//            hbox.setHgrow();
-//        }
-//    }
-
-    public void setCurrentUser(User user){
-        currentUser = user;
-    }
-
-    public void profileAccessButton(ActionEvent event) throws IOException {
+    public void profileButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/profile.fxml"));
         Parent profileViewParent = loader.load();
 
         Scene profileViewScene = new Scene(profileViewParent);
-
-        //access the controller and call a method
-        ProfileController controller = loader.getController();
-        System.out.println(currentUser.toString());
-        controller.setCurrentUser(currentUser);
 
         //This line gets the Stage information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

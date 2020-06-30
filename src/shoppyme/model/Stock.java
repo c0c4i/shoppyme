@@ -210,11 +210,17 @@ public class Stock {
         return supervisors;
     }
 
-    public static User userAuthentication (String email, String password){
+    public static User userAuthentication (String email, String password) {
         for (User u : users) {
             if(u.getEmail().equals(email) && u.getPassword().equals(password))
                 return u;
         }
         return null;
+    }
+
+    public static void updateUser(User updatedUser) {
+        users.remove(updatedUser);
+        users.add(updatedUser);
+        System.out.println(users);
     }
 }

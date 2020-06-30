@@ -31,7 +31,7 @@ public class LoginController implements Initializable {
     @FXML
     private Label error_field;
 
-    public void loginController(ActionEvent event) throws IOException {
+    public void loginButtonClick(ActionEvent event) throws IOException {
         String usr = username_field.getText();
         String psw = password_field.getText();
 
@@ -39,18 +39,13 @@ public class LoginController implements Initializable {
 
         if(user == null){
             error_field.setVisible(true);
-        }
-
-        else{
+        } else {
+            Controller.setCurrentUser(user);
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(getClass().getResource("../view/spesa.fxml"));
             Parent shoppingViewParent = loader.load();
 
             Scene shoppingViewScene = new Scene(shoppingViewParent);
-
-            //access the controller and call a method
-            ShoppingController controller = loader.getController();
-            controller.setCurrentUser(user);
 
             //This line gets the Stage information
             Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
