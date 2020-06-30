@@ -1,28 +1,28 @@
 [
-  {
-    "id": 1,
-    "name": "Stefano",
-    "surname": "Caldana",
-    "address": "Piazza Erbon",
-    "cap": "37135",
-    "phone": "0444059685",
-    "email": "asd",
-    "city": "Verona",
-    "password": "asd",
-    "payment_type": "PAYPAL",
-    "card_id": 1
-  },
-  {
-    "id": 2,
-    "name": "Stefano",
-    "surname": "Caldana",
-    "address": "Piazza Erbon",
-    "cap": "36040",
-    "phone": "0444059685",
-    "email": "stefanoc@labizza.it",
-    "city": "Verona",
-    "password": "123",
-    "payment_type": "PAYPAL",
-    "card_id": 1
-  }
+	{
+		"id": 2, 
+		"name": "Stefano", 
+		"surname": "Caldana", 
+		"address": "Piazza Erbon", 
+		"cap": "36040", 
+		"phone": "0444059685", 
+		"email": "stefanoc@labizza.it", 
+		"city": "Verona", 
+		"password": "123", 
+		"payment_type": "PAYPAL", 
+		"card_id": 1
+	},
+	{
+		"id": 1, 
+		"name": "Samuele", 
+		"surname": "Besoli", 
+		"address": "Via Mascagni 96", 
+		"cap": "36040", 
+		"phone": "0444601528", 
+		"email": "asd", 
+		"city": "Brendola", 
+		"password": "asd", 
+		"payment_type": "PAYPAL", 
+		"card_id": 1
+	}
 ]

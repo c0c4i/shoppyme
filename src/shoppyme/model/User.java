@@ -99,19 +99,8 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", address='" + address + '\'' +
-                ", cap='" + cap + '\'' +
-                ", phone='" + phone + '\'' +
-                ", email='" + email + '\'' +
-                ", city='" + city + '\'' +
-                ", password='" + password + '\'' +
-                ", payment_type='" + payment_type + '\'' +
-                ", card=" + card +
-                '}';
+        return String.format("\t{\n\t\t\"id\": %d, \n\t\t\"name\": \"%s\", \n\t\t\"surname\": \"%s\", \n\t\t\"address\": \"%s\", \n\t\t\"cap\": \"%s\", \n\t\t\"phone\": \"%s\", \n\t\t\"email\": \"%s\", \n\t\t\"city\": \"%s\", \n\t\t\"password\": \"%s\", \n\t\t\"payment_type\": \"%s\", \n\t\t\"card_id\": %d\n\t},\n",
+                id, name, surname, address, cap, phone, email, city, password, payment_type, card.getID());
     }
 
     @Override

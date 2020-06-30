@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shoppyme.model.Stock;
 
 public class Main extends Application {
     @Override
@@ -17,8 +18,7 @@ public class Main extends Application {
 
     @Override
     public void stop(){
-        System.out.println("Stage is closing");
-        // update json from stock
+        Stock.onClose();
     }
 
     public static void main(String[] args) {

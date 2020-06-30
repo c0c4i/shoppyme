@@ -1,6 +1,8 @@
 package shoppyme.model;
 
+import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.*;
@@ -221,6 +223,25 @@ public class Stock {
     public static void updateUser(User updatedUser) {
         users.remove(updatedUser);
         users.add(updatedUser);
-        System.out.println(users);
+    }
+
+    public static void onClose() {
+        File file = new File("src/shoppyme/model/db/users.json");
+        JSONArray jsonarray = new JSONArray(users);
+        String json = "[\n";
+        for(User user: users) {
+            json += user.toString();
+        }
+        String result = json.substring(0, json.length()-2);
+        result += "\n]";
+
+        try {
+            FileWriter f2 = new FileWriter(file, false);
+            f2.write(result);
+            f2.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
