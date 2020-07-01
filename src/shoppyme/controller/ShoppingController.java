@@ -1,6 +1,5 @@
 package shoppyme.controller;
 
-import com.jfoenix.controls.JFXListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -10,17 +9,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
 import shoppyme.model.Stock;
-import shoppyme.model.User;
 
-import javax.net.ssl.SNIHostName;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -29,21 +23,41 @@ public class ShoppingController implements Initializable {
 
     private Order currentOrder = Controller.getCurrentOrder();
 
-    private ObservableList<Product> productObservableList;
+    private static ObservableList<Product> productObservableList;
+    private static ObservableList<Product> orderObservableList;
 
     @FXML
     private ListView<Product> productsList = new ListView<>();
+
+    @FXML
+    private ListView<Product> orderList = new ListView<>();
+
+    public ShoppingController(){
+        productObservableList = FXCollections.observableArrayList();
+        productObservableList.addAll(Stock.getInventory().keySet());
+
+        if(Controller.getCurrentOrder() == null)
+            Controller.setCurrentOrder(new Order(Controller.getCurrentUser()));
+
+        orderObservableList = FXCollections.observableArrayList();
+//        System.out.println(Controller.getCurrentOrder());
+        loadOrderList();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         productsList.setItems(productObservableList);
         productsList.setCellFactory(productListView -> new ProductListViewCell());
+
+        orderList.setItems(orderObservableList);
+        orderList.setCellFactory(orderListView -> new OrderListViewCell());
     }
 
-    public ShoppingController(){
-        productObservableList = FXCollections.observableArrayList();
-        productObservableList.addAll(Stock.getInventory().keySet());
+    public static void loadOrderList() {
+        orderObservableList.clear();
+        orderObservableList.addAll(Controller.getCurrentOrder().getProducts().keySet());
     }
+
 
     public void profileButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();

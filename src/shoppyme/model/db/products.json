@@ -6,7 +6,7 @@
       "name": "Bistecca",
       "brand": "Aia",
       "type": "CARNE",
-      "properties": [],
+      "properties": ["INTEGRALE", "SENZA_GLUTINE"],
       "package_quantity": 1,
       "price": 5.0,
       "image": "../view/assets/productimages/barilla.jpg"
@@ -28,11 +28,50 @@
   {
     "quantity": 3,
     "product": {
-      "id": 2,
+      "id": 3,
       "name": "Pasta",
       "brand": "Barilla",
       "type": "PASTA",
+      "properties": ["INTEGRALE"],
+      "package_quantity": 1,
+      "price": 4.0,
+      "image": "../view/assets/productimages/barilla.jpg"
+    }
+  },
+  {
+    "quantity": 4,
+    "product": {
+      "id": 4,
+      "name": "Bistecca",
+      "brand": "Aia",
+      "type": "CARNE",
+      "properties": ["INTEGRALE", "SENZA_GLUTINE"],
+      "package_quantity": 1,
+      "price": 5.0,
+      "image": "../view/assets/productimages/barilla.jpg"
+    }
+  },
+  {
+    "quantity": 10,
+    "product": {
+      "id": 5,
+      "name": "Banane",
+      "brand": "Squisita",
+      "type": "FRUTTA",
       "properties": [],
+      "package_quantity": 5,
+      "price": 2.0,
+      "image": "../view/assets/productimages/barilla.jpg"
+    }
+  },
+  {
+    "quantity": 3,
+    "product": {
+      "id": 6,
+      "name": "Pasta",
+      "brand": "Barilla",
+      "type": "PASTA",
+      "properties": ["INTEGRALE"],
       "package_quantity": 1,
       "price": 4.0,
       "image": "../view/assets/productimages/barilla.jpg"

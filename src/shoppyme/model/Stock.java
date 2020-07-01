@@ -64,9 +64,8 @@ public class Stock {
         JSONArray propertiesList = productObj.getJSONArray("properties");
         List<ProductProperty> properties = new ArrayList<>();
         propertiesList.forEach( prop -> {
-            JSONObject j = (JSONObject) prop;
-            String p = j.getString("name");
-            ProductProperty e = ProductProperty.valueOf(p);
+            String j = (String) prop;
+            ProductProperty e = ProductProperty.valueOf(j);
             properties.add(e);
         });
 

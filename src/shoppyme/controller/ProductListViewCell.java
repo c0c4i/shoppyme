@@ -1,5 +1,7 @@
 package shoppyme.controller;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -9,6 +11,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import shoppyme.model.Order;
 import shoppyme.model.Product;
 
 import java.io.IOException;
@@ -51,22 +54,16 @@ public class ProductListViewCell extends ListCell<Product> {
             product_brand_label.setText(product.getBrand());
             product_price_label.setText(String.valueOf(product.getPrice()));
             product_info_label.setText(product.getProperties().toString());
-            //product_add_button.setOnAction(Controller.getCurrentOrder().addProduct(product)));
 
-//            product_add_button.setOnAction(
-//                    new Button.() {
-//                        @Override
-//                        public void onClick(View v) {
-//
-//                            arrayNames.add(0, namesText.getText().toString());
-//                            adapterNames.notifyDataSetChanged();
-//                            namesText.setText("");
-//
-//                        }
-//                    }
-//            );
-
-            System.out.println(Controller.getCurrentUser().toString() + Controller.getCurrentOrder().toString());
+            product_add_button.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    Order o = Controller.getCurrentOrder();
+                    o.addProduct(product);
+                    Controller.setCurrentOrder(o);
+                    ShoppingController.loadOrderList();
+                }
+            });
 
             setText(null);
             setGraphic(product_gridpane);

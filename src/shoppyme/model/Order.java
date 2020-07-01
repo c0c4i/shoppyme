@@ -85,6 +85,10 @@ public class Order {
         return userID;
     }
 
+    public Map<Product, Integer> getProducts() {
+        return products;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

@@ -38,15 +38,21 @@ public class Product {
         return format;
     }
 
-    //Compare only account numbers
+//    Compare only account numbers
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Product)
-            if(this.id == ((Product) obj).id)
+            if(this.id == ((Product) obj).id) {
+//                System.out.println(String.format("Sono oggetto %s con id=%d e lo confronto con l'oggetto %s con id=%d", name, id, ((Product) obj).name, ((Product) obj).id));
                 return true;
+            }
             else
                 return false;
         return false;
+    }
+
+    public int hashCode() {
+        return id;
     }
 
     public int getPackage_quantity() {

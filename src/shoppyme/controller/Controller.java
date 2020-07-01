@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Controller {
     private static User currentUser;
-    private static Order currentOrder = new Order(currentUser); 
+    private static Order currentOrder;
 
     public static User getCurrentUser() {
         return currentUser;

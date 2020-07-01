@@ -1,0 +1,1 @@
+1.  Problema che clicca tutta la linea al posto del solo bottone e non va bene.
