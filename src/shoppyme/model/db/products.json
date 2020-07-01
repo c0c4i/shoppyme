@@ -9,20 +9,20 @@
       "properties": [],
       "package_quantity": 1,
       "price": 5.0,
-      "image": "/image/bistecca.jpeg"
+      "image": "../view/assets/productimages/barilla.jpg"
     }
   },
   {
     "quantity": 10,
     "product": {
       "id": 2,
-      "name": "Bananane",
+      "name": "Banane",
       "brand": "Squisita",
       "type": "FRUTTA",
       "properties": [],
       "package_quantity": 5,
       "price": 2.0,
-      "image": "/image/banane.jpeg"
+      "image": "../view/assets/productimages/barilla.jpg"
     }
   },
   {
@@ -35,7 +35,7 @@
       "properties": [],
       "package_quantity": 1,
       "price": 4.0,
-      "image": "/image/pasta.jpeg"
+      "image": "../view/assets/productimages/barilla.jpg"
     }
   }
 ]

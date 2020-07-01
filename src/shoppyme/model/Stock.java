@@ -226,8 +226,11 @@ public class Stock {
     }
 
     public static void onClose() {
+        onCloseUsersUpdate();
+    }
+
+    private static void onCloseUsersUpdate() {
         File file = new File("src/shoppyme/model/db/users.json");
-        JSONArray jsonarray = new JSONArray(users);
         String json = "[\n";
         for(User user: users) {
             json += user.toString();
