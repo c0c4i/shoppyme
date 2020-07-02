@@ -68,6 +68,5 @@ public class ProductListViewCell extends ListCell<Product> {
             setText(null);
             setGraphic(product_gridpane);
         }
-
     }
 }

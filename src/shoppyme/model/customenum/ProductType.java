@@ -5,5 +5,6 @@ public enum ProductType {
     PANE,
     PESCE,
     FRUTTA,
-    CARNE
+    CARNE,
+    LATTE
 }

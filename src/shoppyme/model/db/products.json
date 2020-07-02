@@ -3,26 +3,26 @@
     "quantity": 4,
     "product": {
       "id": 1,
-      "name": "Bistecca",
-      "brand": "Aia",
-      "type": "CARNE",
-      "properties": ["INTEGRALE", "SENZA_GLUTINE"],
+      "name": "Ananas",
+      "brand": "Chuwi",
+      "type": "FRUTTA",
+      "properties": ["BIO"],
       "package_quantity": 1,
       "price": 5.0,
-      "image": "../view/assets/productimages/barilla.jpg"
+      "image": "../view/assets/productimages/ananas.jpg"
     }
   },
   {
     "quantity": 10,
     "product": {
       "id": 2,
-      "name": "Banane",
-      "brand": "Squisita",
-      "type": "FRUTTA",
+      "name": "Arrosto",
+      "brand": "Aia",
+      "type": "CARNE",
       "properties": [],
-      "package_quantity": 5,
-      "price": 2.0,
-      "image": "../view/assets/productimages/barilla.jpg"
+      "package_quantity": 10,
+      "price": 7.0,
+      "image": "../view/assets/productimages/arrosto.jpg"
     }
   },
   {
@@ -39,42 +39,68 @@
     }
   },
   {
-    "quantity": 4,
+    "quantity": 7,
     "product": {
       "id": 4,
-      "name": "Bistecca",
+      "name": "Cordon Bleu",
       "brand": "Aia",
       "type": "CARNE",
-      "properties": ["INTEGRALE", "SENZA_GLUTINE"],
+      "properties": ["SENZA_GLUTINE"],
       "package_quantity": 1,
-      "price": 5.0,
-      "image": "../view/assets/productimages/barilla.jpg"
-    }
-  },
-  {
-    "quantity": 10,
-    "product": {
-      "id": 5,
-      "name": "Banane",
-      "brand": "Squisita",
-      "type": "FRUTTA",
-      "properties": [],
-      "package_quantity": 5,
-      "price": 2.0,
-      "image": "../view/assets/productimages/barilla.jpg"
+      "price": 6.0,
+      "image": "../view/assets/productimages/cordon_bleu.jpg"
     }
   },
   {
     "quantity": 3,
     "product": {
-      "id": 6,
-      "name": "Pasta",
-      "brand": "Barilla",
-      "type": "PASTA",
+      "id": 5,
+      "name": "Cozze",
+      "brand": "Sea",
+      "type": "PESCE",
       "properties": ["INTEGRALE"],
-      "package_quantity": 1,
+      "package_quantity": 10,
+      "price": 10.0,
+      "image": "../view/assets/productimages/cozze.jpg"
+    }
+  },
+  {
+    "quantity": 7,
+    "product": {
+      "id": 6,
+      "name": "Croccantelle",
+      "brand": "Forno Damiani",
+      "type": "PANE",
+      "properties": ["INTEGRALE"],
+      "package_quantity": 8,
       "price": 4.0,
-      "image": "../view/assets/productimages/barilla.jpg"
+      "image": "../view/assets/productimages/croccantelle.jpg"
+    }
+  },
+  {
+    "quantity": 15,
+    "product": {
+      "id": 7,
+      "name": "Latte",
+      "brand": "Soia",
+      "type": "LATTE",
+      "properties": ["SENZA_LATTOSIO"],
+      "package_quantity": 1,
+      "price": 3.0,
+      "image": "../view/assets/productimages/latte.jpg"
+    }
+  },
+  {
+    "quantity": 10,
+    "product": {
+      "id": 8,
+      "name": "Penne Rigate",
+      "brand": "Divella",
+      "type": "PASTA",
+      "properties": [],
+      "package_quantity": 1,
+      "price": 6.0,
+      "image": "../view/assets/productimages/penne_rigate.jpg"
     }
   }
 ]
