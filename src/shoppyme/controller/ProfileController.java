@@ -1,5 +1,7 @@
 package shoppyme.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,8 +10,11 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import shoppyme.model.Order;
+import shoppyme.model.Product;
 import shoppyme.model.Stock;
 import shoppyme.model.User;
 
@@ -21,6 +26,11 @@ public class ProfileController implements Initializable {
 
     private User currentUser = Controller.getCurrentUser();
 
+    private static ObservableList<Order> oldOrderObservableList;
+
+    @FXML
+    private ListView<Order> oldOrderList = new ListView<>();
+
     @FXML private TextField name_field;
     @FXML private TextField surname_field;
     @FXML private TextField phone_field;
@@ -29,8 +39,16 @@ public class ProfileController implements Initializable {
     @FXML private TextField cap_field;
     @FXML private TextField city_field;
 
+    public ProfileController(){
+        oldOrderObservableList = FXCollections.observableArrayList();
+        oldOrderObservableList.addAll(Stock.getUserOrder(Controller.getCurrentUser()));
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        oldOrderList.setItems(oldOrderObservableList);
+        oldOrderList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());
+
         name_field.setText(currentUser.getName());
         surname_field.setText(currentUser.getSurname());
         phone_field.setText(currentUser.getPhone());

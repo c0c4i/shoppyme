@@ -8,13 +8,16 @@
     "products": [
       {
         "id_product": 1,
-        "quantity": 2
+        "quantity": 2,
+        "oldPrice": 7.5
       },
       {
         "id_product": 2,
-        "quantity": 4
+        "quantity": 4,
+        "oldPrice": 7.5
       }
     ],
+    "total_price": 15.0,
     "payment_type": "PAYPAL",
     "status": "PROCESSING",
     "user_id": 1
@@ -28,13 +31,16 @@
     "products": [
       {
         "id_product": 1,
-        "quantity": 2
+        "quantity": 2,
+        "oldPrice": 7.5
       },
       {
         "id_product": 2,
-        "quantity": 4
+        "quantity": 4,
+        "oldPrice": 7.5
       }
     ],
+    "total_price": 15.0,
     "payment_type": "PAYPAL",
     "status": "PROCESSING",
     "user_id": 1

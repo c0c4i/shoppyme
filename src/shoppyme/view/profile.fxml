@@ -32,7 +32,7 @@
             <Image url="@assets/outline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
-      <JFXListView fx:id="" layoutX="232.0" layoutY="82.0" prefHeight="619.0" prefWidth="673.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px;" />
+      <JFXListView fx:id="oldOrderList" layoutX="232.0" layoutY="82.0" prefHeight="619.0" prefWidth="673.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px;" />
       <Label layoutX="950.0" layoutY="70.0" text="Data Consegna">
          <font>
             <Font name="System Bold" size="13.0" />

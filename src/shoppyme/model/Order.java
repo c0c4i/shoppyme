@@ -13,7 +13,9 @@ public class Order {
     private LocalDate deliveryDate;
     private List<Integer> deliveryInterval;
     private Map<Product, Integer> products = new HashMap<>();
+    private Map<Product, Float> oldProductsPrice = new HashMap<>();
     private PaymentType payment_type;
+    private float totalPrice;
     private Status status;
     private int userID;
 
@@ -23,12 +25,14 @@ public class Order {
         this.userID = user.id;
     }
 
-    public Order(int id, LocalDate deliveryDate, List<Integer> deliveryInterval, Map<Product, Integer> products, PaymentType payment_type, Status status, int userID) {
+    public Order(int id, LocalDate deliveryDate, List<Integer> deliveryInterval, Map<Product, Integer> products, Map<Product, Float> oldProductsPrice, PaymentType payment_type, float totalPrice, Status status, int userID) {
         this.id = id;
         this.deliveryDate = deliveryDate;
         this.deliveryInterval = deliveryInterval;
         this.products = products;
+        this.oldProductsPrice = oldProductsPrice;
         this.payment_type = payment_type;
+        this.totalPrice = totalPrice;
         this.status = status;
         this.userID = userID;
     }
@@ -51,6 +55,7 @@ public class Order {
 
     public void addProduct(Product p) {
         Integer q = products.get(p);
+        totalPrice += p.getPrice();
         if (q == null)
             products.put(p, 1);
         else
@@ -87,6 +92,10 @@ public class Order {
 
     public Map<Product, Integer> getProducts() {
         return products;
+    }
+
+    public float getTotalPrice() {
+        return totalPrice;
     }
 
     @Override

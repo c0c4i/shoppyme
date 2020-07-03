@@ -137,26 +137,29 @@ public class Stock {
         JSONArray deliveryIntervalObj = order.getJSONArray("deliveryInterval");
         List<Integer> deliveryInterval = new ArrayList<>();
         deliveryIntervalObj.forEach(time -> deliveryInterval.add((Integer) time));
-
         JSONArray productsList = order.getJSONArray("products");
         Map<Product, Integer> products = new HashMap<>();
+        Map<Product, Float> productsPrice = new HashMap<>();
         productsList.forEach( prod -> {
             JSONObject j = (JSONObject) prod;
             int id_product = j.getInt("id_product");
             int quantity = j.getInt("quantity");
+            float oldPrice = j.getFloat("oldPrice");
             for(Product p : inventory.keySet()) {
                 if(p.id == id_product){
                     products.put(p, quantity);
+                    productsPrice.put(p, oldPrice);
                     break;
                 }
             }
         });
 
         PaymentType payment_type = PaymentType.valueOf(order.getString("payment_type"));
+        float totalPrice = order.getFloat("total_price");
         Status status = Status.valueOf(order.getString("status"));
         int user_id = order.getInt("user_id");
 
-        Order o = new Order(id, deliveryDate, deliveryInterval, products, payment_type, status, user_id);
+        Order o = new Order(id, deliveryDate, deliveryInterval, products, productsPrice, payment_type, totalPrice, status, user_id);
         orders.add(o);
     }
 
@@ -222,6 +225,15 @@ public class Stock {
     public static void updateUser(User updatedUser) {
         users.remove(updatedUser);
         users.add(updatedUser);
+    }
+
+    public static List<Order> getUserOrder(User u) {
+        List<Order> userOrder = new ArrayList<>();
+        orders.forEach(order -> {
+            if(order.getUserID() == u.id)
+                userOrder.add(order);
+        });
+        return userOrder;
     }
 
     public static void onClose() {
