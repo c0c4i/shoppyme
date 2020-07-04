@@ -98,6 +98,10 @@ public class Order {
         return totalPrice;
     }
 
+    public Map<Product, Float> getOldProductsPrice() {
+        return oldProductsPrice;
+    }
+
     @Override
     public String toString() {
         return "Order{" +

@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -13,6 +14,7 @@ import javafx.scene.layout.GridPane;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class OldOrderListViewCell extends ListCell<Order> {
@@ -25,15 +27,14 @@ public class OldOrderListViewCell extends ListCell<Order> {
     @FXML private Label order_total_price_label;
     @FXML private Label order_status_label;
     @FXML private Button order_info_button = new Button();
+    @FXML private Label selected_delivery_date_label;
 
     private FXMLLoader mLLoader;
+    private EventHandler<ActionEvent> event;
 
     @Override
     protected void updateItem(Order order, boolean empty) {
         super.updateItem(order, empty);
-
-        System.out.println("Ordine: " + order);
-        System.out.println("Empty: " + empty);
 
         if(empty || order == null) {
             setText(null);
@@ -50,8 +51,6 @@ public class OldOrderListViewCell extends ListCell<Order> {
                 e.printStackTrace();
             }
 
-            System.out.println("Ordine: " + String.valueOf(order.id));
-
             order_id_label.setText(String.valueOf(order.id));
             order_date_label.setText(order.getDeliveryDate().toString());
             order_time_label.setText(order.getDeliveryInterval().toString());
@@ -59,18 +58,12 @@ public class OldOrderListViewCell extends ListCell<Order> {
             order_total_price_label.setText(String.valueOf(order.getTotalPrice()));
             order_status_label.setText(order.getStatus().toString());
 
-//            order_info_button.setOnAction(new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    Order o = Controller.getCurrentOrder();
-//                    o.addProduct(order);
-//                    Controller.setCurrentOrder(o);
-//                    ShoppingController.loadOrderList();
-//                }
-//            });
-
             setText(null);
             setGraphic(old_order_gridpane);
         }
+    }
+
+    public void setButtonEvent(EventHandler<ActionEvent> e) {
+        event = e;
     }
 }

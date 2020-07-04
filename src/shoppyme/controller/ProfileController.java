@@ -3,6 +3,7 @@ package shoppyme.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
@@ -27,9 +29,13 @@ public class ProfileController implements Initializable {
     private User currentUser = Controller.getCurrentUser();
 
     private static ObservableList<Order> oldOrderObservableList;
+    private static ObservableList<Product> selectedOrderObservableList;
 
     @FXML
     private ListView<Order> oldOrderList = new ListView<>();
+
+    @FXML
+    private ListView<Product> selectedOrderList = new ListView<>();
 
     @FXML private TextField name_field;
     @FXML private TextField surname_field;
@@ -39,15 +45,29 @@ public class ProfileController implements Initializable {
     @FXML private TextField cap_field;
     @FXML private TextField city_field;
 
+    @FXML private Label selected_delivery_date_label;
+    @FXML private Label selected_delivery_time_label;
+    @FXML private Label selected_payment_label;
+    @FXML private Label selected_total_price_label;
+
     public ProfileController(){
         oldOrderObservableList = FXCollections.observableArrayList();
         oldOrderObservableList.addAll(Stock.getUserOrder(Controller.getCurrentUser()));
+        selectedOrderObservableList = FXCollections.observableArrayList();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         oldOrderList.setItems(oldOrderObservableList);
         oldOrderList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());
+
+        oldOrderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Controller.setSelectedOrder(oldOrderList.getSelectionModel().getSelectedItem());
+                loadSelectedOrderList();
+            }
+        });
 
         name_field.setText(currentUser.getName());
         surname_field.setText(currentUser.getSurname());
@@ -56,6 +76,31 @@ public class ProfileController implements Initializable {
         address_field.setText(currentUser.getAddress());
         cap_field.setText(currentUser.getCap());
         city_field.setText(currentUser.getCity());
+
+        Order o = Controller.getSelectedOrder();
+        if(o != null) {
+            selected_delivery_date_label.setText(o.getDeliveryDate().toString());
+        } else {
+            selected_delivery_date_label.setText("--/--/----");
+            selected_delivery_time_label.setText("--");
+            selected_payment_label.setText("--");
+            selected_total_price_label.setText("--");
+        }
+    }
+
+    public void loadSelectedOrderList() {
+        Order o = Controller.getSelectedOrder();
+        selected_delivery_date_label.setText(o.getDeliveryDate().toString());
+        selected_delivery_time_label.setText(o.getDeliveryInterval().toString());
+        selected_payment_label.setText(o.getPaymentType().toString());
+        selected_total_price_label.setText(String.valueOf(o.getTotalPrice()));
+
+        selectedOrderObservableList.clear();        // rivedere come ho fatto nella spesa, per ora funziona
+        selectedOrderObservableList.addAll(o.getProducts().keySet());
+        selectedOrderList.setItems(selectedOrderObservableList);
+        selectedOrderList.setCellFactory(oldOrderListView -> new SelectedOrderListViewCell());
+//        orderObservableList.clear();
+//        orderObservableList.addAll(Controller.getCurrentOrder().getProducts().keySet());
     }
 
     public void saveUserInfoButton() {

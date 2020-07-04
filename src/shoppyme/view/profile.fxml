@@ -22,7 +22,7 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="950.0" layoutY="15.0" text="Spesa">
+      <Label layoutX="986.0" layoutY="14.0" text="Dettagli">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
@@ -32,7 +32,7 @@
             <Image url="@assets/outline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
-      <JFXListView fx:id="oldOrderList" layoutX="232.0" layoutY="82.0" prefHeight="619.0" prefWidth="673.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px;" />
+      <JFXListView fx:id="oldOrderList" layoutX="232.0" layoutY="82.0" prefHeight="619.0" prefWidth="680.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px;" />
       <Label layoutX="950.0" layoutY="70.0" text="Data Consegna">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -53,7 +53,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="274.0" layoutY="15.0" text="Stato spese">
+      <Label layoutX="274.0" layoutY="15.0" text="Storico spese">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
@@ -131,7 +131,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXListView layoutX="950.0" layoutY="229.0" prefHeight="471.0" prefWidth="313.0" />
+      <JFXListView fx:id="selectedOrderList" layoutX="948.0" layoutY="229.0" prefHeight="471.0" prefWidth="315.0" />
       <Label layoutX="1030.0" layoutY="205.0" text="Nome">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -158,22 +158,22 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="950.0" layoutY="91.0" text="14/06/2020">
+      <Label fx:id="selected_delivery_date_label" layoutX="950.0" layoutY="91.0" text="14/06/2020">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1136.0" layoutY="91.0" text="9 - 18">
+      <Label fx:id="selected_delivery_time_label" layoutX="1136.0" layoutY="91.0" text="9 - 18">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="950.0" layoutY="156.0" prefWidth="107.0" text="PayPall">
+      <Label fx:id="selected_payment_label" layoutX="950.0" layoutY="156.0" prefWidth="107.0" text="PayPall">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="1134.0" layoutY="156.0" text="€35.00">
+      <Label fx:id="selected_total_price_label" layoutX="1134.0" layoutY="156.0" text="€35.00">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
@@ -213,5 +213,10 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="948.0" layoutY="13.0">
+         <image>
+            <Image url="@assets/outline_article_black_48dp.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

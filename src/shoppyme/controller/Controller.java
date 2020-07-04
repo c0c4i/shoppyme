@@ -9,6 +9,7 @@ import java.util.List;
 public class Controller {
     private static User currentUser;
     private static Order currentOrder;
+    private static Order selectedOrder;
 
     public static User getCurrentUser() {
         return currentUser;
@@ -18,6 +19,10 @@ public class Controller {
         return currentOrder;
     }
 
+    public static Order getSelectedOrder() {
+        return selectedOrder;
+    }
+
     public static void setCurrentUser(User currentUser) {
         Controller.currentUser = currentUser;
         Stock.updateUser(currentUser);
@@ -25,5 +30,9 @@ public class Controller {
 
     public static void setCurrentOrder(Order currentOrder) {
         Controller.currentOrder = currentOrder;
+    }
+
+    public static void setSelectedOrder(Order selectedOrder) {
+        Controller.selectedOrder = selectedOrder;
     }
 }

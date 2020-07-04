@@ -40,6 +40,7 @@
 2. Info carta fedeltà
 3. Controlli su inserimento dati
 4. Rinominare i PayPal con una sola L
+5. Rimuovere il bottone nello storico degli ordini
 
 
 
