@@ -64,8 +64,11 @@ public class ProfileController implements Initializable {
         oldOrderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Controller.setSelectedOrder(oldOrderList.getSelectionModel().getSelectedItem());
-                loadSelectedOrderList();
+                Order o = oldOrderList.getSelectionModel().getSelectedItem();
+                if(o != null) {
+                    Controller.setSelectedOrder(o);
+                    loadSelectedOrderList();
+                }
             }
         });
 
