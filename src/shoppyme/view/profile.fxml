@@ -7,6 +7,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
@@ -178,16 +179,11 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <JFXButton layoutX="15.0" layoutY="684.0" onAction="#saveUserInfoButton" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Richiedi Carta Fedeltà" textFill="WHITE" visible="false">
+      <JFXButton fx:id="fidelity_card_request_button" layoutX="20.0" layoutY="585.0" onAction="#getNewFidelityCardButton" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Richiedi Carta Fedeltà" textFill="WHITE" visible="false">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label layoutX="19.0" layoutY="587.0" text="Data Rilascio">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
       <Label layoutX="54.0" layoutY="543.0" text="Carta Fedeltà">
          <font>
             <Font name="Roboto Medium" size="20.0" />
@@ -198,25 +194,44 @@
             <Image url="@assets/outline_credit_card_black_48dp.png" />
          </image>
       </ImageView>
-      <Label layoutX="19.0" layoutY="641.0" text="Punti">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </Label>
-      <Label layoutX="20.0" layoutY="605.0" text="14/06/2020">
-         <font>
-            <Font name="Roboto Medium" size="20.0" />
-         </font>
-      </Label>
-      <Label layoutX="21.0" layoutY="657.0" text="25">
-         <font>
-            <Font name="Roboto Medium" size="20.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="948.0" layoutY="13.0">
          <image>
             <Image url="@assets/outline_article_black_48dp.png" />
          </image>
       </ImageView>
+      <Pane fx:id="fidelity_card_pane" layoutX="13.0" layoutY="573.0" prefHeight="131.0" prefWidth="192.0" visible="false">
+         <children>
+            <Label layoutX="4.0" layoutY="72.0" text="Data Rilascio">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="111.0" layoutY="13.0" text="Punti">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="fidelity_card_release_date" layoutX="5.0" layoutY="90.0" text="14/06/2020">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fidelity_card_points" layoutX="113.0" layoutY="29.0" text="25">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="13.0" text="ID">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="fidelity_card_id" layoutX="4.0" layoutY="29.0" text="5834754">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

@@ -115,6 +115,33 @@ public class Order {
                 '}';
     }
 
+//    @Override
+//    public String toString() {
+//        String tmp = String.format("\t{\n\t\t\"id\": %d," +
+//                        " \n\t\t\"deliveryDate\": %d," +
+//                        " \n\t\t\"deliveryInterval\": %d," +
+//                        " \n\t\t\"products\": [",
+//                id, deliveryDate, deliveryInterval);
+//
+//        oldProductsPrice.keySet().forEach( p -> {
+//            tmp += String.format(
+//                    "\n\t\t\t{" +
+//                    "\n\t\t\t\t\"id_product\": %d," +
+//                    "\n\t\t\t\t\"quantity\": %d," +
+//                    "\n\t\t\t\t\"oldPrice\": %d," +
+//                    "\n\t\t\t},",
+//                    p.id, products.get(p), oldProductsPrice.get(p)
+//            );
+//        });
+//
+//        tmp += String.format(
+//                        "\n\t\t]" +
+//                        " \n\t\t\"payment_type\": \"%s\"," +
+//                        " \n\t\t\"status\": \"%s\"," +
+//                        " \n\t\t\"userID\": %d\n\t},\n",
+//                payment_type, status, userID);
+//    }
+
     @Override
     public boolean equals(Object obj) {
         if(obj instanceof Order)

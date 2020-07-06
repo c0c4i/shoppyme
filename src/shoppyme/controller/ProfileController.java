@@ -10,15 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import shoppyme.model.Order;
-import shoppyme.model.Product;
-import shoppyme.model.Stock;
-import shoppyme.model.User;
+import shoppyme.model.*;
 
 import java.io.IOException;
 import java.net.URL;
@@ -49,6 +48,12 @@ public class ProfileController implements Initializable {
     @FXML private Label selected_delivery_time_label;
     @FXML private Label selected_payment_label;
     @FXML private Label selected_total_price_label;
+
+    @FXML private Button fidelity_card_request_button;
+    @FXML private Pane fidelity_card_pane;
+    @FXML private Label fidelity_card_release_date;
+    @FXML private Label fidelity_card_points;
+    @FXML private Label fidelity_card_id;
 
     public ProfileController(){
         oldOrderObservableList = FXCollections.observableArrayList();
@@ -89,6 +94,21 @@ public class ProfileController implements Initializable {
             selected_payment_label.setText("--");
             selected_total_price_label.setText("--");
         }
+
+        loadFidelityCardArea();
+    }
+
+    private void loadFidelityCardArea() {
+        FidelityCard c = currentUser.getCard();
+        if(c != null) {
+            fidelity_card_request_button.setVisible(false);
+            fidelity_card_release_date.setText(c.getEmissionDate().toString());
+            fidelity_card_id.setText(String.valueOf(c.id));
+            fidelity_card_points.setText(String.valueOf(c.getPoints()));
+            fidelity_card_pane.setVisible(true);
+        } else {
+            fidelity_card_request_button.setVisible(true);
+        }
     }
 
     public void loadSelectedOrderList() {
@@ -117,7 +137,16 @@ public class ProfileController implements Initializable {
         Controller.setCurrentUser(currentUser);
     }
 
+    public void getNewFidelityCardButton() {
+        FidelityCard f = new FidelityCard();
+        Stock.addFidelityCard(f);
+        currentUser.setCard(f);
+        Controller.setCurrentUser(currentUser);
+        loadFidelityCardArea();
+    }
+
     public void newShoppingButton(ActionEvent event) throws IOException {
+        Controller.setSelectedOrder(null);
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/spesa.fxml"));
         Parent shoppingViewParent = loader.load();

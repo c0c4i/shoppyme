@@ -1,3 +1,9 @@
+**Today**
+
+1. Pezzo carta fedeltà
+2. Salvataggio Json
+3. Completare un ordine
+
 **To Do**
 
 * Registrazione utenti
@@ -41,6 +47,9 @@
 3. Controlli su inserimento dati
 4. Rinominare i PayPal con una sola L
 5. Rimuovere il bottone nello storico degli ordini
+6. Rimuove libreria grafica schifosa e inutile
+7. Aggiungere newID() ricercando spazi vuoti
+8. Riguardare l'update user se si può fare meglio senza togliere e riaggiungere, se si riesce a tenere in ordine bene altrimenti si ordina l'arraylist e poi si scrive il file
 
 
 

@@ -6,7 +6,7 @@
 		"address": "Piazza Erbon", 
 		"cap": "37135", 
 		"phone": "045542269", 
-		"email": "stefano@labizza.it", 
+		"email": "123", 
 		"city": "Verona", 
 		"password": "123", 
 		"payment_type": "PAYPAL", 
@@ -23,6 +23,6 @@
 		"city": "Brendola", 
 		"password": "asd", 
 		"payment_type": "PAYPAL", 
-		"card_id": 1
+		"card_id": -1
 	}
 ]

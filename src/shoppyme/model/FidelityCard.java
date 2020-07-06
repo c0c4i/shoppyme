@@ -3,7 +3,7 @@ package shoppyme.model;
 import java.time.LocalDate;
 
 public class FidelityCard {
-    private final int id;
+    public final int id;
     private LocalDate emission_date;
     private int points;
 
@@ -24,8 +24,8 @@ public class FidelityCard {
         return points;
     }
 
-    public int getID() {
-        return id;
+    public LocalDate getEmissionDate() {
+        return emission_date;
     }
 
     public void addPoints(int points) {
@@ -34,10 +34,7 @@ public class FidelityCard {
 
     @Override
     public String toString() {
-        return "FidelityCard{" +
-                "id=" + id +
-                ", emission_date=" + emission_date +
-                ", points=" + points +
-                '}';
+        return String.format("\t{\n\t\t\"id\": %d, \n\t\t\"emission_date\": %d, \n\t\t\"points\": %d\n\t},\n",
+                id, emission_date.toEpochDay(), points);
     }
 }

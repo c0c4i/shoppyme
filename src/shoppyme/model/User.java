@@ -13,7 +13,7 @@ public class User {
     private String city;
     private String password;
     private PaymentType payment_type;
-    FidelityCard card;
+    private FidelityCard card;
 
     public User(int id, String name, String surname, String address, String cap, String phone, String email, String city, String password, PaymentType payment_type, FidelityCard card) {
         this.id = id;
@@ -100,7 +100,7 @@ public class User {
     @Override
     public String toString() {
         return String.format("\t{\n\t\t\"id\": %d, \n\t\t\"name\": \"%s\", \n\t\t\"surname\": \"%s\", \n\t\t\"address\": \"%s\", \n\t\t\"cap\": \"%s\", \n\t\t\"phone\": \"%s\", \n\t\t\"email\": \"%s\", \n\t\t\"city\": \"%s\", \n\t\t\"password\": \"%s\", \n\t\t\"payment_type\": \"%s\", \n\t\t\"card_id\": %d\n\t},\n",
-                id, name, surname, address, cap, phone, email, city, password, payment_type, card.getID());
+                id, name, surname, address, cap, phone, email, city, password, payment_type, card == null ? -1 : card.id);
     }
 
     @Override
