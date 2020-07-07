@@ -135,8 +135,15 @@ public class Stock {
         LocalDate deliveryDate = LocalDate.ofEpochDay(order.getInt("deliveryDate"));
 
         JSONArray deliveryIntervalObj = order.getJSONArray("deliveryInterval");
-        List<Integer> deliveryInterval = new ArrayList<>();
-        deliveryIntervalObj.forEach(time -> deliveryInterval.add((Integer) time));
+        int[] deliveryInterval = new int[2];
+
+        int i= 0;
+        for(Object o : deliveryIntervalObj){
+            Integer time = (Integer)o;
+            deliveryInterval[i] = time;
+            i++;
+        }
+
         JSONArray productsList = order.getJSONArray("products");
         Map<Product, Integer> products = new HashMap<>();
         Map<Product, Float> productsPrice = new HashMap<>();
@@ -250,91 +257,92 @@ public class Stock {
     }
 
     public static void onClose() {
-//        onCloseInventoryUpdate();
+          onCloseInventoryUpdate();
 //        onCloseFidelityUpdate();
 //        onCloseUsersUpdate();
-//        onCloseOrderUpdate();
-//        onCloseSupervisorUpdate(); serve??
-
+       onCloseOrderUpdate();
+//        onCloseSupervisorUpdate();
     }
 
-        // un pelo piu tedioso
-//    private static void onCloseInventoryUpdate() {
-//        File file = new File("src/shoppyme/model/db/products.json");
-//        String json = "[\n";
-//        for(User user: users) {
-//            json += user.toString();
-//        }
-//        String result = json.substring(0, json.length()-2);
-//        result += "\n]";
-//
-//        try {
-//            FileWriter f2 = new FileWriter(file, false);
-//            f2.write(result);
-//            f2.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private static void onCloseFidelityUpdate() {
-//        File file = new File("src/shoppyme/model/db/fidelitycard.json");
-//        String json = "[\n";
-//        for(FidelityCard f: fidelity_cards) {
-//            json += f.toString();
-//        }
-//        String result = json.substring(0, json.length()-2);
-//        result += "\n]";
-//
-//        try {
-//            FileWriter f2 = new FileWriter(file, false);
-//            f2.write(result);
-//            f2.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private static void onCloseUsersUpdate() {
-//        File file = new File("src/shoppyme/model/db/users.json");
-//        String json = "[\n";
-//        for(User user: users) {
-//            json += user.toString();
-//        }
-//        String result = json.substring(0, json.length()-2);
-//        result += "\n]";
-//
-//        try {
-//            FileWriter f2 = new FileWriter(file, false);
-//            f2.write(result);
-//            f2.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private static void onCloseOrderUpdate() {
-//        File file = new File("src/shoppyme/model/db/users.json");
-//        String json = "[\n";
-//        for(User user: users) {
-//            json += user.toString();
-//        }
-//        String result = json.substring(0, json.length()-2);
-//        result += "\n]";
-//
-//        try {
-//            FileWriter f2 = new FileWriter(file, false);
-//            f2.write(result);
-//            f2.close();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private static void onCloseInventoryUpdate() {
+        File file = new File("src/shoppyme/model/db/products.json");
+        String json = "[\n";
+        for(Product p : inventory.keySet()){
+            json += String.format("\t{\n\t\t\"quantity\": %d,",inventory.get(p));
+            json += p.toString();
+            json += String.format("\n\t},\n");
+        }
 
+        String result = json.substring(0, json.length()-2);
+        result += "\n]";
 
+        try {
+            FileWriter fw = new FileWriter(file, false);
+            fw.write(result);
+            fw.close();
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void onCloseFidelityUpdate() {
+        File file = new File("src/shoppyme/model/db/fidelitycard.json");
+        String json = "[\n";
+        for(FidelityCard f: fidelity_cards) {
+            json += f.toString();
+        }
+        String result = json.substring(0, json.length()-2);
+        result += "\n]";
+
+        try {
+            FileWriter fw = new FileWriter(file, false);
+            fw.write(result);
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void onCloseUsersUpdate() {
+        File file = new File("src/shoppyme/model/db/users.json");
+        String json = "[\n";
+        for(User user: users) {
+            json += user.toString();
+        }
+        String result = json.substring(0, json.length()-2);
+        result += "\n]";
+
+        try {
+            FileWriter fw = new FileWriter(file, false);
+            fw.write(result);
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void onCloseOrderUpdate() {
+        File file = new File("src/shoppyme/model/db/orders.json");
+        String json = "[\n";
+        for(Order o: orders) {
+            json += o.toString();
+        }
+
+        String result = json.substring(0, json.length()-2);
+        result += "\n]";
+
+        try {
+            FileWriter fw = new FileWriter(file, false);
+            fw.write(result);
+            fw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(result);
+    }
 }

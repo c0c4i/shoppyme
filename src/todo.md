@@ -50,7 +50,8 @@
 6. Rimuove libreria grafica schifosa e inutile
 7. Aggiungere newID() ricercando spazi vuoti
 8. Riguardare l'update user se si può fare meglio senza togliere e riaggiungere, se si riesce a tenere in ordine bene altrimenti si ordina l'arraylist e poi si scrive il file
-
+9. Sistemare virgola/punto json del product
+10.Sistemare la stampa dell'ora nella schermata del profilo 
 
 
 

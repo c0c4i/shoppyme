@@ -11,7 +11,7 @@ import java.util.Map;
 public class Order {
     public final int id;
     private LocalDate deliveryDate;
-    private List<Integer> deliveryInterval;
+    private int[] deliveryInterval;
     private Map<Product, Integer> products = new HashMap<>();
     private Map<Product, Float> oldProductsPrice = new HashMap<>();
     private PaymentType payment_type;
@@ -25,7 +25,7 @@ public class Order {
         this.userID = user.id;
     }
 
-    public Order(int id, LocalDate deliveryDate, List<Integer> deliveryInterval, Map<Product, Integer> products, Map<Product, Float> oldProductsPrice, PaymentType payment_type, float totalPrice, Status status, int userID) {
+    public Order(int id, LocalDate deliveryDate, int[] deliveryInterval, Map<Product, Integer> products, Map<Product, Float> oldProductsPrice, PaymentType payment_type, float totalPrice, Status status, int userID) {
         this.id = id;
         this.deliveryDate = deliveryDate;
         this.deliveryInterval = deliveryInterval;
@@ -45,11 +45,11 @@ public class Order {
         return deliveryDate;
     }
 
-    public List<Integer> getDeliveryInterval() {
+    public int[] getDeliveryInterval() {
         return deliveryInterval;
     }
 
-    public void setDeliveryInterval(List<Integer> delivery_interval) {
+    public void setDeliveryInterval(int[] delivery_interval) {
         this.deliveryInterval = delivery_interval;
     }
 
@@ -102,45 +102,51 @@ public class Order {
         return oldProductsPrice;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "id=" + id +
-                ", deliveryDate=" + deliveryDate +
-                ", deliveryInterval=" + deliveryInterval +
-                ", products=" + products +
-                ", payment_type=" + payment_type +
-                ", status=" + status +
-                ", userID=" + userID +
-                '}';
-    }
-
 //    @Override
 //    public String toString() {
-//        String tmp = String.format("\t{\n\t\t\"id\": %d," +
-//                        " \n\t\t\"deliveryDate\": %d," +
-//                        " \n\t\t\"deliveryInterval\": %d," +
-//                        " \n\t\t\"products\": [",
-//                id, deliveryDate, deliveryInterval);
-//
-//        oldProductsPrice.keySet().forEach( p -> {
-//            tmp += String.format(
-//                    "\n\t\t\t{" +
-//                    "\n\t\t\t\t\"id_product\": %d," +
-//                    "\n\t\t\t\t\"quantity\": %d," +
-//                    "\n\t\t\t\t\"oldPrice\": %d," +
-//                    "\n\t\t\t},",
-//                    p.id, products.get(p), oldProductsPrice.get(p)
-//            );
-//        });
-//
-//        tmp += String.format(
-//                        "\n\t\t]" +
-//                        " \n\t\t\"payment_type\": \"%s\"," +
-//                        " \n\t\t\"status\": \"%s\"," +
-//                        " \n\t\t\"userID\": %d\n\t},\n",
-//                payment_type, status, userID);
+//        return "Order{" +
+//                "id=" + id +
+//                ", deliveryDate=" + deliveryDate +
+//                ", deliveryInterval=" + deliveryInterval +
+//                ", products=" + products +
+//                ", payment_type=" + payment_type +
+//                ", status=" + status +
+//                ", userID=" + userID +
+//                '}';
 //    }
+
+    @Override
+    public String toString() {
+        String tmp = String.format("\t{\n\t\t\"id\": %d," +
+                        "\n\t\t\"deliveryDate\": %d," +
+                        "\n\t\t\"deliveryInterval\": [%d, %d]," +
+                        "\n\t\t\"products\": [",
+                id, deliveryDate.toEpochDay(), deliveryInterval[0], deliveryInterval[1]);
+
+        for(Product p : oldProductsPrice.keySet()){
+            tmp += String.format(
+                    "\n\t\t\t{" +
+                    "\n\t\t\t\t\"id_product\": %d," +
+                    "\n\t\t\t\t\"quantity\": %d," +
+                    "\n\t\t\t\t\"oldPrice\": %s" +
+                    "\n\t\t\t},",
+                    p.id, products.get(p), String.valueOf(oldProductsPrice.get(p)).replace(",",".")
+            );
+
+        };
+
+        tmp = tmp.substring(0, tmp.length()-1);
+
+        tmp += String.format(
+                        "\n\t\t]," +
+                        "\n\t\t\"total_price\": %s," +
+                        "\n\t\t\"payment_type\": \"%s\"," +
+                        "\n\t\t\"status\": \"%s\"," +
+                        "\n\t\t\"user_id\": %d\n\t},\n",
+                String.valueOf(totalPrice).replace(",","."),payment_type.toString(), status, userID);
+
+        return tmp;
+    }
 
     @Override
     public boolean equals(Object obj) {

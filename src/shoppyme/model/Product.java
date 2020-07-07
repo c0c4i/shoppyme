@@ -29,12 +29,25 @@ public class Product {
 
     @Override
     public String toString() {
-        String format = String.format(
-                        "#### %s ####\n" +
-                        "Name: %s\n" +
-                        "Brand: %s\n" +
-                        "Type: %s\n" +
-                        "Price: %.2f", id, name, brand, type, price);
+        String format = String.format("\n\t\t\"product\": {\n\t\t\t\"id\": %d," +
+                    "\n\t\t\t\"name\": \"%s\"," +
+                    "\n\t\t\t\"brand\": \"%s\"," +
+                    "\n\t\t\t\"type\": \"%s\"," +
+                    "\n\t\t\t\"properties\": [",id,name,brand,type);
+        for(ProductProperty pp : properties){
+            if(properties.indexOf(pp) == properties.size() - 1) {
+                format += String.format("\"%s\"", pp);
+            }
+            else {
+                format += String.format("\"%s\",", pp);
+            }
+        }
+
+        format += String.format("],\n\t\t\t\"package_quantity\": %d," +
+                "\n\t\t\t\"price\": %s," +
+                "\n\t\t\t\"image\": \"%s\"" +
+                "\n\t\t}",package_quantity,String.valueOf(price).replace(",","."),image);
+
         return format;
     }
 
