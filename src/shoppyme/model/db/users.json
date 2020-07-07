@@ -9,7 +9,7 @@
 		"email": "123", 
 		"city": "Verona", 
 		"password": "123", 
-		"payment_type": "PAYPAL", 
+		"payment_type": "CASH", 
 		"card_id": 1
 	},
 	{
@@ -22,7 +22,7 @@
 		"email": "asd", 
 		"city": "Brendola", 
 		"password": "asd", 
-		"payment_type": "PAYPAL", 
-		"card_id": -1
+		"payment_type": "CASH", 
+		"card_id": 2
 	}
 ]

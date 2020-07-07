@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -28,12 +29,12 @@
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="237.0" layoutY="13.0">
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="382.0" layoutY="13.0">
          <image>
             <Image url="@assets/outline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
-      <JFXListView fx:id="oldOrderList" layoutX="232.0" layoutY="82.0" prefHeight="619.0" prefWidth="680.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px; -fx-background-color: #FFFFFF; -fx-control-inner-background-alt: -fx-control-inner-background;" />
+      <JFXListView fx:id="oldOrderList" layoutX="385.0" layoutY="82.0" prefHeight="619.0" prefWidth="527.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px; -fx-background-color: #FFFFFF; -fx-control-inner-background-alt: -fx-control-inner-background;" />
       <Label layoutX="950.0" layoutY="70.0" text="Data Consegna">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -49,80 +50,80 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="640.0" layoutY="64.0" text="Totale">
+      <Label layoutX="756.0" layoutY="64.0" text="Totale">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="274.0" layoutY="15.0" text="Storico spese">
+      <Label layoutX="419.0" layoutY="15.0" text="Storico spese">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="737.0" layoutY="64.0" text="Stato">
+      <Label layoutX="853.0" layoutY="64.0" text="Stato">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Line endX="192.0" endY="-246.0" layoutX="23.0" layoutY="262.0" startX="192.0" startY="439.0" stroke="#b9b9b9" />
+      <Line endX="192.0" endY="-246.0" layoutX="160.0" layoutY="282.0" startX="192.0" startY="439.0" stroke="#b9b9b9" />
       <Label layoutX="20.0" layoutY="64.0" text="Nome">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="name_field" layoutX="20.0" layoutY="82.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <Label layoutX="22.0" layoutY="122.0" text="Cognome">
+      <TextField fx:id="name_field" layoutX="19.0" layoutY="82.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <Label layoutX="153.0" layoutY="64.0" text="Cognome">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="surname_field" layoutX="20.0" layoutY="143.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <Label layoutX="22.0" layoutY="186.0" text="Telefono">
+      <TextField fx:id="surname_field" layoutX="153.0" layoutY="82.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <Label layoutX="19.0" layoutY="119.0" text="Telefono">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="phone_field" layoutX="20.0" layoutY="204.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <Label layoutX="22.0" layoutY="243.0" text="Email">
+      <TextField fx:id="phone_field" layoutX="19.0" layoutY="136.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <Label layoutX="153.0" layoutY="119.0" text="Email">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="email_field" layoutX="20.0" layoutY="261.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <Label layoutX="20.0" layoutY="303.0" text="Indirizzo">
+      <TextField fx:id="email_field" layoutX="153.0" layoutY="136.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <Label layoutX="21.0" layoutY="171.0" text="Indirizzo">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="address_field" layoutX="20.0" layoutY="322.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <Label layoutX="21.0" layoutY="360.0" text="CAP">
+      <TextField fx:id="address_field" layoutX="21.0" layoutY="191.0" prefHeight="29.0" prefWidth="262.0" style="-fx-border-width: 2px;" />
+      <Label layoutX="18.0" layoutY="229.0" text="CAP">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="cap_field" layoutX="20.0" layoutY="378.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <Label layoutX="20.0" layoutY="419.0" text="Città">
+      <TextField fx:id="cap_field" layoutX="20.0" layoutY="248.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <Label layoutX="156.0" layoutY="229.0" text="Città">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="city_field" layoutX="20.0" layoutY="438.0" prefHeight="28.0" prefWidth="176.0" style="-fx-border-width: 2px;" />
-      <JFXButton layoutX="21.0" layoutY="483.0" onAction="#saveUserInfoButton" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
+      <TextField fx:id="city_field" layoutX="153.0" layoutY="248.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <JFXButton layoutX="21.0" layoutY="360.0" onAction="#saveUserInfoButton" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label layoutX="290.0" layoutY="61.0" text="Data Consegna">
+      <Label layoutX="428.0" layoutY="61.0" text="Data Consegna">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="429.0" layoutY="61.0" text="Ora">
+      <Label layoutX="545.0" layoutY="61.0" text="Ora">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="510.0" layoutY="61.0" text="Pagamento">
+      <Label layoutX="626.0" layoutY="61.0" text="Pagamento">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -154,7 +155,7 @@
          </font>
       </JFXButton>
       <Line endX="192.0" endY="-246.0" layoutX="737.0" layoutY="262.0" startX="192.0" startY="439.0" stroke="#b9b9b9" />
-      <Label layoutX="246.0" layoutY="61.0" text="ID">
+      <Label layoutX="391.0" layoutY="61.0" text="ID">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -184,12 +185,12 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Label layoutX="54.0" layoutY="543.0" text="Carta Fedeltà">
+      <Label layoutX="54.0" layoutY="440.0" text="Carta Fedeltà">
          <font>
             <Font name="Roboto Medium" size="20.0" />
          </font>
       </Label>
-      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="541.0" preserveRatio="true">
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="438.0" preserveRatio="true">
          <image>
             <Image url="@assets/outline_credit_card_black_48dp.png" />
          </image>
@@ -199,7 +200,7 @@
             <Image url="@assets/outline_article_black_48dp.png" />
          </image>
       </ImageView>
-      <Pane fx:id="fidelity_card_pane" layoutX="13.0" layoutY="573.0" prefHeight="131.0" prefWidth="192.0" visible="false">
+      <Pane fx:id="fidelity_card_pane" layoutX="13.0" layoutY="470.0" prefHeight="131.0" prefWidth="192.0" visible="false">
          <children>
             <Label layoutX="4.0" layoutY="72.0" text="Data Rilascio">
                <font>
@@ -233,5 +234,11 @@
             </Label>
          </children>
       </Pane>
+      <ComboBox fx:id="payment_type_combobox" layoutX="18.0" layoutY="310.0" prefHeight="28.0" prefWidth="262.0" />
+      <Label layoutX="18.0" layoutY="287.0" text="Metodo di pagamento preferito">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

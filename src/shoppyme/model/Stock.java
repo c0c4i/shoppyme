@@ -205,6 +205,40 @@ public class Stock {
         return inventory;
     }
 
+    public static List<Product> getInventoryBy(String name, SearchType type){
+        List<Product> filteredList = new ArrayList<>();
+
+        if(type == null){
+            filteredList.addAll(inventory.keySet());
+            return filteredList;
+        }
+
+        switch(type){
+//            default   : filteredList.addAll(inventory.keySet());
+//                        break;
+
+            case NAME : for(Product p : inventory.keySet()){
+                            if(p.getName().matches("(?i:.*"+ name + ".*)"))
+                                filteredList.add(p);
+                        }
+                        break;
+
+            case BRAND : for(Product p : inventory.keySet()) {
+                            if (p.getBrand().matches("(?i:.*"+ name + ".*)"))
+                                filteredList.add(p);
+                        }
+                        break;
+
+            case TYPE : for(Product p : inventory.keySet()) {
+                            if (p.getType().toString().matches("(?i:.*"+ name + ".*)"))
+                                filteredList.add(p);
+                        }
+                break;
+        }
+
+        return filteredList;
+    }
+
     public static List<FidelityCard> getFidelityCards() {
         return fidelity_cards;
     }
@@ -257,11 +291,11 @@ public class Stock {
     }
 
     public static void onClose() {
-          onCloseInventoryUpdate();
-//        onCloseFidelityUpdate();
-//        onCloseUsersUpdate();
-       onCloseOrderUpdate();
-//        onCloseSupervisorUpdate();
+        onCloseInventoryUpdate();
+        onCloseFidelityUpdate();
+        onCloseUsersUpdate();
+        onCloseOrderUpdate();
+        //onCloseSupervisorUpdate();
     }
 
     private static void onCloseInventoryUpdate() {
@@ -342,7 +376,5 @@ public class Stock {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        System.out.println(result);
     }
 }

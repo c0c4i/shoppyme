@@ -26,7 +26,6 @@ public class OldOrderListViewCell extends ListCell<Order> {
     @FXML private Label order_payment_label;
     @FXML private Label order_total_price_label;
     @FXML private Label order_status_label;
-    @FXML private Button order_info_button = new Button();
     @FXML private Label selected_delivery_date_label;
 
     private FXMLLoader mLLoader;
@@ -61,9 +60,5 @@ public class OldOrderListViewCell extends ListCell<Order> {
             setText(null);
             setGraphic(old_order_gridpane);
         }
-    }
-
-    public void setButtonEvent(EventHandler<ActionEvent> e) {
-        event = e;
     }
 }

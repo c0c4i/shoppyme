@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.text.Font?>
 
-<GridPane fx:id="old_order_gridpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="635.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="old_order_gridpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="538.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="40.0" minWidth="10.0" prefWidth="40.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
@@ -15,7 +13,6 @@
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="60.0" minWidth="10.0" prefWidth="60.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
-      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="94.0" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -26,11 +23,6 @@
       <Label fx:id="order_payment_label" text="Label" GridPane.columnIndex="3" />
       <Label fx:id="order_total_price_label" text="Label" GridPane.columnIndex="4" />
       <Label fx:id="order_status_label" text="Label" GridPane.columnIndex="5" />
-      <JFXButton fx:id="order_info_button" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #4CAF50; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Info" textFill="WHITE" GridPane.columnIndex="6">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXButton>
       <Label fx:id="order_date_label" text="Label" GridPane.columnIndex="1" />
    </children>
 </GridPane>

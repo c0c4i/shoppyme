@@ -4,8 +4,6 @@ import shoppyme.model.Order;
 import shoppyme.model.Stock;
 import shoppyme.model.User;
 
-import java.util.List;
-
 public class Controller {
     private static User currentUser;
     private static Order currentOrder;

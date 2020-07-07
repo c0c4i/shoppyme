@@ -10,14 +10,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import shoppyme.model.*;
+import shoppyme.model.customenum.PaymentType;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,6 +27,7 @@ public class ProfileController implements Initializable {
 
     private static ObservableList<Order> oldOrderObservableList;
     private static ObservableList<Product> selectedOrderObservableList;
+    private static ObservableList<PaymentType> paymentTypeObservableList;
 
     @FXML
     private ListView<Order> oldOrderList = new ListView<>();
@@ -43,6 +42,8 @@ public class ProfileController implements Initializable {
     @FXML private TextField address_field;
     @FXML private TextField cap_field;
     @FXML private TextField city_field;
+
+    @FXML private ComboBox payment_type_combobox;
 
     @FXML private Label selected_delivery_date_label;
     @FXML private Label selected_delivery_time_label;
@@ -59,6 +60,8 @@ public class ProfileController implements Initializable {
         oldOrderObservableList = FXCollections.observableArrayList();
         oldOrderObservableList.addAll(Stock.getUserOrder(Controller.getCurrentUser()));
         selectedOrderObservableList = FXCollections.observableArrayList();
+        paymentTypeObservableList = FXCollections.observableArrayList();
+        paymentTypeObservableList.addAll(PaymentType.values());
     }
 
     @Override
@@ -96,6 +99,10 @@ public class ProfileController implements Initializable {
         }
 
         loadFidelityCardArea();
+
+        payment_type_combobox.setItems(paymentTypeObservableList);
+        payment_type_combobox.getSelectionModel().select(currentUser.getPayment_type());
+
     }
 
     private void loadFidelityCardArea() {
@@ -134,6 +141,7 @@ public class ProfileController implements Initializable {
         currentUser.setAddress(address_field.getText());
         currentUser.setCap(cap_field.getText());
         currentUser.setCity(city_field.getText());
+        currentUser.setPaymentType((PaymentType)payment_type_combobox.getValue());
         Controller.setCurrentUser(currentUser);
     }
 

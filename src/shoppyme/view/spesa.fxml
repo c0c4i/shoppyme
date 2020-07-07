@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -22,7 +23,7 @@
                   <Image url="@assets/outline_search_black_48dp.png" />
                </image>
             </ImageView>
-            <TextField layoutX="38.0" layoutY="7.0" prefHeight="28.0" prefWidth="402.0" style="-fx-background-color: #FFFFFF;" />
+            <TextField fx:id="search_bar_textfield" layoutX="38.0" layoutY="7.0" prefHeight="28.0" prefWidth="402.0" style="-fx-background-color: #FFFFFF;" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="3.0">
@@ -45,7 +46,7 @@
             <Image url="@assets/outline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="811.0" layoutY="37.0" prefHeight="42.0" prefWidth="92.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
+      <JFXButton fx:id="search_button" layoutX="811.0" layoutY="37.0" onAction="#searchFilteredProduct" prefHeight="42.0" prefWidth="92.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -93,5 +94,6 @@
             </ImageView>
          </graphic>
       </JFXButton>
+      <ComboBox fx:id="type_search_combobox" layoutX="612.0" layoutY="46.0" prefHeight="28.0" prefWidth="185.0" />
    </children>
 </AnchorPane>
