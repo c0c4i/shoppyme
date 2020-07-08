@@ -1,5 +1,6 @@
 **Today**
 3. Completare un ordine
+4. Controllo su payment null
 
 **To Do**
 
@@ -7,6 +8,7 @@
   1. Schermata registrazione
   2. Scelta Si/No carta fedeltà
   3. Scelta pagamento preferito
+  4. Carta fedeltà
 
 * Profile
   * Controllo mail

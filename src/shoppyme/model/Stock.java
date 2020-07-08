@@ -109,7 +109,15 @@ public class Stock {
         String email = user.getString("email");
         String city = user.getString("city");
         String password = user.getString("password");
-        PaymentType payment_type = PaymentType.valueOf(user.getString("payment_type"));
+        String payment_type_string = user.getString("payment_type");
+        PaymentType payment_type;
+
+        if(payment_type_string.equals("NOT_SET")){
+            payment_type = null;
+        } else {
+            payment_type = PaymentType.valueOf(payment_type_string);
+        }
+
         int card_id = user.getInt("card_id");
         FidelityCard card = null;
 
@@ -192,12 +200,16 @@ public class Stock {
         Supervisor s = new Supervisor(id, username, password, role, name, surname, address, cap, city, phone, email);
         supervisors.add(s);
     }
+    
+    public static int getNewUserID(){
+        return users.size() + 1;
+    }
 
-    public int getNewOrderID() {
+    public static int getNewOrderID() {
         return orders.size() + 1;
     }
 
-    public int getNewFidelityID() {
+    public static int getNewFidelityID() {
         return fidelity_cards.size() + 1;
     }
 
@@ -376,5 +388,14 @@ public class Stock {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static boolean userAlreadyExists(String email){
+        for(User u : users){
+            if(u.getEmail().equals(email)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -24,6 +24,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LoginController implements Initializable {
+
+    @FXML
+    private Label signin_label;
     @FXML
     private TextField username_field;
     @FXML
@@ -42,7 +45,7 @@ public class LoginController implements Initializable {
         } else {
             Controller.setCurrentUser(user);
             FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/spesa.fxml"));
+            loader.setLocation(getClass().getResource("../view/shopping.fxml"));
             Parent shoppingViewParent = loader.load();
 
             Scene shoppingViewScene = new Scene(shoppingViewParent);
@@ -53,6 +56,18 @@ public class LoginController implements Initializable {
             window.setScene(shoppingViewScene);
             window.show();
         }
+    }
+
+    public void signinUserPageButton() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/signin.fxml"));
+        Parent shoppingViewParent = loader.load();
+
+        Scene shoppingViewScene = new Scene(shoppingViewParent);
+        Stage window = (Stage) signin_label.getScene().getWindow();
+
+        window.setScene(shoppingViewScene);
+        window.show();
     }
 
     public void clearMessageError(){

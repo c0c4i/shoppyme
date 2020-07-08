@@ -156,7 +156,7 @@ public class ProfileController implements Initializable {
     public void newShoppingButton(ActionEvent event) throws IOException {
         Controller.setSelectedOrder(null);
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/spesa.fxml"));
+        loader.setLocation(getClass().getResource("../view/shopping.fxml"));
         Parent shoppingViewParent = loader.load();
 
         Scene shoppingViewScene = new Scene(shoppingViewParent);
