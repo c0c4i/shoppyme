@@ -9,10 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
@@ -38,10 +35,10 @@ public class ShoppingController implements Initializable {
     @FXML private TextField search_bar_textfield;
     @FXML private ComboBox type_search_combobox;
     @FXML private Button search_button;
+    @FXML private Label total_price_label;
 
     @FXML private ListView<Product> productsList = new ListView<>();
     @FXML private ListView<Product> orderList = new ListView<>();
-
 
     public ShoppingController(){
         productObservableList = FXCollections.observableArrayList();
@@ -55,6 +52,9 @@ public class ShoppingController implements Initializable {
 
         typeObservableList = FXCollections.observableArrayList();
         typeObservableList.addAll(SearchType.values());
+
+//        System.out.println(Controller.getCurrentOrder());
+//        total_price_label.setText(String.valueOf(currentOrder.getTotalPrice()));
     }
 
     @Override

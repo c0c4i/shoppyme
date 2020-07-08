@@ -1,6 +1,5 @@
 **Today**
 3. Completare un ordine
-4. Togliere info pulsante spese nel profile
 
 **To Do**
 

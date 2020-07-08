@@ -23,6 +23,7 @@ public class Order {
         Stock s = Stock.getInstance();
         this.id = s.getNewOrderID();
         this.userID = user.id;
+        this.totalPrice = 0;
     }
 
     public Order(int id, LocalDate deliveryDate, int[] deliveryInterval, Map<Product, Integer> products, Map<Product, Float> oldProductsPrice, PaymentType payment_type, float totalPrice, Status status, int userID) {
