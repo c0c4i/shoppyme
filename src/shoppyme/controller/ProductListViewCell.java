@@ -1,5 +1,6 @@
 package shoppyme.controller;
 
+import com.sun.javafx.iio.ios.IosDescriptor;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,6 +13,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
 
@@ -62,7 +64,8 @@ public class ProductListViewCell extends ListCell<Product> {
                     Order o = Controller.getCurrentOrder();
                     o.addProduct(product);
                     Controller.setCurrentOrder(o);
-                    ShoppingController.loadOrderList();
+
+                    Controller.shoppingController.loadOrderList();
                 }
             });
 
@@ -70,4 +73,6 @@ public class ProductListViewCell extends ListCell<Product> {
             setGraphic(product_gridpane);
         }
     }
+
+
 }

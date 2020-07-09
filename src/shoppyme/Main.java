@@ -5,14 +5,21 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import shoppyme.controller.Controller;
 import shoppyme.model.Stock;
 
 public class Main extends Application {
+
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("view/login.fxml"));
+
+        Controller.getInstance().setStage(primaryStage);
+
         primaryStage.setTitle("Shoppyme");
-        primaryStage.setScene(new Scene(root));
+        Controller.loginScene = new Scene(root);
+        primaryStage.setScene(Controller.loginScene);
         primaryStage.show();
     }
 

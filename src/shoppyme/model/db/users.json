@@ -11,18 +11,5 @@
 		"password": "123", 
 		"payment_type": "CASH", 
 		"card_id": 1
-	},
-	{
-		"id": 2, 
-		"name": "Samuele", 
-		"surname": "Besoli", 
-		"address": "Via Mascagni 96", 
-		"cap": "123", 
-		"phone": "045542269", 
-		"email": "asd", 
-		"city": "Brendola", 
-		"password": "asd", 
-		"payment_type": "CREDIT_CARD", 
-		"card_id": 2
 	}
 ]

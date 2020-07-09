@@ -54,21 +54,46 @@ public class Order {
         this.deliveryInterval = delivery_interval;
     }
 
-    public void addProduct(Product p) {
+    public boolean addProduct(Product p) {
+
+        // TODO
+
+//        Integer i = Stock.getInventory().get(p) - products.get(p);
+//
+//        if(i < 0){
+//            return false;
+//        }
+
+        //Stock.getInventory().put(p, i - 1);
+
         Integer q = products.get(p);
         totalPrice += p.getPrice();
+
         if (q == null)
             products.put(p, 1);
         else
             products.put(p, q+1);
+
+        return true;
     }
 
-    // ritorna true/false a seconda della buona riuscita
     public boolean removeProduct(Product p) {
-        if(products.get(p) != null) {
-            products.remove(p);
-            return true;
-        } else return false;
+
+        Integer q = products.get(p);
+
+        //Stock.getInventory().put(p, i + 1);
+
+        if(q != null){
+            if(q == 1){
+                products.remove(p);
+                return true;
+            }
+            else{
+                products.put(p, q - 1);
+                return true;
+            }
+        }
+        return false;
     }
 
     public PaymentType getPaymentType() {

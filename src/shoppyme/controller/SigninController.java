@@ -91,17 +91,19 @@ public class SigninController implements Initializable {
             Stock.addUser(user);
 
             Controller.setCurrentUser(user);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/shopping.fxml"));
-            Parent shoppingViewParent = loader.load();
 
-            Scene shoppingViewScene = new Scene(shoppingViewParent);
-
-            //This line gets the Stage information
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-            window.setScene(shoppingViewScene);
-            window.show();
+            Controller.getInstance().goToShoppingScene();
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("../view/shopping.fxml"));
+//            Parent shoppingViewParent = loader.load();
+//
+//            Scene shoppingViewScene = new Scene(shoppingViewParent);
+//
+//            //This line gets the Stage information
+//            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+//
+//            window.setScene(shoppingViewScene);
+//            window.show();
         }
 
     }

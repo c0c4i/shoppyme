@@ -21,7 +21,7 @@
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="total_price_label" layoutX="256.0" layoutY="582.0" text="€ 00.00">
+            <Label fx:id="total_price_label" layoutX="245.0" layoutY="582.0" text="€ 0000.00">
                <font>
                   <Font size="18.0" />
                </font>
@@ -81,12 +81,12 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="318.0" layoutY="93.0" text="Marca">
+      <Label fx:id="brand_label" layoutX="318.0" layoutY="93.0" onMouseClicked="#onClickBrandArrow" text="Marca">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Label layoutX="427.0" layoutY="93.0" text="Prezzo">
+      <Label fx:id="price_label" layoutX="427.0" layoutY="93.0" onMouseClicked="#onClickPriceArrow" text="Prezzo">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -110,5 +110,15 @@
       </JFXButton>
       <ComboBox fx:id="type_search_combobox" layoutX="612.0" layoutY="37.0" prefHeight="42.0" prefWidth="185.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 2px; -fx-border-radius: 8px;" />
       <Line endX="261.0" layoutX="1002.0" layoutY="626.0" startX="-73.0" strokeWidth="2.0" />
+      <ImageView fx:id="brand_arrow_imageview" fitHeight="32.0" fitWidth="32.0" layoutX="293.0" layoutY="82.0" onMouseClicked="#onClickBrandArrow" rotate="90.0">
+         <image>
+            <Image url="@assets/outline_arrow_right_alt_black_18dp.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="price_arrow_imageview" fitHeight="32.0" fitWidth="32.0" layoutX="403.0" layoutY="82.0" onMouseClicked="#onClickPriceArrow" rotate="90.0">
+         <image>
+            <Image url="@assets/outline_arrow_right_alt_black_18dp.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

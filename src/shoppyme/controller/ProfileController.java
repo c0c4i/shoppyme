@@ -157,25 +157,26 @@ public class ProfileController implements Initializable {
 
     public void getNewFidelityCardButton() {
         FidelityCard f = new FidelityCard();
-        Stock.addFidelityCard(f);
         currentUser.setCard(f);
         Controller.setCurrentUser(currentUser);
         loadFidelityCardArea();
     }
 
     public void newShoppingButton(ActionEvent event) throws IOException {
+        Controller.getInstance().goToShoppingScene();
         Controller.setSelectedOrder(null);
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/shopping.fxml"));
-        Parent shoppingViewParent = loader.load();
 
-        Scene shoppingViewScene = new Scene(shoppingViewParent);
-
-        //This line gets the Stage information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-        window.setScene(shoppingViewScene);
-        window.show();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("../view/shopping.fxml"));
+//        Parent shoppingViewParent = loader.load();
+//
+//        Scene shoppingViewScene = new Scene(shoppingViewParent);
+//
+//        //This line gets the Stage information
+//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+//
+//        window.setScene(shoppingViewScene);
+//        window.show();
     }
 
     private boolean formValidation(){

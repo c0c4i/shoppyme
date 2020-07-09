@@ -251,6 +251,72 @@ public class Stock {
         return filteredList;
     }
 
+    public static List<Product> getOrderedInventory(OrderType orderType, List<Product> productList){
+        List<Product> orderedList = new ArrayList<>();
+        Comparator<Product> comparator;
+        orderedList.addAll(productList);
+
+        if(orderType == null){
+            return  orderedList;
+        }
+
+        switch(orderType){
+            case AZ_BRAND:
+                comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return (o1.getBrand().compareTo(o2.getBrand()));
+                    }
+                };
+                break;
+
+            case ZA_BRAND:
+                comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        return (o2.getBrand().compareTo(o1.getBrand()));
+                    }
+                };
+                break;
+
+            case LOWER_PRICE:
+                comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        float diff = o1.getPrice() - o2.getPrice();
+                        if(diff > 0)
+                            return 1;
+                        else if(diff < 0)
+                            return -1;
+                        else
+                            return 0;
+                    }
+                };
+                break;
+
+            case HIGHER_PRICE:
+                comparator = new Comparator<Product>() {
+                    @Override
+                    public int compare(Product o1, Product o2) {
+                        float diff = o1.getPrice() - o2.getPrice();
+                        if(diff > 0)
+                            return -1;
+                        else if(diff < 0)
+                            return 1;
+                        else
+                            return 0;
+                    }
+                };
+                break;
+
+            default: return orderedList;
+        }
+
+        orderedList.sort(comparator);
+
+        return orderedList;
+    }
+
     public static List<FidelityCard> getFidelityCards() {
         return fidelity_cards;
     }

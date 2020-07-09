@@ -44,30 +44,35 @@ public class LoginController implements Initializable {
             error_field.setVisible(true);
         } else {
             Controller.setCurrentUser(user);
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/shopping.fxml"));
-            Parent shoppingViewParent = loader.load();
+//
+//            FXMLLoader loader = new FXMLLoader();
+//            loader.setLocation(getClass().getResource("../view/shopping.fxml"));
+//            Parent shoppingViewParent = loader.load();
+//
+//            Scene shoppingViewScene = new Scene(shoppingViewParent);
+//
+//            //This line gets the Stage information
+//            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+//
+//            window.setScene(shoppingViewScene);
+//            window.show();
+            Controller.getInstance().goToShoppingScene();
 
-            Scene shoppingViewScene = new Scene(shoppingViewParent);
-
-            //This line gets the Stage information
-            Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-
-            window.setScene(shoppingViewScene);
-            window.show();
         }
     }
 
     public void signinUserPageButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("../view/signin.fxml"));
-        Parent shoppingViewParent = loader.load();
+        Controller.getInstance().goToSigninScene();
 
-        Scene shoppingViewScene = new Scene(shoppingViewParent);
-        Stage window = (Stage) signin_label.getScene().getWindow();
-
-        window.setScene(shoppingViewScene);
-        window.show();
+//        FXMLLoader loader = new FXMLLoader();
+//        loader.setLocation(getClass().getResource("../view/signin.fxml"));
+//        Parent shoppingViewParent = loader.load();
+//
+//        Scene shoppingViewScene = new Scene(shoppingViewParent);
+//        Stage window = (Stage) signin_label.getScene().getWindow();
+//
+//        window.setScene(shoppingViewScene);
+//        window.show();
     }
 
     public void clearMessageError(){

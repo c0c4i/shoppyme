@@ -10,6 +10,7 @@ import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
 
@@ -17,7 +18,9 @@ import java.io.IOException;
 
 public class OrderListViewCell extends ListCell<Product> {
 
-    @FXML private GridPane order_gridpane;
+    @FXML private Button product_remove_button = new Button();
+    @FXML private Button product_plus_button = new Button();
+    @FXML private Pane order_gridpane;
     @FXML private ImageView item_image_imageview = new ImageView();
     @FXML private Label item_name_label;
     @FXML private Label item_quantity_label;
@@ -53,5 +56,26 @@ public class OrderListViewCell extends ListCell<Product> {
             setGraphic(order_gridpane);
         }
 
+        product_plus_button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Order o = Controller.getCurrentOrder();
+                o.addProduct(product);
+                Controller.setCurrentOrder(o);
+
+                Controller.shoppingController.loadOrderList();
+            }
+        });
+
+        product_remove_button.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Order o = Controller.getCurrentOrder();
+                o.removeProduct(product);
+                Controller.setCurrentOrder(o);
+
+                Controller.shoppingController.loadOrderList();
+            }
+        });
     }
 }
