@@ -46,8 +46,8 @@ public class Order {
         return deliveryDate;
     }
 
-    public int[] getDeliveryInterval() {
-        return deliveryInterval;
+    public String getDeliveryInterval() {
+        return String.format("%d - %d", deliveryInterval[0], deliveryInterval[1]);
     }
 
     public void setDeliveryInterval(int[] delivery_interval) {
@@ -56,32 +56,24 @@ public class Order {
 
     public boolean addProduct(Product p) {
 
-        // TODO
-
-//        Integer i = Stock.getInventory().get(p) - products.get(p);
-//
-//        if(i < 0){
-//            return false;
-//        }
-
-        //Stock.getInventory().put(p, i - 1);
-
-        Integer q = products.get(p);
+        if (products.containsKey(p)) {
+            int q = products.get(p);
+            if(Stock.isAvailable(p, q + 1))
+                products.put(p, q + 1);
+            else return false;
+        } else {
+            if(Stock.isAvailable(p, 1))
+                products.put(p, 1);
+            else return false;
+        }
         totalPrice += p.getPrice();
-
-        if (q == null)
-            products.put(p, 1);
-        else
-            products.put(p, q+1);
-
         return true;
     }
 
     public boolean removeProduct(Product p) {
 
         Integer q = products.get(p);
-
-        //Stock.getInventory().put(p, i + 1);
+        totalPrice -= p.getPrice();
 
         if(q != null){
             if(q == 1){
@@ -127,19 +119,6 @@ public class Order {
     public Map<Product, Float> getOldProductsPrice() {
         return oldProductsPrice;
     }
-
-//    @Override
-//    public String toString() {
-//        return "Order{" +
-//                "id=" + id +
-//                ", deliveryDate=" + deliveryDate +
-//                ", deliveryInterval=" + deliveryInterval +
-//                ", products=" + products +
-//                ", payment_type=" + payment_type +
-//                ", status=" + status +
-//                ", userID=" + userID +
-//                '}';
-//    }
 
     @Override
     public String toString() {

@@ -57,8 +57,8 @@ public class ShoppingController implements Initializable {
         List<Product> lista = new ArrayList<>(Stock.getInventoryBy("",null));
         productObservableList.addAll(Stock.getOrderedInventory(null, lista));
 
-        if(Controller.getCurrentOrder() == null)
-            Controller.setCurrentOrder(new Order(Controller.getCurrentUser()));
+//        if(Controller.getCurrentOrder() == null)
+//            Controller.setCurrentOrder(new Order(Controller.getCurrentUser()));
 
         orderObservableList = FXCollections.observableArrayList();
 
@@ -71,11 +71,13 @@ public class ShoppingController implements Initializable {
 
         productsList.setItems(productObservableList);
         productsList.setCellFactory(productListView -> new ProductListViewCell());
+        productsList.setFocusTraversable(false);
 
         loadOrderList();
 
         orderList.setItems(orderObservableList);
         orderList.setCellFactory(orderListView -> new OrderListViewCell());
+        orderList.setFocusTraversable(false);
 
         type_search_combobox.setItems(typeObservableList);
         type_search_combobox.getSelectionModel().select(SearchType.NAME);
@@ -86,7 +88,7 @@ public class ShoppingController implements Initializable {
         orderObservableList.clear();
         orderObservableList.addAll(Controller.getCurrentOrder().getProducts().keySet());
         float total = Controller.getCurrentOrder().getTotalPrice();
-        total_price_label.setText(total + " $");
+        total_price_label.setText("€ " + total);
     }
 
     public void profileButtonClick(ActionEvent event) throws IOException {

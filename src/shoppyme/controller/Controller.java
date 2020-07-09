@@ -75,8 +75,6 @@ public class Controller {
         }
 
         stage.setScene(shoppingScene);
-//        window.setScene(shoppingViewScene);
-//        window.show();
     }
 
     public void goToProfileScene() throws IOException {
@@ -103,6 +101,17 @@ public class Controller {
         }
 
         stage.setScene(signinScene);
+    }
+
+    public void goToLoginScene() {
+        clearSession();
+        stage.setScene(loginScene);
+    }
+
+    public void clearSession() {
+        currentUser = null;
+        currentOrder = null;
+        selectedOrder = null;
     }
 
     public void setStage(Stage stage){

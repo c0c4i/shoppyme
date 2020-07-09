@@ -54,7 +54,7 @@ public class OldOrderListViewCell extends ListCell<Order> {
             order_date_label.setText(order.getDeliveryDate().toString());
             order_time_label.setText(order.getDeliveryInterval().toString());
             order_payment_label.setText(order.getPaymentType().toString());
-            order_total_price_label.setText(String.valueOf(order.getTotalPrice()));
+            order_total_price_label.setText(String.format("€ %.2f", order.getTotalPrice()));
             order_status_label.setText(order.getStatus().toString());
 
             setText(null);

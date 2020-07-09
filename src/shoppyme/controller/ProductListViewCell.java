@@ -6,16 +6,14 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Control;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
+import shoppyme.model.Stock;
 
 import java.io.IOException;
 
@@ -39,7 +37,6 @@ public class ProductListViewCell extends ListCell<Product> {
         if(empty || product == null) {
             setText(null);
             setGraphic(null);
-
         } else {
 
             mLLoader = new FXMLLoader(getClass().getResource("../view/product.fxml"));
@@ -58,14 +55,19 @@ public class ProductListViewCell extends ListCell<Product> {
             product_price_label.setText(String.valueOf(product.getPrice()));
             product_info_label.setText(product.getProperties().toString());
 
+            disableButton(product);
+
             product_add_button.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
                     Order o = Controller.getCurrentOrder();
-                    o.addProduct(product);
-                    Controller.setCurrentOrder(o);
-
-                    Controller.shoppingController.loadOrderList();
+                    if(o.addProduct(product)) {
+                        Controller.setCurrentOrder(o);
+                        Controller.shoppingController.loadOrderList();
+                    } else {
+                        product_add_button.setDisable(true);
+                        product_add_button.setTooltip(new Tooltip("Non disponibile"));
+                    }
                 }
             });
 
@@ -74,5 +76,17 @@ public class ProductListViewCell extends ListCell<Product> {
         }
     }
 
+    private void disableButton(Product p) {
+        Integer quantity = Controller.getCurrentOrder().getProducts().get(p);
 
+        if(quantity == null && !Stock.isAvailable(p, 1)) {
+            product_add_button.setDisable(true);
+            product_add_button.setTooltip(new Tooltip("Non disponibile"));
+        }
+
+        if(quantity != null && !Stock.isAvailable(p, quantity)) {
+            product_add_button.setDisable(true);
+            product_add_button.setTooltip(new Tooltip("Non disponibile"));
+        }
+    }
 }

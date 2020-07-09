@@ -11,8 +11,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import shoppyme.model.*;
 import shoppyme.model.customenum.PaymentType;
@@ -53,6 +57,7 @@ public class ProfileController implements Initializable {
     @FXML private Label selected_total_price_label;
 
     @FXML private Label form_error_label;
+    @FXML private Rectangle form_error_rectangle;
 
     @FXML private Button fidelity_card_request_button;
     @FXML private Pane fidelity_card_pane;
@@ -72,6 +77,9 @@ public class ProfileController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         oldOrderList.setItems(oldOrderObservableList);
         oldOrderList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());
+
+        selectedOrderList.setMouseTransparent(true);
+        selectedOrderList.setFocusTraversable(false);
 
         oldOrderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -133,8 +141,6 @@ public class ProfileController implements Initializable {
         selectedOrderObservableList.addAll(o.getProducts().keySet());
         selectedOrderList.setItems(selectedOrderObservableList);
         selectedOrderList.setCellFactory(oldOrderListView -> new SelectedOrderListViewCell());
-//        orderObservableList.clear();
-//        orderObservableList.addAll(Controller.getCurrentOrder().getProducts().keySet());
     }
 
     public void saveUserInfoButton() {
@@ -165,18 +171,6 @@ public class ProfileController implements Initializable {
     public void newShoppingButton(ActionEvent event) throws IOException {
         Controller.getInstance().goToShoppingScene();
         Controller.setSelectedOrder(null);
-
-//        FXMLLoader loader = new FXMLLoader();
-//        loader.setLocation(getClass().getResource("../view/shopping.fxml"));
-//        Parent shoppingViewParent = loader.load();
-//
-//        Scene shoppingViewScene = new Scene(shoppingViewParent);
-//
-//        //This line gets the Stage information
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//
-//        window.setScene(shoppingViewScene);
-//        window.show();
     }
 
     private boolean formValidation(){
@@ -243,9 +237,15 @@ public class ProfileController implements Initializable {
     private void showError(String error){
         form_error_label.setText(error);
         form_error_label.setVisible(true);
+        form_error_rectangle.setVisible(true);
     }
 
     public void clearErrorMessage(){
         form_error_label.setVisible(false);
+        form_error_rectangle.setVisible(false);
+    }
+
+    public void Logout() {
+        Controller.getInstance().goToLoginScene();
     }
 }

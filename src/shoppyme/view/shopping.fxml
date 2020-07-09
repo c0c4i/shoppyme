@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXListView?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -13,15 +13,15 @@
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppyme.controller.ShoppingController">
    <children>
-      <AnchorPane layoutX="927.0" layoutY="48.0" prefHeight="612.0" prefWidth="339.0" style="-fx-border-radius: 8px; -fx-border-color: #000000; -fx-border-width: 2px;">
+      <AnchorPane layoutX="927.0" layoutY="77.0" prefHeight="561.0" prefWidth="339.0" style="-fx-border-radius: 8px; -fx-border-color: #000000; -fx-border-width: 2px;">
          <children>
-            <JFXListView fx:id="orderList" layoutX="7.0" layoutY="8.0" prefHeight="566.0" prefWidth="324.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px;" />
-            <Label layoutX="12.0" layoutY="582.0" text="Totale">
+            <ListView fx:id="orderList" layoutX="7.0" layoutY="8.0" prefHeight="535.0" prefWidth="324.0" styleClass="listview" stylesheets="@style.css" />
+            <Label layoutX="14.0" layoutY="557.0" text="Totale">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="total_price_label" layoutX="245.0" layoutY="582.0" text="€ 0000.00">
+            <Label fx:id="total_price_label" layoutX="264.0" layoutY="557.0" text="€ 00.00" textAlignment="RIGHT">
                <font>
                   <Font size="18.0" />
                </font>
@@ -60,17 +60,17 @@
             <Image url="@assets/outline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="search_button" layoutX="811.0" layoutY="37.0" onAction="#searchFilteredProduct" prefHeight="42.0" prefWidth="92.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
+      <Button fx:id="search_button" layoutX="811.0" layoutY="37.0" onAction="#searchFilteredProduct" prefHeight="42.0" prefWidth="92.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
-      </JFXButton>
-      <JFXButton layoutX="927.0" layoutY="669.0" prefHeight="37.0" prefWidth="339.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Checkout" textFill="WHITE">
+      </Button>
+      <Button layoutX="927.0" layoutY="669.0" prefHeight="37.0" prefWidth="339.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Checkout" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
-      </JFXButton>
-      <JFXListView fx:id="productsList" layoutX="15.0" layoutY="112.0" prefHeight="600.0" prefWidth="888.0" style="-fx-border-color: #FFFFFF; -fx-border-width: 0px;" />
+      </Button>
+      <ListView fx:id="productsList" layoutX="15.0" layoutY="112.0" prefHeight="600.0" prefWidth="888.0" styleClass="listview" stylesheets="@style.css" />
       <Label layoutX="116.0" layoutY="93.0" text="Nome">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -96,7 +96,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <JFXButton layoutX="1161.0" layoutY="9.0" onAction="#profileButtonClick" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Profilo" textFill="WHITE">
+      <Button layoutX="1161.0" layoutY="9.0" onAction="#profileButtonClick" prefHeight="30.0" prefWidth="105.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Profilo" textFill="WHITE">
          <font>
             <Font size="14.0" />
          </font>
@@ -107,8 +107,8 @@
                </image>
             </ImageView>
          </graphic>
-      </JFXButton>
-      <ComboBox fx:id="type_search_combobox" layoutX="612.0" layoutY="37.0" prefHeight="42.0" prefWidth="185.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000; -fx-border-width: 2px; -fx-border-radius: 8px;" />
+      </Button>
+      <ComboBox fx:id="type_search_combobox" layoutX="612.0" layoutY="37.0" prefHeight="42.0" prefWidth="185.0" styleClass="combobox" stylesheets="@style.css" />
       <Line endX="261.0" layoutX="1002.0" layoutY="626.0" startX="-73.0" strokeWidth="2.0" />
       <ImageView fx:id="brand_arrow_imageview" fitHeight="32.0" fitWidth="32.0" layoutX="293.0" layoutY="82.0" onMouseClicked="#onClickBrandArrow" rotate="90.0">
          <image>
@@ -120,5 +120,20 @@
             <Image url="@assets/outline_arrow_right_alt_black_18dp.png" />
          </image>
       </ImageView>
+      <Label layoutX="1006.0" layoutY="58.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="1116.0" layoutY="58.0" text="Quantità">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="1206.0" layoutY="58.0" text="Prezzo">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

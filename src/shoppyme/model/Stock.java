@@ -226,9 +226,6 @@ public class Stock {
         }
 
         switch(type){
-//            default   : filteredList.addAll(inventory.keySet());
-//                        break;
-
             case NAME : for(Product p : inventory.keySet()){
                             if(p.getName().matches("(?i:.*"+ name + ".*)"))
                                 filteredList.add(p);
@@ -366,6 +363,11 @@ public class Stock {
     public static void updateFidelityCard(FidelityCard f) {
         fidelity_cards.remove(f);
         fidelity_cards.add(f);
+    }
+
+    public static boolean isAvailable(Product p, int q) {
+        int i = inventory.get(p) - q;
+        return (i >= 0);
     }
 
     public static void onClose() {
