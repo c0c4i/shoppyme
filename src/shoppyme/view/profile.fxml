@@ -71,43 +71,43 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="name_field" layoutX="19.0" layoutY="82.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="name_field" layoutX="19.0" layoutY="82.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
       <Label layoutX="153.0" layoutY="64.0" text="Cognome">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="surname_field" layoutX="153.0" layoutY="82.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="surname_field" layoutX="153.0" layoutY="82.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
       <Label layoutX="19.0" layoutY="119.0" text="Telefono">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="phone_field" layoutX="19.0" layoutY="136.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="phone_field" layoutX="19.0" layoutY="136.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
       <Label layoutX="153.0" layoutY="119.0" text="Email">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="email_field" layoutX="153.0" layoutY="136.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="email_field" layoutX="153.0" layoutY="136.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
       <Label layoutX="21.0" layoutY="171.0" text="Indirizzo">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="address_field" layoutX="21.0" layoutY="191.0" prefHeight="29.0" prefWidth="262.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="address_field" layoutX="21.0" layoutY="191.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="262.0" style="-fx-border-width: 2px;" />
       <Label layoutX="18.0" layoutY="229.0" text="CAP">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="cap_field" layoutX="20.0" layoutY="248.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="cap_field" layoutX="20.0" layoutY="248.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
       <Label layoutX="156.0" layoutY="229.0" text="Città">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextField fx:id="city_field" layoutX="153.0" layoutY="248.0" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
+      <TextField fx:id="city_field" layoutX="153.0" layoutY="248.0" onMouseClicked="#clearErrorMessage" prefHeight="29.0" prefWidth="126.0" style="-fx-border-width: 2px;" />
       <JFXButton layoutX="21.0" layoutY="360.0" onAction="#saveUserInfoButton" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #2196F3; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
          <font>
             <Font size="15.0" />
@@ -240,5 +240,6 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <Label fx:id="form_error_label" layoutX="21.0" layoutY="402.0" text="I dati inseriti non sono corretti" visible="false" />
    </children>
 </AnchorPane>

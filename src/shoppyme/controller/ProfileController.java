@@ -20,6 +20,8 @@ import shoppyme.model.customenum.PaymentType;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ProfileController implements Initializable {
 
@@ -49,6 +51,8 @@ public class ProfileController implements Initializable {
     @FXML private Label selected_delivery_time_label;
     @FXML private Label selected_payment_label;
     @FXML private Label selected_total_price_label;
+
+    @FXML private Label form_error_label;
 
     @FXML private Button fidelity_card_request_button;
     @FXML private Pane fidelity_card_pane;
@@ -134,6 +138,12 @@ public class ProfileController implements Initializable {
     }
 
     public void saveUserInfoButton() {
+        if(!formValidation()){
+            return;
+        }
+
+        clearErrorMessage();
+
         currentUser.setName(name_field.getText());
         currentUser.setSurname(surname_field.getText());
         currentUser.setPhone(phone_field.getText());
@@ -168,4 +178,73 @@ public class ProfileController implements Initializable {
         window.show();
     }
 
+    private boolean formValidation(){
+        if( name_field.getText().length() == 0 ){
+            showError("Nome obbligatorio");
+            return false;
+        }
+        if( name_field.getText().matches(".*\\d.*") ){
+            showError("Nome non valido");
+            return false;
+        }
+        if( surname_field.getText().length() == 0 ){
+            showError("Cognome obbligatorio");
+            return false;
+        }
+        if( surname_field.getText().matches(".*\\d.*") ){
+            showError("Cognome non valido");
+            return false;
+        }
+        if( phone_field.getText().length() == 0 ){
+            showError("Telefono obbligatorio");
+            return false;
+        }
+        if( !phone_field.getText().matches("[0-9]+")){
+            showError("Numero di telefono non valido");
+            return false;
+        }
+        if( email_field.getText().length() == 0 ){
+            showError("Email obbligatoria");
+            return false;
+        }
+
+        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+        Matcher mat = pattern.matcher(email_field.getText());
+
+        if( !mat.matches() ){
+            showError("Email non valida");
+            return false;
+        }
+        if( address_field.getText().length() == 0 ){
+            showError("Indirizzo obbligatorio");
+            return false;
+        }
+        if( cap_field.getText().length() == 0 ){
+            showError("CAP obbligatorio");
+            return false;
+        }
+        if( !cap_field.getText().matches("[0-9]+")){
+            showError("CAP non valido");
+            return false;
+        }
+        if( city_field.getText().length() == 0 ){
+            showError("Città obbligatoria");
+            return false;
+        }
+        if( city_field.getText().matches(".*\\d.*") ){
+            showError("Città non valida");
+            return false;
+        }
+
+        return true;
+    }
+
+    private void showError(String error){
+        form_error_label.setText(error);
+        form_error_label.setVisible(true);
+    }
+
+    public void clearErrorMessage(){
+        form_error_label.setVisible(false);
+    }
 }

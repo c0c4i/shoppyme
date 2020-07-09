@@ -74,7 +74,6 @@ public class ShoppingController implements Initializable {
         orderObservableList.addAll(Controller.getCurrentOrder().getProducts().keySet());
     }
 
-
     public void profileButtonClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/profile.fxml"));

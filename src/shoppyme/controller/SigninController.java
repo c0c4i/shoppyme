@@ -19,6 +19,8 @@ import shoppyme.model.customenum.PaymentType;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SigninController implements Initializable {
 
@@ -38,6 +40,8 @@ public class SigninController implements Initializable {
     @FXML private TextField cap_field;
     @FXML private TextField city_field;
 
+    private final ToggleGroup group = new ToggleGroup();
+
     public SigninController(){
         paymentTypeObservableList = FXCollections.observableArrayList();
         paymentTypeObservableList.addAll(PaymentType.values());
@@ -45,7 +49,6 @@ public class SigninController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        final ToggleGroup group = new ToggleGroup();
 
         payment_type_combobox.setItems(paymentTypeObservableList);
 
@@ -55,9 +58,9 @@ public class SigninController implements Initializable {
     }
 
     public void signinUserButton(ActionEvent event) throws IOException{
-//        if(!formValidation()){
-//            //I dati non sono formattati correttamente
-//        }
+        if(!formValidation()){
+            return;
+        }
 
         if(Stock.userAlreadyExists(email_field.getText())){
             showError("Email già in uso");
@@ -75,7 +78,9 @@ public class SigninController implements Initializable {
             PaymentType paymentType = (PaymentType) payment_type_combobox.getValue();
             FidelityCard fidelityCard;
 
-            if(card_true_radiobutton.isArmed()) {
+            RadioButton selectedCardOption = (RadioButton) group.getSelectedToggle();
+
+            if(selectedCardOption.equals(card_true_radiobutton)){
                 fidelityCard = new FidelityCard();
             }
             else{
@@ -102,6 +107,67 @@ public class SigninController implements Initializable {
     }
 
     private boolean formValidation(){
+        if( name_field.getText().length() == 0 ){
+            showError("Nome obbligatorio");
+            return false;
+        }
+        if( name_field.getText().matches(".*\\d.*") ){
+            showError("Nome non valido");
+            return false;
+        }
+        if( surname_field.getText().length() == 0 ){
+            showError("Cognome obbligatorio");
+            return false;
+        }
+        if( surname_field.getText().matches(".*\\d.*") ){
+            showError("Cognome non valido");
+            return false;
+        }
+        if( phone_field.getText().length() == 0 ){
+            showError("Telefono obbligatorio");
+            return false;
+        }
+        if( !phone_field.getText().matches("[0-9]+")){
+            showError("Numero di telefono non valido");
+            return false;
+        }
+        if( email_field.getText().length() == 0 ){
+            showError("Email obbligatoria");
+            return false;
+        }
+
+        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
+        Matcher mat = pattern.matcher(email_field.getText());
+
+        if( !mat.matches() ){
+            showError("Email non valida");
+            return false;
+        }
+        if( address_field.getText().length() == 0 ){
+            showError("Indirizzo obbligatorio");
+            return false;
+        }
+        if( cap_field.getText().length() == 0 ){
+            showError("CAP obbligatorio");
+            return false;
+        }
+        if( !cap_field.getText().matches("[0-9]+")){
+            showError("CAP non valido");
+            return false;
+        }
+        if( city_field.getText().length() == 0 ){
+            showError("Città obbligatoria");
+            return false;
+        }
+        if( city_field.getText().matches(".*\\d.*") ){
+            showError("Città non valida");
+            return false;
+        }
+        if( password_field.getText().length() == 0 ){
+            showError("Password obbligatoria");
+            return false;
+        }
+
         return true;
     }
 

@@ -18,6 +18,7 @@ public class FidelityCard {
         this.id = s.getNewFidelityID();
         this.emission_date = LocalDate.now();
         this.points = 0;
+        s.addFidelityCard(this);
     }
 
     public int getPoints() {

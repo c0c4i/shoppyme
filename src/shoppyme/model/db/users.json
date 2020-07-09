@@ -17,38 +17,12 @@
 		"name": "Samuele", 
 		"surname": "Besoli", 
 		"address": "Via Mascagni 96", 
-		"cap": "36040", 
+		"cap": "123", 
 		"phone": "045542269", 
 		"email": "asd", 
 		"city": "Brendola", 
 		"password": "asd", 
 		"payment_type": "CREDIT_CARD", 
 		"card_id": 2
-	},
-	{
-		"id": 3, 
-		"name": "qwe", 
-		"surname": "qwe", 
-		"address": "qwe", 
-		"cap": "123", 
-		"phone": "123", 
-		"email": "qqq", 
-		"city": "qqq", 
-		"password": "qqq", 
-		"payment_type": "CASH", 
-		"card_id": -1
-	},
-	{
-		"id": 4, 
-		"name": "Ste", 
-		"surname": "Ca", 
-		"address": "ez", 
-		"cap": "123", 
-		"phone": "123", 
-		"email": "ez", 
-		"city": "Ver", 
-		"password": "ez", 
-		"payment_type": "CASH", 
-		"card_id": -1
 	}
 ]
