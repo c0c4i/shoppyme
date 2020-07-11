@@ -15,7 +15,7 @@
    <children>
       <AnchorPane layoutX="927.0" layoutY="77.0" prefHeight="561.0" prefWidth="339.0" style="-fx-border-radius: 8px; -fx-border-color: #000000; -fx-border-width: 2px;">
          <children>
-            <ListView fx:id="orderList" layoutX="7.0" layoutY="8.0" prefHeight="535.0" prefWidth="324.0" styleClass="listview" stylesheets="@style.css" />
+            <ListView fx:id="orderList" layoutX="7.0" layoutY="8.0" prefHeight="535.0" prefWidth="324.0" styleClass="listview" stylesheets="@../style.css" />
             <Label layoutX="14.0" layoutY="557.0" text="Totale">
                <font>
                   <Font size="18.0" />
@@ -31,7 +31,7 @@
          <children>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="6.0" layoutY="6.0">
                <image>
-                  <Image url="@assets/outline_search_black_48dp.png" />
+                  <Image url="@../assets/outline_search_black_48dp.png" />
                </image>
             </ImageView>
             <TextField fx:id="search_bar_textfield" layoutX="38.0" layoutY="3.0" prefHeight="32.0" prefWidth="538.0" style="-fx-background-color: #FFFFFF;">
@@ -42,7 +42,7 @@
       </AnchorPane>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="3.0">
          <image>
-            <Image url="@assets/outline_list_black_48dp.png" />
+            <Image url="@../assets/outline_list_black_48dp.png" />
          </image>
       </ImageView>
       <Label layoutX="53.0" layoutY="5.0" text="Prodotti">
@@ -57,7 +57,7 @@
       </Label>
       <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="933.0" layoutY="9.0">
          <image>
-            <Image url="@assets/outline_shopping_cart_black_48dp.png" />
+            <Image url="@../assets/outline_shopping_cart_black_48dp.png" />
          </image>
       </ImageView>
       <Button fx:id="search_button" layoutX="811.0" layoutY="37.0" onAction="#searchFilteredProduct" prefHeight="42.0" prefWidth="92.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
@@ -65,12 +65,12 @@
             <Font size="18.0" />
          </font>
       </Button>
-      <Button layoutX="927.0" layoutY="669.0" prefHeight="37.0" prefWidth="339.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Checkout" textFill="WHITE">
+      <Button fx:id="checkout_button" layoutX="927.0" layoutY="669.0" onAction="#checkoutButton" prefHeight="37.0" prefWidth="339.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Checkout" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <ListView fx:id="productsList" layoutX="15.0" layoutY="112.0" prefHeight="600.0" prefWidth="888.0" styleClass="listview" stylesheets="@style.css" />
+      <ListView fx:id="productsList" layoutX="15.0" layoutY="112.0" prefHeight="600.0" prefWidth="888.0" styleClass="listview" stylesheets="@../style.css" />
       <Label layoutX="116.0" layoutY="93.0" text="Nome">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -103,21 +103,21 @@
          <graphic>
             <ImageView fitHeight="22.0" fitWidth="22.0">
                <image>
-                  <Image url="@assets/outline_account_circle_white_48dp.png" />
+                  <Image url="@../assets/outline_account_circle_white_48dp.png" />
                </image>
             </ImageView>
          </graphic>
       </Button>
-      <ComboBox fx:id="type_search_combobox" layoutX="612.0" layoutY="37.0" prefHeight="42.0" prefWidth="185.0" styleClass="combobox" stylesheets="@style.css" />
+      <ComboBox fx:id="type_search_combobox" layoutX="612.0" layoutY="37.0" prefHeight="42.0" prefWidth="185.0" styleClass="combobox" stylesheets="@../style.css" />
       <Line endX="261.0" layoutX="1002.0" layoutY="626.0" startX="-73.0" strokeWidth="2.0" />
       <ImageView fx:id="brand_arrow_imageview" fitHeight="32.0" fitWidth="32.0" layoutX="293.0" layoutY="82.0" onMouseClicked="#onClickBrandArrow" rotate="90.0">
          <image>
-            <Image url="@assets/outline_arrow_right_alt_black_18dp.png" />
+            <Image url="@../assets/outline_arrow_right_alt_black_18dp.png" />
          </image>
       </ImageView>
       <ImageView fx:id="price_arrow_imageview" fitHeight="32.0" fitWidth="32.0" layoutX="403.0" layoutY="82.0" onMouseClicked="#onClickPriceArrow" rotate="90.0">
          <image>
-            <Image url="@assets/outline_arrow_right_alt_black_18dp.png" />
+            <Image url="@../assets/outline_arrow_right_alt_black_18dp.png" />
          </image>
       </ImageView>
       <Label layoutX="1006.0" layoutY="58.0" text="Nome">

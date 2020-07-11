@@ -18,17 +18,17 @@
          </font></TextField>
       <ImageView fitHeight="158.0" fitWidth="280.0" layoutX="501.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/shoppyme_logo.png" />
+            <Image url="@../assets/shoppyme_logo.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="506.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/outline_account_circle_black_18dp.png" />
+            <Image url="@../assets/outline_account_circle_black_18dp.png" />
          </image>
       </ImageView>
       <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="507.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@assets/outline_vpn_key_black_18dp.png" />
+            <Image url="@../assets/outline_vpn_key_black_18dp.png" />
          </image>
       </ImageView>
       <Label fx:id="error_field" alignment="CENTER" layoutX="528.0" layoutY="493.0" prefHeight="18.0" prefWidth="225.0" text="Username / Password errati" textFill="#d9534f" visible="false" />
@@ -48,5 +48,10 @@
             <Font size="16.0" />
          </font>
       </PasswordField>
+      <Button layoutX="1127.0" layoutY="14.0" onAction="#reservedAreaButtonClick" prefHeight="20.0" prefWidth="139.0" style="-fx-background-color: #d9534f; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Area Riservata" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
    </children>
 </Pane>

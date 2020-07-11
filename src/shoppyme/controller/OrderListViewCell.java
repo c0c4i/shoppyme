@@ -9,7 +9,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
@@ -36,7 +35,7 @@ public class OrderListViewCell extends ListCell<Product> {
             setText(null);
             setGraphic(null);
         } else {
-            mLLoader = new FXMLLoader(getClass().getResource("../view/order_cell.fxml"));
+            mLLoader = new FXMLLoader(getClass().getResource("../view/public/order_cell.fxml"));
             mLLoader.setController(this);
 
             try {

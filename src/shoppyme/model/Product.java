@@ -56,7 +56,6 @@ public class Product {
     public boolean equals(Object obj) {
         if(obj instanceof Product)
             if(this.id == ((Product) obj).id) {
-//                System.out.println(String.format("Sono oggetto %s con id=%d e lo confronto con l'oggetto %s con id=%d", name, id, ((Product) obj).name, ((Product) obj).id));
                 return true;
             }
             else
@@ -96,4 +95,27 @@ public class Product {
         return properties;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public void setType(ProductType type) {
+        this.type = type;
+    }
+
+    public void setProperties(List<ProductProperty> properties) {
+        this.properties = properties;
+    }
+
+    public void setPackageQuantity(int package_quantity) {
+        this.package_quantity = package_quantity;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
 }

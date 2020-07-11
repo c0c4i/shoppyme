@@ -73,6 +73,10 @@ public class Supervisor {
         this.password = password;
     }
 
+    public boolean passwordMatch(String password) {
+        return password.equals(this.password);
+    }
+
     public void setRole(Role role) {
         this.role = role;
     }

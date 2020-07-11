@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane fx:id="old_order_gridpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="496.0" style="-fx-background-radius: 3px; -fx-border-radius: 3px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <columnConstraints>
+      <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="30.0" minWidth="30.0" prefWidth="30.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="70.0" minWidth="70.0" prefWidth="70.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="103.0" minWidth="103.0" prefWidth="103.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="85.0" minWidth="85.0" prefWidth="85.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="110.0" minWidth="110.0" prefWidth="110.0" />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints fillHeight="false" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+   <children>
+      <Label fx:id="order_id_label" text="1" textAlignment="CENTER" />
+      <Label fx:id="order_time_label" text="09 - 18" textAlignment="CENTER" GridPane.columnIndex="2" />
+      <Label fx:id="order_payment_label" text="PAYPAL" textAlignment="CENTER" GridPane.columnIndex="3" />
+      <Label fx:id="order_total_price_label" text="€ 15.00" textAlignment="CENTER" GridPane.columnIndex="4" />
+      <Label fx:id="order_status_label" text="PROCESSING" textAlignment="CENTER" GridPane.columnIndex="5" />
+      <Label fx:id="order_date_label" text="2020-12-10" textAlignment="CENTER" GridPane.columnIndex="1" />
+   </children>
+</GridPane>

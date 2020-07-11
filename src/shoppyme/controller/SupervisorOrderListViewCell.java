@@ -11,7 +11,7 @@ import shoppyme.model.Order;
 
 import java.io.IOException;
 
-public class OldOrderListViewCell extends ListCell<Order> {
+public class SupervisorOrderListViewCell extends ListCell<Order> {
 
     @FXML private GridPane old_order_gridpane;
     @FXML private Label order_id_label;

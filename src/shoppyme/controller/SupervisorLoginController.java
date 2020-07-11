@@ -2,28 +2,22 @@ package shoppyme.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import shoppyme.model.Order;
-import shoppyme.model.Product;
 import shoppyme.model.Stock;
+import shoppyme.model.Supervisor;
 import shoppyme.model.User;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController implements Initializable {
+public class SupervisorLoginController implements Initializable {
 
-    @FXML private Label signin_label;
     @FXML private TextField username_field;
     @FXML private PasswordField password_field;
     @FXML private Label error_field;
@@ -33,26 +27,21 @@ public class LoginController implements Initializable {
         String usr = username_field.getText();
         String psw = password_field.getText();
 
-        User user = Stock.userAuthentication(usr, psw);
+        Supervisor supervisor = Stock.supervisorAuth(usr, psw);
 
-        if(user == null){
+        if(supervisor == null){
             error_field.setVisible(true);
             error_rectangle.setVisible(true);
         } else {
-            Controller.setCurrentUser(user);
-            Controller.setCurrentOrder(new Order(user));
+            Controller.setCurrentSupervisor(supervisor);
             username_field.clear();
             password_field.clear();
             Controller.getInstance().goToShoppingScene();
         }
     }
 
-    public void signinUserPageButton() throws IOException {
-        Controller.getInstance().goToSigninScene();
-    }
-
-    public void reservedAreaButtonClick() throws IOException {
-        Controller.getInstance().goToReservedAreaScene();
+    public void publicAreaButtonClick() throws IOException {
+        Controller.getInstance().goToLoginScene();
     }
 
     public void clearMessageError(){

@@ -8,6 +8,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 import shoppyme.model.Order;
 import shoppyme.model.Stock;
+import shoppyme.model.Supervisor;
 import shoppyme.model.User;
 
 import java.io.IOException;
@@ -28,16 +29,21 @@ public class Controller {
     public static ProfileController profileController;
     public static ShoppingController shoppingController;
     public static SigninController signinController;
+    public static CheckoutController checkoutController;
+    public static SupervisorLoginController supervisorLoginController;
 
     public static Stage stage;
     public static Scene loginScene;
     public static Scene shoppingScene;
     public static Scene profileScene;
     public static Scene signinScene;
+    public static Scene checkoutScene;
+    public static Scene supervisorLoginScene;
 
     private static User currentUser;
     private static Order currentOrder;
     private static Order selectedOrder;
+    private static Supervisor currentSupervisor;
 
     public static User getCurrentUser() {
         return currentUser;
@@ -51,9 +57,17 @@ public class Controller {
         return selectedOrder;
     }
 
+    public static Supervisor getCurrentSupervisor() {
+        return currentSupervisor;
+    }
+
     public static void setCurrentUser(User currentUser) {
         Controller.currentUser = currentUser;
         Stock.updateUser(currentUser);
+    }
+
+    public static void setCurrentSupervisor(Supervisor supervisor) {
+        Controller.currentSupervisor = supervisor;
     }
 
     public static void setCurrentOrder(Order currentOrder) {
@@ -65,42 +79,53 @@ public class Controller {
     }
 
     public void goToShoppingScene() throws IOException {
-
-        if(shoppingScene == null){
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/shopping.fxml"));
-            Parent shoppingViewParent = loader.load();
-            shoppingController = loader.getController();
-            shoppingScene = new Scene(shoppingViewParent);
-        }
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/public/shopping.fxml"));
+        Parent shoppingViewParent = loader.load();
+        shoppingController = loader.getController();
+        shoppingScene = new Scene(shoppingViewParent);
 
         stage.setScene(shoppingScene);
     }
 
     public void goToProfileScene() throws IOException {
-
-        if(profileScene == null){
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/profile.fxml"));
-            Parent profileViewParent = loader.load();
-            profileController = loader.getController();
-            profileScene = new Scene(profileViewParent);
-        }
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/public/profile.fxml"));
+        Parent profileViewParent = loader.load();
+        profileController = loader.getController();
+        profileScene = new Scene(profileViewParent);
 
         stage.setScene(profileScene);
     }
 
-    public void goToSigninScene() throws IOException {
+    public void goToCheckoutScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/public/checkout.fxml"));
+        Parent checkoutViewParent = loader.load();
+        checkoutController = loader.getController();
+        checkoutScene = new Scene(checkoutViewParent);
 
-        if(signinScene == null){
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("../view/signin.fxml"));
-            Parent signinViewParent = loader.load();
-            signinController = loader.getController();
-            signinScene = new Scene(signinViewParent);
-        }
+        stage.setScene(checkoutScene);
+    }
+
+    public void goToSigninScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/public/signin.fxml"));
+        Parent signinViewParent = loader.load();
+        signinController = loader.getController();
+        signinScene = new Scene(signinViewParent);
 
         stage.setScene(signinScene);
+    }
+
+    public void goToReservedAreaScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/private/supervisor_login.fxml"));
+        Parent supervisorLoginView = loader.load();
+        supervisorLoginController = loader.getController();
+        supervisorLoginScene = new Scene(supervisorLoginView);
+
+        stage.setScene(supervisorLoginScene);
     }
 
     public void goToLoginScene() {

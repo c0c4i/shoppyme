@@ -78,7 +78,7 @@ public class ProfileController implements Initializable {
         oldOrderList.setItems(oldOrderObservableList);
         oldOrderList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());
 
-        selectedOrderList.setMouseTransparent(true);
+//        selectedOrderList.setMouseTransparent(true);
         selectedOrderList.setFocusTraversable(false);
 
         oldOrderList.setOnMouseClicked(new EventHandler<MouseEvent>() {

@@ -4,5 +4,6 @@ public enum ProductProperty {
     INTEGRALE,
     SENZA_GLUTINE,
     BIO,
-    SENZA_LATTOSIO
+    SENZA_LATTOSIO,
+    VEGAN
 }

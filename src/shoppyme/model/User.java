@@ -45,8 +45,8 @@ public class User {
         return city;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean passwordMatch(String password) {
+        return password.equals(this.password);
     }
 
     public PaymentType getPayment_type() {

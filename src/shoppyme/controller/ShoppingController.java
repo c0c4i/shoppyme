@@ -48,6 +48,8 @@ public class ShoppingController implements Initializable {
     @FXML private Button search_button;
     @FXML private Label total_price_label;
 
+    @FXML private Button checkout_button;
+
     @FXML private ListView<Product> productsList = new ListView<>();
     @FXML private ListView<Product> orderList = new ListView<>();
 
@@ -57,8 +59,8 @@ public class ShoppingController implements Initializable {
         List<Product> lista = new ArrayList<>(Stock.getInventoryBy("",null));
         productObservableList.addAll(Stock.getOrderedInventory(null, lista));
 
-//        if(Controller.getCurrentOrder() == null)
-//            Controller.setCurrentOrder(new Order(Controller.getCurrentUser()));
+        if(Controller.getCurrentOrder() == null)
+            Controller.setCurrentOrder(new Order(Controller.getCurrentUser()));
 
         orderObservableList = FXCollections.observableArrayList();
 
@@ -88,6 +90,10 @@ public class ShoppingController implements Initializable {
         orderObservableList.clear();
         orderObservableList.addAll(Controller.getCurrentOrder().getProducts().keySet());
         float total = Controller.getCurrentOrder().getTotalPrice();
+        if(total == 0)
+            checkout_button.setDisable(true);
+        else
+            checkout_button.setDisable(false);
         total_price_label.setText("€ " + total);
     }
 
@@ -165,5 +171,9 @@ public class ShoppingController implements Initializable {
         price_label.setUnderline(true);
 
         sortBy();
+    }
+
+    public void checkoutButton() throws IOException {
+        Controller.getInstance().goToCheckoutScene();
     }
 }

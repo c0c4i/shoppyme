@@ -11,7 +11,7 @@ import shoppyme.model.Product;
 
 import java.io.IOException;
 
-public class SelectedOrderListViewCell extends ListCell<Product> {
+public class SupervisorSelectedOrderListViewCell extends ListCell<Product> {
 
     @FXML private GridPane product_gridpane;
     @FXML private ImageView product_image_imageview = new ImageView();

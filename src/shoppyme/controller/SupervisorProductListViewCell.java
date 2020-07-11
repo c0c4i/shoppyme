@@ -4,7 +4,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -14,7 +17,7 @@ import shoppyme.model.Stock;
 
 import java.io.IOException;
 
-public class ProductListViewCell extends ListCell<Product> {
+public class SupervisorProductListViewCell extends ListCell<Product> {
 
     @FXML private GridPane product_gridpane;
     @FXML private ImageView product_image_imageview = new ImageView();

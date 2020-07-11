@@ -326,13 +326,17 @@ public class Stock {
         return orders;
     }
 
+    public static void addOrder(Order o) {
+        orders.add(o);
+    }
+
     public static List<Supervisor> getSupervisors() {
         return supervisors;
     }
 
     public static User userAuthentication (String email, String password) {
         for (User u : users) {
-            if(u.getEmail().equals(email) && u.getPassword().equals(password))
+            if(u.getEmail().equals(email) && u.passwordMatch(password))
                 return u;
         }
         return null;
@@ -465,5 +469,20 @@ public class Stock {
             }
         }
         return false;
+    }
+
+//    ################# SUPERVISOR METHOD ####################
+
+    public static Supervisor supervisorAuth(String username, String password) {
+        for (Supervisor s : supervisors) {
+            if(s.getUsername().equals(username) && s.passwordMatch(password))
+                return s;
+        }
+        return null;
+    }
+
+    public static void updateProduct(Product p, int q) {
+        inventory.remove(p);
+        inventory.put(p, q);
     }
 }

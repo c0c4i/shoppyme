@@ -11,7 +11,7 @@ import shoppyme.model.Product;
 
 import java.io.IOException;
 
-public class SelectedOrderListViewCell extends ListCell<Product> {
+public class CheckoutListViewCell extends ListCell<Product> {
 
     @FXML private GridPane product_gridpane;
     @FXML private ImageView product_image_imageview = new ImageView();
@@ -42,9 +42,9 @@ public class SelectedOrderListViewCell extends ListCell<Product> {
 
             product_image_imageview.setImage(new Image(getClass().getResourceAsStream(product.getImage())));
             product_name_label.setText(product.getName());
-            int quantity = Controller.getSelectedOrder().getProducts().get(product);
+            int quantity = Controller.getCurrentOrder().getProducts().get(product);
             product_quantity_label.setText(String.valueOf(quantity));
-            float item_price = Controller.getSelectedOrder().getOldProductsPrice().get(product);
+            float item_price = Controller.getCurrentOrder().getOldProductsPrice().get(product);
             product_price_label.setText(String.valueOf(item_price));
 
             setText(null);

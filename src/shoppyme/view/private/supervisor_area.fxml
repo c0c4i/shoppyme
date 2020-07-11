@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppyme.controller.ProfileController">
+   <children>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/outline_account_circle_black_18dp.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="56.0" layoutY="15.0" text="Prodotti">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="1072.0" layoutY="13.0" text="Dettagli">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="620.0" layoutY="13.0">
+         <image>
+            <Image url="@../assets/outline_shopping_cart_black_48dp.png" />
+         </image>
+      </ImageView>
+      <ListView fx:id="orderList" layoutX="613.0" layoutY="126.0" prefHeight="575.0" prefWidth="374.0" styleClass="listview" stylesheets="@../style.css" />
+      <Label layoutX="1036.0" layoutY="69.0" text="Data Consegna">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="1184.0" layoutY="69.0" text="Ora">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="657.0" layoutY="15.0" text="Storico spese">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="887.0" layoutY="101.0" text="Stato">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Line endX="192.0" endY="-246.0" layoutX="405.0" layoutY="260.0" startX="192.0" startY="439.0" stroke="#b9b9b9" />
+      <Label layoutX="19.0" layoutY="534.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="product_name_textield" layoutX="18.0" layoutY="552.0" onMouseClicked="#clearErrorMessage" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
+      <Button layoutX="223.0" layoutY="489.0" onAction="#saveProduct" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="710.0" layoutY="101.0" text="Data">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="797.0" layoutY="101.0" text="Ora">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ListView fx:id="selectedOrderList" layoutX="1020.0" layoutY="161.0" prefHeight="471.0" prefWidth="243.0" styleClass="listview" stylesheets="@../style.css" />
+      <Label layoutX="1124.0" layoutY="137.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="1201.0" layoutY="137.0" text="Quantità">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Line endX="192.0" endY="-246.0" layoutX="809.0" layoutY="260.0" startX="192.0" startY="439.0" stroke="#b9b9b9" />
+      <Label layoutX="636.0" layoutY="101.0" text="ID">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="selected_delivery_date_label" layoutX="1036.0" layoutY="90.0" text="14/06/2020">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <Label fx:id="selected_delivery_time_label" layoutX="1184.0" layoutY="90.0" text="9 - 18">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <Button fx:id="fidelity_card_request_button" layoutX="15.0" layoutY="484.0" onAction="#getNewFidelityCardButton" prefHeight="32.0" prefWidth="234.0" style="-fx-background-color: #5cb85c; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Richiedi Carta Fedeltà" textFill="WHITE" visible="false">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Label layoutX="54.0" layoutY="490.0" text="Modifica Prodotto">
+         <font>
+            <Font name="Roboto Medium" size="20.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="15.0" layoutY="488.0" preserveRatio="true">
+         <image>
+            <Image url="@../assets/outline_credit_card_black_48dp.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="1034.0" layoutY="12.0">
+         <image>
+            <Image url="@../assets/outline_article_black_48dp.png" />
+         </image>
+      </ImageView>
+      <Pane fx:id="fidelity_card_pane" layoutX="17.0" layoutY="468.0" prefHeight="131.0" prefWidth="309.0" visible="false">
+         <children>
+            <Label layoutX="4.0" layoutY="72.0" text="Data Rilascio">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="164.0" layoutY="14.0" text="Punti">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="fidelity_card_release_date" layoutX="5.0" layoutY="90.0" text="14/06/2020">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="fidelity_card_points" layoutX="166.0" layoutY="30.0" text="25">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="5.0" layoutY="13.0" text="ID">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label fx:id="fidelity_card_id" layoutX="4.0" layoutY="29.0" text="5834754">
+               <font>
+                  <Font name="Roboto Medium" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label fx:id="error_label" alignment="CENTER" layoutX="312.0" layoutY="494.0" prefHeight="18.0" prefWidth="225.0" text="Username / Password errati" textAlignment="CENTER" textFill="#d9534f" />
+      <Rectangle fx:id="error_rectangle" arcHeight="8.0" arcWidth="8.0" fill="#f2443830" height="36.0" layoutX="325.0" layoutY="486.0" stroke="#d9534f" strokeType="INSIDE" strokeWidth="2.0" style="-fx-arc-height: 10px; -fx-arc-width: 10px;" width="199.0" />
+      <Label layoutX="187.0" layoutY="534.0" text="Tipo">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="358.0" layoutY="534.0" text="Marca">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="product_brand_textield" layoutX="357.0" layoutY="552.0" onMouseClicked="#clearErrorMessage" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
+      <Label layoutX="19.0" layoutY="590.0" text="Prezzo">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="product_price_textield" layoutX="18.0" layoutY="608.0" onMouseClicked="#clearErrorMessage" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
+      <Label layoutX="187.0" layoutY="590.0" text="Quantità confezione">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="product_package_quantity_textield" layoutX="186.0" layoutY="608.0" onMouseClicked="#clearErrorMessage" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
+      <Label layoutX="358.0" layoutY="590.0" text="Quantità magazzino">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <TextField fx:id="product_available_textield" layoutX="357.0" layoutY="608.0" onMouseClicked="#clearErrorMessage" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
+      <CheckBox fx:id="integral_checkbox" layoutX="20.0" layoutY="683.0" mnemonicParsing="false" text="Integrale" />
+      <CheckBox fx:id="vegan_checkbox" layoutX="144.0" layoutY="683.0" mnemonicParsing="false" text="Vegano" />
+      <CheckBox fx:id="gluten_free_checkbox" layoutX="249.0" layoutY="683.0" mnemonicParsing="false" text="Senza glutine" />
+      <CheckBox fx:id="bio_checkbox" layoutX="387.0" layoutY="683.0" mnemonicParsing="false" text="Bio" />
+      <Label layoutX="19.0" layoutY="655.0" text="Proprietà">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="product_type_combobox" layoutX="186.0" layoutY="552.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
+      <AnchorPane layoutX="25.0" layoutY="47.0" prefHeight="42.0" prefWidth="464.0" style="-fx-border-radius: 8px; -fx-border-color: #000000; -fx-border-width: 2px;">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="6.0" layoutY="6.0">
+               <image>
+                  <Image url="@../assets/outline_search_black_48dp.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="search_bar_product_textfield" layoutX="38.0" layoutY="3.0" prefHeight="34.0" prefWidth="430.0" style="-fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <ListView fx:id="productsList" layoutX="23.0" layoutY="121.0" prefHeight="345.0" prefWidth="558.0" styleClass="listview" stylesheets="@../style.css" />
+      <Label layoutX="155.0" layoutY="103.0" text="Nome">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="106.0" layoutY="103.0" text="ID">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="brand_label" layoutX="254.0" layoutY="103.0" onMouseClicked="#onClickBrandArrow" text="Marca">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="price_label" layoutX="487.0" layoutY="103.0" onMouseClicked="#onClickPriceArrow" text="Prezzo">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="price_label1" layoutX="357.0" layoutY="103.0" onMouseClicked="#onClickPriceArrow" text="Disponibile">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <AnchorPane layoutX="613.0" layoutY="47.0" prefHeight="42.0" prefWidth="290.0" style="-fx-border-radius: 8px; -fx-border-color: #000000; -fx-border-width: 2px;">
+         <children>
+            <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="6.0" layoutY="6.0">
+               <image>
+                  <Image url="@../assets/outline_search_black_48dp.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="search_bar_order_textfield" layoutX="38.0" layoutY="3.0" prefHeight="34.0" prefWidth="255.0" style="-fx-background-color: #FFFFFF;">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+         </children>
+      </AnchorPane>
+      <Button layoutX="508.0" layoutY="47.0" onAction="#searchProduct" prefHeight="42.0" prefWidth="71.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Button layoutX="915.0" layoutY="47.0" onAction="#searchOrder" prefHeight="42.0" prefWidth="71.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Cerca" textFill="WHITE">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <CheckBox fx:id="lactose_free_checkbox" layoutX="463.0" layoutY="683.0" mnemonicParsing="false" text="Senza lattosio" />
+   </children>
+</AnchorPane>

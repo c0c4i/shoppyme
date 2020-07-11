@@ -1,5 +1,6 @@
 package shoppyme.model;
 
+import shoppyme.controller.Controller;
 import shoppyme.model.customenum.PaymentType;
 import shoppyme.model.customenum.Status;
 
@@ -50,6 +51,10 @@ public class Order {
         return String.format("%d - %d", deliveryInterval[0], deliveryInterval[1]);
     }
 
+    public boolean isEmpty() {
+        return products.isEmpty();
+    }
+
     public void setDeliveryInterval(int[] delivery_interval) {
         this.deliveryInterval = delivery_interval;
     }
@@ -66,6 +71,7 @@ public class Order {
                 products.put(p, 1);
             else return false;
         }
+        oldProductsPrice.put(p, p.getPrice());
         totalPrice += p.getPrice();
         return true;
     }
@@ -78,12 +84,12 @@ public class Order {
         if(q != null){
             if(q == 1){
                 products.remove(p);
-                return true;
+                oldProductsPrice.remove(p);
             }
             else{
                 products.put(p, q - 1);
-                return true;
             }
+            return true;
         }
         return false;
     }
@@ -151,6 +157,19 @@ public class Order {
                 String.valueOf(totalPrice).replace(",","."),payment_type.toString(), status, userID);
 
         return tmp;
+    }
+
+    public void completeOrder() {
+        this.status = Status.PROCESSING;
+        User u = Controller.getCurrentUser();
+        FidelityCard f = u.getCard();
+        if(f != null) {
+            f.addPoints(Math.round(totalPrice));
+            u.setCard(f);
+            Controller.setCurrentUser(u);
+        }
+        Stock.addOrder(this);
+        Controller.setCurrentOrder(null);
     }
 
     @Override
