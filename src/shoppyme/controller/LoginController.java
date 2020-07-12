@@ -2,18 +2,10 @@ package shoppyme.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import shoppyme.model.Order;
-import shoppyme.model.Product;
 import shoppyme.model.Stock;
 import shoppyme.model.User;
 
@@ -52,7 +44,7 @@ public class LoginController implements Initializable {
     }
 
     public void reservedAreaButtonClick() throws IOException {
-        Controller.getInstance().goToReservedAreaScene();
+        Controller.getInstance().goToReservedLoginAreaScene();
     }
 
     public void clearMessageError(){

@@ -23,6 +23,6 @@
 		"city": "Verona", 
 		"password": "123", 
 		"payment_type": "CASH", 
-		"card_id": -1
+		"card_id": 2
 	}
 ]

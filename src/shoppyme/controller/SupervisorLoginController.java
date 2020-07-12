@@ -7,10 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.shape.Rectangle;
-import shoppyme.model.Order;
 import shoppyme.model.Stock;
 import shoppyme.model.Supervisor;
-import shoppyme.model.User;
 
 import java.io.IOException;
 import java.net.URL;
@@ -36,7 +34,7 @@ public class SupervisorLoginController implements Initializable {
             Controller.setCurrentSupervisor(supervisor);
             username_field.clear();
             password_field.clear();
-            Controller.getInstance().goToShoppingScene();
+            Controller.getInstance().goToReservedAreaScene();
         }
     }
 

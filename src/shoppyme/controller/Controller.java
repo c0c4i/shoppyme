@@ -31,6 +31,7 @@ public class Controller {
     public static SigninController signinController;
     public static CheckoutController checkoutController;
     public static SupervisorLoginController supervisorLoginController;
+    public static SupervisorAreaController supervisorAreaController;
 
     public static Stage stage;
     public static Scene loginScene;
@@ -39,6 +40,7 @@ public class Controller {
     public static Scene signinScene;
     public static Scene checkoutScene;
     public static Scene supervisorLoginScene;
+    public static Scene supervisorAreaScene;
 
     private static User currentUser;
     private static Order currentOrder;
@@ -118,7 +120,7 @@ public class Controller {
         stage.setScene(signinScene);
     }
 
-    public void goToReservedAreaScene() throws IOException {
+    public void goToReservedLoginAreaScene() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("../view/private/supervisor_login.fxml"));
         Parent supervisorLoginView = loader.load();
@@ -126,6 +128,16 @@ public class Controller {
         supervisorLoginScene = new Scene(supervisorLoginView);
 
         stage.setScene(supervisorLoginScene);
+    }
+
+    public void goToReservedAreaScene() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/private/supervisor_area.fxml"));
+        Parent supervisorAreaView = loader.load();
+        supervisorAreaController = loader.getController();
+        supervisorAreaScene = new Scene(supervisorAreaView);
+
+        stage.setScene(supervisorAreaScene);
     }
 
     public void goToLoginScene() {
@@ -137,6 +149,7 @@ public class Controller {
         currentUser = null;
         currentOrder = null;
         selectedOrder = null;
+        currentSupervisor = null;
     }
 
     public void setStage(Stage stage){

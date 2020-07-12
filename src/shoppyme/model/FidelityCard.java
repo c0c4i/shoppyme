@@ -31,6 +31,7 @@ public class FidelityCard {
 
     public void addPoints(int points) {
         this.points = this.points + points;
+        Stock.updateFidelityCard(this);
     }
 
     @Override

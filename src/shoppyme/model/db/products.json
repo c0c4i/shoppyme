@@ -19,22 +19,22 @@
 			"name": "Arrosto",
 			"brand": "Aia",
 			"type": "CARNE",
-			"properties": [],
+			"properties": ["INTEGRALE","SENZA_GLUTINE"],
 			"package_quantity": 10,
 			"price": 7.0,
 			"image": "../view/assets/productimages/arrosto.jpg"
 		}
 	},
 	{
-		"quantity": 3,
+		"quantity": 100,
 		"product": {
 			"id": 3,
-			"name": "Pasta",
-			"brand": "Barilla",
+			"name": "Pasta 60g",
+			"brand": "De Cecco",
 			"type": "PASTA",
 			"properties": ["INTEGRALE"],
-			"package_quantity": 1,
-			"price": 4.0,
+			"package_quantity": 2,
+			"price": 4.5,
 			"image": "../view/assets/productimages/barilla.jpg"
 		}
 	},
@@ -45,7 +45,7 @@
 			"name": "Cordon Bleu",
 			"brand": "Aia",
 			"type": "CARNE",
-			"properties": ["SENZA_GLUTINE"],
+			"properties": ["INTEGRALE","SENZA_GLUTINE"],
 			"package_quantity": 1,
 			"price": 6.0,
 			"image": "../view/assets/productimages/cordon_bleu.jpg"

@@ -2,26 +2,23 @@ package shoppyme.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import shoppyme.model.*;
-import shoppyme.model.customenum.PaymentType;
 import shoppyme.model.customenum.ProductProperty;
 import shoppyme.model.customenum.ProductType;
+import shoppyme.model.customenum.Status;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class SupervisorAreaController implements Initializable {
 
@@ -33,6 +30,7 @@ public class SupervisorAreaController implements Initializable {
     private static Product selectedProduct;
     private static Order selectedOrder;
     private static ObservableList<ProductType> productTypeObservableList;
+    private static ObservableList<Status> orderStatusObservableList;
 
     @FXML private ListView<Product> productsList = new ListView<>();
     @FXML private ListView<Order> orderList = new ListView<>();
@@ -53,37 +51,43 @@ public class SupervisorAreaController implements Initializable {
     @FXML private Label selected_delivery_date_label;
     @FXML private Label selected_delivery_time_label;
 
+    @FXML private ComboBox selected_order_status_combobox;
+
     @FXML private Label error_label;
     @FXML private Rectangle error_rectangle;
+    @FXML private Label order_saved_label;
 
+    @FXML private TextField search_bar_product_textfield;
+    @FXML private TextField search_bar_order_textfield;
 
     public SupervisorAreaController(){
         productsObservableList = FXCollections.observableArrayList();
-        loadProductList();
-
         selectedOrderObservableList = FXCollections.observableArrayList();
-
         orderObservableList = FXCollections.observableArrayList();
-        orderObservableList.addAll(Stock.getOrders());
 
         productTypeObservableList = FXCollections.observableArrayList();
         productTypeObservableList.addAll(ProductType.values());
+
+        orderStatusObservableList = FXCollections.observableArrayList();
+        orderStatusObservableList.addAll(Status.values());
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        loadProductList();
+        loadOrderList();
+
         productsList.setItems(productsObservableList);
-        productsList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());    // to do
+        productsList.setCellFactory(oldOrderListView -> new SupervisorProductListViewCell());
 
         orderList.setItems(orderObservableList);
-        orderList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());    // to do
-
-//        selectedOrderList.setMouseTransparent(true);
-//        selectedOrderList.setFocusTraversable(false);
+        orderList.setCellFactory(oldOrderListView -> new SupervisorOrderListViewCell());
 
         productsList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                clearErrorMessage();
                 selectedProduct = productsList.getSelectionModel().getSelectedItem();
                 if(selectedProduct != null) {
                     product_name_textield.setText(selectedProduct.getName());
@@ -92,6 +96,7 @@ public class SupervisorAreaController implements Initializable {
                     product_price_textield.setText(String.format("%.2f", selectedProduct.getPrice()));
                     product_package_quantity_textield.setText(String.valueOf(selectedProduct.getPackage_quantity()));
                     product_available_textield.setText(String.valueOf(Stock.getInventory().get(selectedProduct)));
+                    setProperties();
                 }
             }
         });
@@ -99,30 +104,57 @@ public class SupervisorAreaController implements Initializable {
         orderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                clearErrorMessage();
                 selectedOrder = orderList.getSelectionModel().getSelectedItem();
                 if(selectedOrder != null) {
+                    Controller.setSelectedOrder(selectedOrder);
                     loadSelectedOrderList();
                 }
             }
         });
 
         product_type_combobox.setItems(productTypeObservableList);
-        product_type_combobox.getSelectionModel().select(selectedProduct.getType());
+//        product_type_combobox.getSelectionModel().select(selectedProduct.getType());
+
+        selected_order_status_combobox.setItems(orderStatusObservableList);
     }
 
     public void loadProductList() {
         productsObservableList.clear();
-        productsObservableList.addAll(Stock.getInventory().keySet());
+        String id = search_bar_product_textfield.getText();
+        if(id.length() == 0)
+            productsObservableList.addAll(Stock.getInventory().keySet());
+        else
+            productsObservableList.addAll(Stock.getSearchedProductBy(Integer.parseInt(id)));
+    }
+
+    public void loadOrderList() {
+        orderObservableList.clear();
+        String id = search_bar_order_textfield.getText();
+        if(id.length() == 0)
+            orderObservableList.addAll(Stock.getOrders());
+        else
+            orderObservableList.addAll(Stock.getSearchedOrderBy(Integer.parseInt(id)));
+
     }
 
     public void loadSelectedOrderList() {
         selected_delivery_date_label.setText(selectedOrder.getDeliveryDate().toString());
         selected_delivery_time_label.setText(selectedOrder.getDeliveryInterval());
+        selected_order_status_combobox.setValue(selectedOrder.getStatus());
 
         selectedOrderObservableList.clear();
         selectedOrderObservableList.addAll(selectedOrder.getProducts().keySet());
         selectedOrderList.setItems(selectedOrderObservableList);
-        selectedOrderList.setCellFactory(oldOrderListView -> new SelectedOrderListViewCell());
+        selectedOrderList.setCellFactory(oldOrderListView -> new SupervisorSelectedOrderListViewCell());
+    }
+
+    public void searchProduct() {
+        loadProductList();
+    }
+
+    public void searchOrder() {
+        loadOrderList();
     }
 
     public void saveProduct() {
@@ -130,17 +162,24 @@ public class SupervisorAreaController implements Initializable {
             return;
         }
 
-        clearErrorMessage();
+        showSuccess();
 
         selectedProduct.setName(product_name_textield.getText());
         selectedProduct.setType((ProductType) product_type_combobox.getValue());
         selectedProduct.setBrand(product_brand_textield.getText());
         selectedProduct.setPrice(Float.parseFloat(product_price_textield.getText()));
         selectedProduct.setPackageQuantity(Integer.parseInt(product_package_quantity_textield.getText()));
-        int q = Integer.parseInt(product_package_quantity_textield.getText());
+        int q = Integer.parseInt(product_available_textield.getText());
         selectedProduct.setProperties(getProperties());
         Stock.updateProduct(selectedProduct, q);
         loadProductList();
+    }
+
+    public void saveOrder() {
+        selectedOrder.setStatus((Status) selected_order_status_combobox.getValue());
+        Stock.updateOrder(selectedOrder);
+        order_saved_label.setVisible(true);
+        loadOrderList();
     }
 
     public List<ProductProperty> getProperties() {
@@ -153,69 +192,72 @@ public class SupervisorAreaController implements Initializable {
         return prop;
     }
 
+    public void setProperties() {
+        for(ProductProperty prop : selectedProduct.getProperties()) {
+            switch(prop) {
+                case INTEGRALE:
+                    integral_checkbox.setSelected(true);
+                    break;
+                case VEGAN:
+                    vegan_checkbox.setSelected(true);
+                    break;
+                case SENZA_GLUTINE:
+                    gluten_free_checkbox.setSelected(true);
+                    break;
+                case BIO:
+                    bio_checkbox.setSelected(true);
+                    break;
+                case SENZA_LATTOSIO:
+                    lactose_free_checkbox.setSelected(true);
+                    break;
+            }
+        }
+    }
+
     private boolean formValidation(){
-//        if( name_field.getText().length() == 0 ){
-//            showError("Nome obbligatorio");
-//            return false;
-//        }
-//        if( name_field.getText().matches(".*\\d.*") ){
-//            showError("Nome non valido");
-//            return false;
-//        }
-//        if( surname_field.getText().length() == 0 ){
-//            showError("Cognome obbligatorio");
-//            return false;
-//        }
-//        if( surname_field.getText().matches(".*\\d.*") ){
-//            showError("Cognome non valido");
-//            return false;
-//        }
-//        if( phone_field.getText().length() == 0 ){
-//            showError("Telefono obbligatorio");
-//            return false;
-//        }
-//        if( !phone_field.getText().matches("[0-9]+")){
-//            showError("Numero di telefono non valido");
-//            return false;
-//        }
-//        if( email_field.getText().length() == 0 ){
-//            showError("Email obbligatoria");
-//            return false;
-//        }
-//
-//        Pattern pattern = Pattern.compile("[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}");
-//        Matcher mat = pattern.matcher(email_field.getText());
-//
-//        if( !mat.matches() ){
-//            showError("Email non valida");
-//            return false;
-//        }
-//        if( address_field.getText().length() == 0 ){
-//            showError("Indirizzo obbligatorio");
-//            return false;
-//        }
-//        if( cap_field.getText().length() == 0 ){
-//            showError("CAP obbligatorio");
-//            return false;
-//        }
-//        if( !cap_field.getText().matches("[0-9]+")){
-//            showError("CAP non valido");
-//            return false;
-//        }
-//        if( city_field.getText().length() == 0 ){
-//            showError("Città obbligatoria");
-//            return false;
-//        }
-//        if( city_field.getText().matches(".*\\d.*") ){
-//            showError("Città non valida");
-//            return false;
-//        }
+        if( product_name_textield.getText().length() == 0 ){
+            showError("Nome obbligatorio");
+            return false;
+        }
+
+        if( product_brand_textield.getText().length() == 0 ){
+            showError("Marca obbligatoria");
+            return false;
+        }
+
+        if( product_price_textield.getText().matches(".*\\f.*") ){
+            showError("Prezzo non valido");
+            return false;
+        }
+
+        if( !product_package_quantity_textield.getText().matches(".*\\d.*") ){
+            showError("Quantit� per confezione non valida");
+            return false;
+        }
+
+        if( !product_available_textield.getText().matches(".*\\d.*") ){
+            showError("Quantit� magazzino non valida");
+            return false;
+        }
 
         return true;
     }
 
+    private void showSuccess() {
+        error_label.setText("Prodotto Salvato");
+        error_label.setTextFill(Color.web("#5cb85c"));
+        error_rectangle.setFill(Color.web("#5cb85c", 0.2));
+        error_rectangle.setStroke(Color.web("#5cb85c"));
+        error_label.setVisible(true);
+        error_rectangle.setVisible(true);
+//        Thread.sleep(3000);
+    }
+
     private void showError(String error){
         error_label.setText(error);
+        error_label.setTextFill(Color.web("#d9534f"));
+        error_rectangle.setFill(Color.web("#d9534f", 0.2));
+        error_rectangle.setStroke(Color.web("#d9534f"));
         error_label.setVisible(true);
         error_rectangle.setVisible(true);
     }
@@ -223,6 +265,7 @@ public class SupervisorAreaController implements Initializable {
     public void clearErrorMessage(){
         error_label.setVisible(false);
         error_rectangle.setVisible(false);
+        order_saved_label.setVisible(false);
     }
 
     public void Logout() {

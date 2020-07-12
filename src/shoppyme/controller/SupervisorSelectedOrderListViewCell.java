@@ -17,7 +17,6 @@ public class SupervisorSelectedOrderListViewCell extends ListCell<Product> {
     @FXML private ImageView product_image_imageview = new ImageView();
     @FXML private Label product_name_label;
     @FXML private Label product_quantity_label;
-    @FXML private Label product_price_label;
 
     private FXMLLoader mLLoader;
 
@@ -31,7 +30,7 @@ public class SupervisorSelectedOrderListViewCell extends ListCell<Product> {
 
         } else {
 
-            mLLoader = new FXMLLoader(getClass().getResource("../view/public/selected_order_cell.fxml"));
+            mLLoader = new FXMLLoader(getClass().getResource("../view/private/supervisor_selected_order_cell.fxml"));
             mLLoader.setController(this);
 
             try {
@@ -44,8 +43,6 @@ public class SupervisorSelectedOrderListViewCell extends ListCell<Product> {
             product_name_label.setText(product.getName());
             int quantity = Controller.getSelectedOrder().getProducts().get(product);
             product_quantity_label.setText(String.valueOf(quantity));
-            float item_price = Controller.getSelectedOrder().getOldProductsPrice().get(product);
-            product_price_label.setText(String.valueOf(item_price));
 
             setText(null);
             setGraphic(product_gridpane);

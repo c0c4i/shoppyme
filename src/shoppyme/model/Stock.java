@@ -330,6 +330,11 @@ public class Stock {
         orders.add(o);
     }
 
+    public static void updateOrder(Order o) {
+        orders.remove(o);
+        orders.add(o);
+    }
+
     public static List<Supervisor> getSupervisors() {
         return supervisors;
     }
@@ -484,5 +489,31 @@ public class Stock {
     public static void updateProduct(Product p, int q) {
         inventory.remove(p);
         inventory.put(p, q);
+    }
+
+    public static int getQuantityOf(Product p) {
+        return inventory.get(p);
+    }
+
+    public static List<Product> getSearchedProductBy(int id) {
+        List<Product> searched = new ArrayList<>();
+        for(Product p : inventory.keySet()) {
+            if(p.id == id) {
+                searched.add(p);
+                return searched;
+            }
+        }
+        return searched;
+    }
+
+    public static List<Order> getSearchedOrderBy(int id) {
+        List<Order> searched = new ArrayList<>();
+        for(Order p : orders) {
+            if(p.id == id) {
+                searched.add(p);
+                return searched;
+            }
+        }
+        return searched;
     }
 }

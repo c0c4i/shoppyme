@@ -1,47 +1,5 @@
 [
 	{
-		"id": 1,
-		"deliveryDate": 18250,
-		"deliveryInterval": [9, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 2,
-				"oldPrice": 7.5
-			},
-			{
-				"id_product": 2,
-				"quantity": 4,
-				"oldPrice": 7.5
-			}
-		],
-		"total_price": 15.0,
-		"payment_type": "PAYPAL",
-		"status": "PROCESSING",
-		"user_id": 1
-	},
-	{
-		"id": 2,
-		"deliveryDate": 18250,
-		"deliveryInterval": [9, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 2,
-				"oldPrice": 7.5
-			},
-			{
-				"id_product": 2,
-				"quantity": 4,
-				"oldPrice": 7.5
-			}
-		],
-		"total_price": 15.0,
-		"payment_type": "PAYPAL",
-		"status": "PROCESSING",
-		"user_id": 1
-	},
-	{
 		"id": 3,
 		"deliveryDate": 18466,
 		"deliveryInterval": [14, 16],
@@ -69,13 +27,13 @@
 		],
 		"total_price": 31.0,
 		"payment_type": "CASH",
-		"status": "PROCESSING",
+		"status": "SHIPPED",
 		"user_id": 1
 	},
 	{
-		"id": 4,
-		"deliveryDate": 18473,
-		"deliveryInterval": [11, 13],
+		"id": 2,
+		"deliveryDate": 18457,
+		"deliveryInterval": [14, 16],
 		"products": [
 			{
 				"id_product": 1,
@@ -84,70 +42,12 @@
 			},
 			{
 				"id_product": 3,
-				"quantity": 3,
-				"oldPrice": 4.0
-			},
-			{
-				"id_product": 5,
-				"quantity": 1,
-				"oldPrice": 10.0
-			}
-		],
-		"total_price": 27.0,
-		"payment_type": "PAYPAL",
-		"status": "PROCESSING",
-		"user_id": 2
-	},
-	{
-		"id": 5,
-		"deliveryDate": 18453,
-		"deliveryInterval": [14, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 1,
-				"oldPrice": 5.0
-			}
-		],
-		"total_price": 5.0,
-		"payment_type": "CASH",
-		"status": "PROCESSING",
-		"user_id": 1
-	},
-	{
-		"id": 5,
-		"deliveryDate": 18453,
-		"deliveryInterval": [14, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 1,
-				"oldPrice": 5.0
-			}
-		],
-		"total_price": 5.0,
-		"payment_type": "CASH",
-		"status": "PROCESSING",
-		"user_id": 1
-	},
-	{
-		"id": 7,
-		"deliveryDate": 18453,
-		"deliveryInterval": [9, 11],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 1,
-				"oldPrice": 5.0
-			},
-			{
-				"id_product": 3,
-				"quantity": 1,
-				"oldPrice": 4.0
+				"quantity": 2,
+				"oldPrice": 4.5
 			},
 			{
 				"id_product": 4,
-				"quantity": 3,
+				"quantity": 1,
 				"oldPrice": 6.0
 			},
 			{
@@ -164,14 +64,9 @@
 				"id_product": 7,
 				"quantity": 1,
 				"oldPrice": 3.0
-			},
-			{
-				"id_product": 8,
-				"quantity": 1,
-				"oldPrice": 6.0
 			}
 		],
-		"total_price": 50.0,
+		"total_price": 37.0,
 		"payment_type": "CASH",
 		"status": "PROCESSING",
 		"user_id": 1
