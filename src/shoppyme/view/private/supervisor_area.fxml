@@ -64,7 +64,7 @@
          </font>
       </Label>
       <TextField fx:id="product_name_textield" layoutX="18.0" layoutY="552.0" onMouseClicked="#clearErrorMessage" prefHeight="30.0" prefWidth="150.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
-      <Button layoutX="223.0" layoutY="489.0" onAction="#saveProduct" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
+      <Button fx:id="save_product_button" layoutX="223.0" layoutY="489.0" onAction="#saveProduct" prefHeight="31.0" prefWidth="84.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
@@ -267,7 +267,7 @@
          </font>
       </Label>
       <ComboBox fx:id="selected_order_status_combobox" layoutX="1032.0" layoutY="150.0" prefHeight="30.0" prefWidth="150.0" style="-fx-background-color: #ffffff; -fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
-      <Button layoutX="1197.0" layoutY="150.0" onAction="#saveOrder" prefHeight="31.0" prefWidth="62.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
+      <Button fx:id="save_order_button" layoutX="1197.0" layoutY="150.0" onAction="#saveOrder" prefHeight="31.0" prefWidth="62.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Salva" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>

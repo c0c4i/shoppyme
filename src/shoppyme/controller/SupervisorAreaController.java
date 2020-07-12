@@ -60,6 +60,9 @@ public class SupervisorAreaController implements Initializable {
     @FXML private TextField search_bar_product_textfield;
     @FXML private TextField search_bar_order_textfield;
 
+    @FXML private Button save_product_button;
+    @FXML private Button save_order_button;
+
     public SupervisorAreaController(){
         productsObservableList = FXCollections.observableArrayList();
         selectedOrderObservableList = FXCollections.observableArrayList();
@@ -75,6 +78,9 @@ public class SupervisorAreaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+        save_product_button.setDisable(true);
+        save_order_button.setDisable(true);
+
         loadProductList();
         loadOrderList();
 
@@ -87,6 +93,7 @@ public class SupervisorAreaController implements Initializable {
         productsList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                save_product_button.setDisable(false);
                 clearErrorMessage();
                 selectedProduct = productsList.getSelectionModel().getSelectedItem();
                 if(selectedProduct != null) {
@@ -104,6 +111,7 @@ public class SupervisorAreaController implements Initializable {
         orderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+                save_order_button.setDisable(false);
                 clearErrorMessage();
                 selectedOrder = orderList.getSelectionModel().getSelectedItem();
                 if(selectedOrder != null) {
@@ -135,7 +143,6 @@ public class SupervisorAreaController implements Initializable {
             orderObservableList.addAll(Stock.getOrders());
         else
             orderObservableList.addAll(Stock.getSearchedOrderBy(Integer.parseInt(id)));
-
     }
 
     public void loadSelectedOrderList() {

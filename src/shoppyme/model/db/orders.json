@@ -1,36 +1,5 @@
 [
 	{
-		"id": 3,
-		"deliveryDate": 18466,
-		"deliveryInterval": [14, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 1,
-				"oldPrice": 5.0
-			},
-			{
-				"id_product": 3,
-				"quantity": 1,
-				"oldPrice": 4.0
-			},
-			{
-				"id_product": 4,
-				"quantity": 2,
-				"oldPrice": 6.0
-			},
-			{
-				"id_product": 5,
-				"quantity": 1,
-				"oldPrice": 10.0
-			}
-		],
-		"total_price": 31.0,
-		"payment_type": "CASH",
-		"status": "SHIPPED",
-		"user_id": 1
-	},
-	{
 		"id": 2,
 		"deliveryDate": 18457,
 		"deliveryInterval": [14, 16],
@@ -69,6 +38,37 @@
 		"total_price": 37.0,
 		"payment_type": "CASH",
 		"status": "PROCESSING",
+		"user_id": 1
+	},
+	{
+		"id": 3,
+		"deliveryDate": 18466,
+		"deliveryInterval": [14, 16],
+		"products": [
+			{
+				"id_product": 1,
+				"quantity": 1,
+				"oldPrice": 5.0
+			},
+			{
+				"id_product": 3,
+				"quantity": 1,
+				"oldPrice": 4.0
+			},
+			{
+				"id_product": 4,
+				"quantity": 2,
+				"oldPrice": 6.0
+			},
+			{
+				"id_product": 5,
+				"quantity": 1,
+				"oldPrice": 10.0
+			}
+		],
+		"total_price": 31.0,
+		"payment_type": "CASH",
+		"status": "SHIPPED",
 		"user_id": 1
 	}
 ]

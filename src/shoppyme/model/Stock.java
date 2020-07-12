@@ -410,6 +410,15 @@ public class Stock {
     }
 
     private static void onCloseFidelityUpdate() {
+        Comparator<FidelityCard> comparator = new Comparator<FidelityCard>() {
+            @Override
+            public int compare(FidelityCard f1, FidelityCard f2) {
+                return (f1.id - f2.id);
+            }
+        };
+
+        fidelity_cards.sort(comparator);
+
         File file = new File("src/shoppyme/model/db/fidelitycard.json");
         String json = "[\n";
         for(FidelityCard f: fidelity_cards) {
@@ -429,6 +438,15 @@ public class Stock {
     }
 
     private static void onCloseUsersUpdate() {
+        Comparator<User> comparator = new Comparator<User>() {
+            @Override
+            public int compare(User u1, User u2) {
+                return (u1.id - u2.id);
+            }
+        };
+
+        users.sort(comparator);
+
         File file = new File("src/shoppyme/model/db/users.json");
         String json = "[\n";
         for(User user: users) {
@@ -448,6 +466,15 @@ public class Stock {
     }
 
     private static void onCloseOrderUpdate() {
+        Comparator<Order> comparator = new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return (o1.id - o2.id);
+            }
+        };
+
+        orders.sort(comparator);
+
         File file = new File("src/shoppyme/model/db/orders.json");
         String json = "[\n";
         for(Order o: orders) {

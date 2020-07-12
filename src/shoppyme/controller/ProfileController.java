@@ -23,6 +23,7 @@ import shoppyme.model.customenum.PaymentType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -68,6 +69,16 @@ public class ProfileController implements Initializable {
     public ProfileController(){
         oldOrderObservableList = FXCollections.observableArrayList();
         oldOrderObservableList.addAll(Stock.getUserOrder(Controller.getCurrentUser()));
+
+        Comparator<Order> comparator = new Comparator<Order>() {
+            @Override
+            public int compare(Order o1, Order o2) {
+                return (o2.getDeliveryDate().compareTo(o1.getDeliveryDate()));
+            }
+        };
+
+        oldOrderObservableList.sort(comparator);
+
         selectedOrderObservableList = FXCollections.observableArrayList();
         paymentTypeObservableList = FXCollections.observableArrayList();
         paymentTypeObservableList.addAll(PaymentType.values());
@@ -78,7 +89,12 @@ public class ProfileController implements Initializable {
         oldOrderList.setItems(oldOrderObservableList);
         oldOrderList.setCellFactory(oldOrderListView -> new OldOrderListViewCell());
 
-//        selectedOrderList.setMouseTransparent(true);
+        if(oldOrderObservableList.size() > 0) {
+            oldOrderList.getSelectionModel().select(0);
+            Controller.setSelectedOrder(oldOrderList.getSelectionModel().getSelectedItem());
+            loadSelectedOrderList();
+        }
+
         selectedOrderList.setFocusTraversable(false);
 
         oldOrderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -135,7 +151,7 @@ public class ProfileController implements Initializable {
         selected_delivery_date_label.setText(o.getDeliveryDate().toString());
         selected_delivery_time_label.setText(o.getDeliveryInterval().toString());
         selected_payment_label.setText(o.getPaymentType().toString());
-        selected_total_price_label.setText(String.valueOf(o.getTotalPrice()));
+        selected_total_price_label.setText(String.format("€ %.2f", o.getTotalPrice()));
 
         selectedOrderObservableList.clear();        // rivedere come ho fatto nella spesa, per ora funziona
         selectedOrderObservableList.addAll(o.getProducts().keySet());

@@ -1,18 +1,5 @@
 [
 	{
-		"id": 2, 
-		"name": "Luca", 
-		"surname": "La Bizza", 
-		"address": "via brescia ", 
-		"cap": "112431", 
-		"phone": "3432423", 
-		"email": "luca@labizza.it", 
-		"city": "Brescia", 
-		"password": "123", 
-		"payment_type": "CASH", 
-		"card_id": 1
-	},
-	{
 		"id": 1, 
 		"name": "Stefano", 
 		"surname": "Caldana", 
@@ -24,5 +11,18 @@
 		"password": "123", 
 		"payment_type": "CASH", 
 		"card_id": 2
+	},
+	{
+		"id": 2, 
+		"name": "Luca", 
+		"surname": "La Bizza", 
+		"address": "via brescia ", 
+		"cap": "112431", 
+		"phone": "3432423", 
+		"email": "luca@labizza.it", 
+		"city": "Brescia", 
+		"password": "123", 
+		"payment_type": "CASH", 
+		"card_id": 1
 	}
 ]
