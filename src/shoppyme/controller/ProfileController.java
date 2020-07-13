@@ -5,11 +5,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,7 +13,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import shoppyme.model.*;
 import shoppyme.model.customenum.PaymentType;
 
@@ -129,7 +124,7 @@ public class ProfileController implements Initializable {
         loadFidelityCardArea();
 
         payment_type_combobox.setItems(paymentTypeObservableList);
-        payment_type_combobox.getSelectionModel().select(currentUser.getPayment_type());
+        payment_type_combobox.getSelectionModel().select(currentUser.getPaymentType());
 
     }
 
@@ -261,7 +256,7 @@ public class ProfileController implements Initializable {
         form_error_rectangle.setVisible(false);
     }
 
-    public void Logout() {
+    public void Logout() throws IOException {
         Controller.getInstance().goToLoginScene();
     }
 }

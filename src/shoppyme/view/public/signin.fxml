@@ -9,6 +9,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppyme.controller.SigninController">
@@ -78,17 +79,19 @@
       </Label>
       <RadioButton fx:id="card_true_radiobutton" layoutX="506.0" layoutY="492.0" mnemonicParsing="false" text="Si" />
       <RadioButton fx:id="card_false_radiobutton" layoutX="576.0" layoutY="492.0" mnemonicParsing="false" text="No" />
-      <Label fx:id="form_error_label" layoutX="623.0" layoutY="537.0" text="Errore" textAlignment="CENTER" visible="false">
-         <font>
-            <Font name="System Bold" size="12.0" />
-         </font>
-      </Label>
       <Label fx:id="password_field_text" layoutX="510.0" layoutY="346.0" text="Password*">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
       <PasswordField fx:id="password_field" layoutX="512.0" layoutY="365.0" prefHeight="26.0" prefWidth="126.0" style="-fx-border-color: grey; -fx-background-radius: 3px; -fx-border-radius: 3px;" />
-      <Button layoutX="508.0" layoutY="532.0" mnemonicParsing="false" onAction="#signinUserButton" prefHeight="28.0" prefWidth="262.0" style="-fx-background-color: #0275d8;" text="Registra" textFill="WHITE" />
+      <Button layoutX="509.0" layoutY="528.0" mnemonicParsing="false" onAction="#signinUserButton" prefHeight="28.0" prefWidth="262.0" style="-fx-background-color: #0275d8;" text="Registra" textFill="WHITE" />
+      <Label fx:id="error_label" alignment="CENTER" layoutX="532.0" layoutY="574.0" prefHeight="18.0" prefWidth="225.0" text="Username / Password errati" textFill="#d9534f" visible="false" />
+      <Rectangle fx:id="error_rectangle" arcHeight="8.0" arcWidth="8.0" fill="#f2443830" height="36.0" layoutX="545.0" layoutY="566.0" stroke="#d9534f" strokeType="INSIDE" strokeWidth="2.0" style="-fx-arc-height: 10px; -fx-arc-width: 10px;" visible="false" width="199.0" />
+      <Button layoutX="1160.0" layoutY="14.0" onAction="#backToLogin" prefHeight="30.0" prefWidth="106.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Indietro" textFill="WHITE">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

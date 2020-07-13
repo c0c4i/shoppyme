@@ -67,7 +67,7 @@ public class Product {
         return id;
     }
 
-    public int getPackage_quantity() {
+    public int getPackageQuantity() {
         return package_quantity;
     }
 

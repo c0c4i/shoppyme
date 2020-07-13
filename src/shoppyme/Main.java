@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import shoppyme.controller.Controller;
 import shoppyme.model.Stock;
@@ -13,13 +14,13 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("view/public/login.fxml"));
-
         Controller.getInstance().setStage(primaryStage);
 
         primaryStage.setTitle("Shoppyme");
-        Controller.loginScene = new Scene(root);
-        primaryStage.setScene(Controller.loginScene);
+        primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("view/assets/shoppyme.png")));
+
+        Controller.getInstance().goToLoginScene();
+
         primaryStage.show();
     }
 

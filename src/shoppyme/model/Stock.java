@@ -35,7 +35,7 @@ public class Stock {
         initSupervisors();
     }
 
-    public JSONArray fetchJsonFile(String filename) {
+    private JSONArray fetchJsonFile(String filename) {
         try (FileReader reader = new FileReader(filename)) {
             JSONTokener tokener = new JSONTokener(reader);
             Object obj = tokener.nextValue();
@@ -314,10 +314,6 @@ public class Stock {
         return orderedList;
     }
 
-    public static List<FidelityCard> getFidelityCards() {
-        return fidelity_cards;
-    }
-
     public static List<User> getUsers() {
         return users;
     }
@@ -333,10 +329,6 @@ public class Stock {
     public static void updateOrder(Order o) {
         orders.remove(o);
         orders.add(o);
-    }
-
-    public static List<Supervisor> getSupervisors() {
-        return supervisors;
     }
 
     public static User userAuthentication (String email, String password) {

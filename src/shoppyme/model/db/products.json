@@ -30,7 +30,7 @@
 		"product": {
 			"id": 3,
 			"name": "Pasta 60g",
-			"brand": "De Cecco",
+			"brand": "Barilla",
 			"type": "PASTA",
 			"properties": ["INTEGRALE"],
 			"package_quantity": 2,
@@ -45,7 +45,7 @@
 			"name": "Cordon Bleu",
 			"brand": "Aia",
 			"type": "CARNE",
-			"properties": ["INTEGRALE","SENZA_GLUTINE"],
+			"properties": ["INTEGRALE","SENZA_LATTOSIO"],
 			"package_quantity": 1,
 			"price": 6.0,
 			"image": "../view/assets/productimages/cordon_bleu.jpg"

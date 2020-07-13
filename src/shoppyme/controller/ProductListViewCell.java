@@ -8,6 +8,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.shape.SVGPath;
 import shoppyme.model.Order;
 import shoppyme.model.Product;
 import shoppyme.model.Stock;
@@ -18,7 +19,8 @@ public class ProductListViewCell extends ListCell<Product> {
 
     @FXML private GridPane product_gridpane;
     @FXML private ImageView product_image_imageview = new ImageView();
-    @FXML private ImageView not_available_icon;
+    @FXML private SVGPath not_available_icon;
+    @FXML private SVGPath available_icon;
     @FXML private Label product_name_label;
     @FXML private Label product_type_label;
     @FXML private Label product_brand_label;
@@ -62,10 +64,10 @@ public class ProductListViewCell extends ListCell<Product> {
                     if(o.addProduct(product)) {
                         Controller.setCurrentOrder(o);
                         Controller.shoppingController.loadOrderList();
+                        available(true);
                     } else {
                         product_add_button.setDisable(true);
-                        product_add_button.setTooltip(new Tooltip("Non disponibile"));
-                        not_available_icon.setVisible(true);
+                        available(false);
                     }
                 }
             });
@@ -80,14 +82,21 @@ public class ProductListViewCell extends ListCell<Product> {
 
         if(quantity == null && !Stock.isAvailable(p, 1)) {
             product_add_button.setDisable(true);
-            product_add_button.setTooltip(new Tooltip("Non disponibile"));
-            not_available_icon.setVisible(true);
+            available(false);
+            return;
         }
 
         if(quantity != null && !Stock.isAvailable(p, quantity + 1)) {
             product_add_button.setDisable(true);
-            product_add_button.setTooltip(new Tooltip("Non disponibile"));
-            not_available_icon.setVisible(true);
+            available(false);
+            return;
         }
+
+        available(true);
+    }
+
+    private void available(Boolean enable) {
+        available_icon.setVisible(enable);
+        not_available_icon.setVisible(!enable);
     }
 }

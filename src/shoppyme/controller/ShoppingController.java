@@ -32,7 +32,7 @@ public class ShoppingController implements Initializable {
 
     private Order currentOrder = Controller.getCurrentOrder();
 
-    private OrderType currentOrderType;
+    private static OrderType currentOrderType;
 
     private static ObservableList<Product> productObservableList;
     private static ObservableList<Product> orderObservableList;
@@ -121,7 +121,12 @@ public class ShoppingController implements Initializable {
     public void sortBy(){
         List<Product> orderedList = new ArrayList<>(productObservableList);
         productObservableList.clear();
+        productObservableList.addAll(Stock.getOrderedInventory(currentOrderType, orderedList));
+    }
 
+    public static void loadProductList() {
+        List<Product> orderedList = new ArrayList<>(productObservableList);
+        productObservableList.clear();
         productObservableList.addAll(Stock.getOrderedInventory(currentOrderType, orderedList));
     }
 

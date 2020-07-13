@@ -3,21 +3,12 @@ package shoppyme.controller;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 import javafx.util.StringConverter;
 import shoppyme.model.*;
 import shoppyme.model.customenum.PaymentType;
@@ -28,8 +19,6 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class CheckoutController implements Initializable {
 
@@ -90,7 +79,7 @@ public class CheckoutController implements Initializable {
         delivery_interval_combobox.setItems(deliveryIntervals);
 
         payment_type_combobox.setItems(paymentTypeObservableList);
-        payment_type_combobox.getSelectionModel().select(currentUser.getPayment_type());
+        payment_type_combobox.getSelectionModel().select(currentUser.getPaymentType());
 
         delivery_date_datepicker.setValue(LocalDate.now());
         delivery_date_datepicker.setConverter(new StringConverter<LocalDate>() {

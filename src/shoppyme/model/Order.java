@@ -51,10 +51,6 @@ public class Order {
         return String.format("%d - %d", deliveryInterval[0], deliveryInterval[1]);
     }
 
-    public boolean isEmpty() {
-        return products.isEmpty();
-    }
-
     public void setDeliveryInterval(int[] delivery_interval) {
         this.deliveryInterval = delivery_interval;
     }

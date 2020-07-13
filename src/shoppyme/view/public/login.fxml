@@ -12,38 +12,38 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #ffffff; -fx-background-radius: 8px; -fx-border-radius: 8px;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="shoppyme.controller.LoginController">
    <children>
-      <TextField fx:id="username_field" layoutX="541.0" layoutY="312.0" onMouseClicked="#clearMessageError">
+      <TextField fx:id="username_field" layoutX="545.0" layoutY="310.0" onMouseClicked="#clearMessageError">
          <font>
             <Font size="16.0" />
          </font></TextField>
-      <ImageView fitHeight="158.0" fitWidth="280.0" layoutX="501.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="158.0" fitWidth="280.0" layoutX="505.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/shoppyme_logo.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="506.0" layoutY="314.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="509.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/outline_account_circle_black_18dp.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="507.0" layoutY="359.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="510.0" layoutY="357.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../assets/outline_vpn_key_black_18dp.png" />
          </image>
       </ImageView>
-      <Label fx:id="error_field" alignment="CENTER" layoutX="528.0" layoutY="493.0" prefHeight="18.0" prefWidth="225.0" text="Username / Password errati" textFill="#d9534f" visible="false" />
-      <Button layoutX="541.0" layoutY="408.0" onAction="#loginButtonClick" prefHeight="36.0" prefWidth="199.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Accedi" textFill="WHITE">
+      <Label fx:id="error_field" alignment="CENTER" layoutX="532.0" layoutY="486.0" prefHeight="18.0" prefWidth="225.0" text="Username / Password errati" textFill="#d9534f" visible="false" />
+      <Button layoutX="545.0" layoutY="400.0" onAction="#loginButtonClick" prefHeight="36.0" prefWidth="199.0" style="-fx-background-color: #0275d8; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Accedi" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>
       </Button>
-      <Rectangle fx:id="error_rectangle" arcHeight="8.0" arcWidth="8.0" fill="#f2443830" height="36.0" layoutX="541.0" layoutY="485.0" stroke="#d9534f" strokeType="INSIDE" strokeWidth="2.0" style="-fx-arc-height: 10px; -fx-arc-width: 10px;" visible="false" width="199.0" />
-      <Label fx:id="signin_label" layoutX="546.0" layoutY="454.0" onMouseClicked="#signinUserPageButton" text="Non sei registrato? Clicca qui" underline="true">
+      <Rectangle fx:id="error_rectangle" arcHeight="8.0" arcWidth="8.0" fill="#f2443830" height="36.0" layoutX="545.0" layoutY="478.0" stroke="#d9534f" strokeType="INSIDE" strokeWidth="2.0" style="-fx-arc-height: 10px; -fx-arc-width: 10px;" visible="false" width="199.0" />
+      <Label fx:id="signin_label" layoutX="549.0" layoutY="450.0" onMouseClicked="#signinUserPageButton" text="Non sei registrato? Clicca qui" underline="true">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="password_field" layoutX="542.0" layoutY="357.0">
+      <PasswordField fx:id="password_field" layoutX="545.0" layoutY="355.0">
          <font>
             <Font size="16.0" />
          </font>

@@ -140,8 +140,14 @@ public class Controller {
         stage.setScene(supervisorAreaScene);
     }
 
-    public void goToLoginScene() {
+    public void goToLoginScene() throws IOException {
         clearSession();
+
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("../view/public/login.fxml"));
+        Parent loginView = loader.load();
+        loginScene = new Scene(loginView);
+
         stage.setScene(loginScene);
     }
 

@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import shoppyme.model.FidelityCard;
 import shoppyme.model.Stock;
@@ -28,7 +29,8 @@ public class SigninController implements Initializable {
 
     @FXML private RadioButton card_true_radiobutton;
     @FXML private RadioButton card_false_radiobutton;
-    @FXML private Label form_error_label;
+    @FXML private Label error_label;
+    @FXML private Rectangle error_rectangle;
 
     @FXML private ComboBox payment_type_combobox;
     @FXML private PasswordField password_field;
@@ -163,11 +165,17 @@ public class SigninController implements Initializable {
     }
 
     private void showError(String error){
-        form_error_label.setText(error);
-        form_error_label.setVisible(true);
+        error_label.setText(error);
+        error_label.setVisible(true);
+        error_rectangle.setVisible(true);
     }
 
     public void clearErrorMessage(){
-        form_error_label.setVisible(false);
+        error_label.setVisible(false);
+        error_rectangle.setVisible(false);
+    }
+
+    public void backToLogin() throws IOException {
+        Controller.getInstance().goToLoginScene();
     }
 }

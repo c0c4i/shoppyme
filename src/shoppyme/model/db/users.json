@@ -9,7 +9,7 @@
 		"email": "123", 
 		"city": "Verona", 
 		"password": "123", 
-		"payment_type": "CASH", 
+		"payment_type": "CREDIT_CARD", 
 		"card_id": 2
 	},
 	{
@@ -24,5 +24,18 @@
 		"password": "123", 
 		"payment_type": "CASH", 
 		"card_id": 1
+	},
+	{
+		"id": 3, 
+		"name": "Sam", 
+		"surname": "Bes", 
+		"address": "via mascagni", 
+		"cap": "36040", 
+		"phone": "123", 
+		"email": "sam@gmail.com", 
+		"city": "Brendola", 
+		"password": "123", 
+		"payment_type": "NOT_SET", 
+		"card_id": 3
 	}
 ]

@@ -8,13 +8,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import shoppyme.model.*;
 import shoppyme.model.customenum.ProductProperty;
 import shoppyme.model.customenum.ProductType;
 import shoppyme.model.customenum.Status;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +101,7 @@ public class SupervisorAreaController implements Initializable {
                     product_type_combobox.setValue(selectedProduct.getType());
                     product_brand_textield.setText(selectedProduct.getBrand());
                     product_price_textield.setText(String.format("%.2f", selectedProduct.getPrice()));
-                    product_package_quantity_textield.setText(String.valueOf(selectedProduct.getPackage_quantity()));
+                    product_package_quantity_textield.setText(String.valueOf(selectedProduct.getPackageQuantity()));
                     product_available_textield.setText(String.valueOf(Stock.getInventory().get(selectedProduct)));
                     setProperties();
                 }
@@ -275,7 +275,7 @@ public class SupervisorAreaController implements Initializable {
         order_saved_label.setVisible(false);
     }
 
-    public void Logout() {
+    public void Logout() throws IOException {
         Controller.getInstance().goToLoginScene();
     }
 }

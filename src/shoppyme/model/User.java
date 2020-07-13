@@ -49,7 +49,7 @@ public class User {
         return password.equals(this.password);
     }
 
-    public PaymentType getPayment_type() {
+    public PaymentType getPaymentType() {
         return payment_type;
     }
 

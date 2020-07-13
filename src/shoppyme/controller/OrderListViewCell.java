@@ -61,7 +61,7 @@ public class OrderListViewCell extends ListCell<Product> {
                 Order o = Controller.getCurrentOrder();
                 o.addProduct(product);
                 Controller.setCurrentOrder(o);
-
+                Controller.shoppingController.loadProductList();
                 Controller.shoppingController.loadOrderList();
             }
         });
@@ -72,7 +72,7 @@ public class OrderListViewCell extends ListCell<Product> {
                 Order o = Controller.getCurrentOrder();
                 o.removeProduct(product);
                 Controller.setCurrentOrder(o);
-
+                Controller.shoppingController.loadProductList();
                 Controller.shoppingController.loadOrderList();
             }
         });
