@@ -18,6 +18,7 @@ public class ProductListViewCell extends ListCell<Product> {
 
     @FXML private GridPane product_gridpane;
     @FXML private ImageView product_image_imageview = new ImageView();
+    @FXML private ImageView not_available_icon;
     @FXML private Label product_name_label;
     @FXML private Label product_type_label;
     @FXML private Label product_brand_label;
@@ -64,6 +65,7 @@ public class ProductListViewCell extends ListCell<Product> {
                     } else {
                         product_add_button.setDisable(true);
                         product_add_button.setTooltip(new Tooltip("Non disponibile"));
+                        not_available_icon.setVisible(true);
                     }
                 }
             });
@@ -79,11 +81,13 @@ public class ProductListViewCell extends ListCell<Product> {
         if(quantity == null && !Stock.isAvailable(p, 1)) {
             product_add_button.setDisable(true);
             product_add_button.setTooltip(new Tooltip("Non disponibile"));
+            not_available_icon.setVisible(true);
         }
 
-        if(quantity != null && !Stock.isAvailable(p, quantity)) {
+        if(quantity != null && !Stock.isAvailable(p, quantity + 1)) {
             product_add_button.setDisable(true);
             product_add_button.setTooltip(new Tooltip("Non disponibile"));
+            not_available_icon.setVisible(true);
         }
     }
 }

@@ -15,7 +15,8 @@
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
       <ColumnConstraints hgrow="SOMETIMES" maxWidth="110.0" minWidth="10.0" prefWidth="110.0" />
-      <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="234.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="351.0" minWidth="10.0" prefWidth="195.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="283.0" minWidth="7.0" prefWidth="61.0" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="128.0" minWidth="10.0" prefWidth="94.0" />
   </columnConstraints>
   <rowConstraints>
@@ -28,7 +29,7 @@
       <Label fx:id="product_brand_label" text="Label" GridPane.columnIndex="3" />
       <Label fx:id="product_price_label" text="Label" GridPane.columnIndex="4" />
       <Label fx:id="product_info_label" text="Label" GridPane.columnIndex="5" />
-      <Button fx:id="product_add_button" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #5cb85c; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Aggiungi" textFill="WHITE" GridPane.columnIndex="6">
+      <Button fx:id="product_add_button" prefHeight="32.0" prefWidth="176.0" style="-fx-background-color: #5cb85c; -fx-background-radius: 8px; -fx-border-radius: 8px;" text="Aggiungi" textFill="WHITE" GridPane.columnIndex="7">
          <font>
             <Font size="15.0" />
          </font>

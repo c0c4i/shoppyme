@@ -18,10 +18,10 @@
 			"id": 2,
 			"name": "Arrosto",
 			"brand": "Aia",
-			"type": "CARNE",
+			"type": "PESCE",
 			"properties": ["INTEGRALE","SENZA_GLUTINE"],
 			"package_quantity": 10,
-			"price": 7.0,
+			"price": 8.0,
 			"image": "../view/assets/productimages/arrosto.jpg"
 		}
 	},

@@ -37,7 +37,7 @@
 		],
 		"total_price": 37.0,
 		"payment_type": "CASH",
-		"status": "PROCESSING",
+		"status": "DELIVERED",
 		"user_id": 1
 	},
 	{
