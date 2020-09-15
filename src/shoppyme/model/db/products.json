@@ -97,7 +97,7 @@
 			"name": "Penne Rigate",
 			"brand": "Divella",
 			"type": "PASTA",
-			"properties": [],
+			"properties": ["INTEGRALE","SENZA_GLUTINE","SENZA_LATTOSIO"],
 			"package_quantity": 1,
 			"price": 6.0,
 			"image": "../view/assets/productimages/penne_rigate.jpg"

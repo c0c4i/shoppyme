@@ -12,7 +12,7 @@ public class Product {
     private String brand;
     private ProductType type;
     private List<ProductProperty> properties;
-    private int package_quantity;
+    private int packageQuantity;
     private float price;
     private String image;
 
@@ -22,7 +22,7 @@ public class Product {
         this.brand = brand;
         this.type = type;
         this.properties = properties;
-        this.package_quantity = package_quantity;
+        this.packageQuantity = package_quantity;
         this.price = price;
         this.image = image;
     }
@@ -46,7 +46,7 @@ public class Product {
         format += String.format("],\n\t\t\t\"package_quantity\": %d," +
                 "\n\t\t\t\"price\": %s," +
                 "\n\t\t\t\"image\": \"%s\"" +
-                "\n\t\t}",package_quantity,String.valueOf(price).replace(",","."),image);
+                "\n\t\t}", packageQuantity,String.valueOf(price).replace(",","."),image);
 
         return format;
     }
@@ -68,7 +68,7 @@ public class Product {
     }
 
     public int getPackageQuantity() {
-        return package_quantity;
+        return packageQuantity;
     }
 
     public float getPrice() {
@@ -112,7 +112,7 @@ public class Product {
     }
 
     public void setPackageQuantity(int package_quantity) {
-        this.package_quantity = package_quantity;
+        this.packageQuantity = package_quantity;
     }
 
     public void setPrice(float price) {

@@ -12,6 +12,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.StringConverter;
 import shoppyme.model.*;
 import shoppyme.model.customenum.PaymentType;
+import shoppyme.model.customenum.SearchType;
 
 import java.io.IOException;
 import java.net.URL;
@@ -77,11 +78,25 @@ public class CheckoutController implements Initializable {
         total_price_label.setText(String.format("€ %.2f", Controller.getCurrentOrder().getTotalPrice()));
 
         delivery_interval_combobox.setItems(deliveryIntervals);
+        delivery_interval_combobox.getSelectionModel().select("9 - 11");
 
         payment_type_combobox.setItems(paymentTypeObservableList);
         payment_type_combobox.getSelectionModel().select(currentUser.getPaymentType());
 
-        delivery_date_datepicker.setValue(LocalDate.now());
+        LocalDate today = LocalDate.now();
+        int dayOfWeek = today.getDayOfWeek().getValue();
+        int minimumDay;
+
+        switch(dayOfWeek) {
+            case 5: minimumDay = 3;
+                    break;
+            case 6: minimumDay = 2;
+                    break;
+            default: minimumDay = 1;
+                        break;
+        }
+
+        delivery_date_datepicker.setValue(today.plusDays(minimumDay));
         delivery_date_datepicker.setConverter(new StringConverter<LocalDate>() {
             String pattern = "dd-MM-yyyy";
             DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
@@ -171,7 +186,7 @@ public class CheckoutController implements Initializable {
             return false;
         }
 
-        if(d.compareTo(LocalDate.now()) < 0) {
+        if(d.compareTo(LocalDate.now()) <= 0) {
             showError("Giorno non disponibile");
             return false;
         }

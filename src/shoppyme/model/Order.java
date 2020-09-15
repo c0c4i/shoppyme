@@ -6,7 +6,6 @@ import shoppyme.model.customenum.Status;
 
 import java.time.LocalDate;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Order {
@@ -15,7 +14,7 @@ public class Order {
     private int[] deliveryInterval;
     private Map<Product, Integer> products = new HashMap<>();
     private Map<Product, Float> oldProductsPrice = new HashMap<>();
-    private PaymentType payment_type;
+    private PaymentType paymentType;
     private float totalPrice;
     private Status status;
     private int userID;
@@ -33,7 +32,7 @@ public class Order {
         this.deliveryInterval = deliveryInterval;
         this.products = products;
         this.oldProductsPrice = oldProductsPrice;
-        this.payment_type = payment_type;
+        this.paymentType = payment_type;
         this.totalPrice = totalPrice;
         this.status = status;
         this.userID = userID;
@@ -91,11 +90,11 @@ public class Order {
     }
 
     public PaymentType getPaymentType() {
-        return payment_type;
+        return paymentType;
     }
 
     public void setPaymentType(PaymentType payment_type) {
-        this.payment_type = payment_type;
+        this.paymentType = payment_type;
     }
 
     public void setStatus(Status status) {
@@ -150,7 +149,7 @@ public class Order {
                         "\n\t\t\"payment_type\": \"%s\"," +
                         "\n\t\t\"status\": \"%s\"," +
                         "\n\t\t\"user_id\": %d\n\t},\n",
-                String.valueOf(totalPrice).replace(",","."),payment_type.toString(), status, userID);
+                String.valueOf(totalPrice).replace(",","."), paymentType.toString(), status, userID);
 
         return tmp;
     }

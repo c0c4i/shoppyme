@@ -12,7 +12,7 @@ import shoppyme.model.customenum.*;
 
 public class Stock {
     private static HashMap<Product, Integer> inventory = new HashMap<>();
-    private static List<FidelityCard> fidelity_cards = new ArrayList<>();
+    private static List<FidelityCard> fidelityCards = new ArrayList<>();
     private static List<User> users = new ArrayList<>();
     private static List<Order> orders = new ArrayList<>();
     private static List<Supervisor> supervisors = new ArrayList<>();
@@ -90,7 +90,7 @@ public class Stock {
         int points = fidelity.getInt("points");
 
         FidelityCard c = new FidelityCard(id, emission_date, points);
-        fidelity_cards.add(c);
+        fidelityCards.add(c);
     }
 
     private void initUsers() {
@@ -121,7 +121,7 @@ public class Stock {
         int card_id = user.getInt("card_id");
         FidelityCard card = null;
 
-        for(FidelityCard f : fidelity_cards) {
+        for(FidelityCard f : fidelityCards) {
             if(f.id == card_id){
                 card = f;
                 break;
@@ -210,7 +210,7 @@ public class Stock {
     }
 
     public static int getNewFidelityID() {
-        return fidelity_cards.size() + 1;
+        return fidelityCards.size() + 1;
     }
 
     public static Map<Product, Integer> getInventory() {
@@ -358,12 +358,12 @@ public class Stock {
     }
 
     public static void addFidelityCard(FidelityCard f) {
-        fidelity_cards.add(f);
+        fidelityCards.add(f);
     }
 
     public static void updateFidelityCard(FidelityCard f) {
-        fidelity_cards.remove(f);
-        fidelity_cards.add(f);
+        fidelityCards.remove(f);
+        fidelityCards.add(f);
     }
 
     public static boolean isAvailable(Product p, int q) {
@@ -409,11 +409,11 @@ public class Stock {
             }
         };
 
-        fidelity_cards.sort(comparator);
+        fidelityCards.sort(comparator);
 
         File file = new File("src/shoppyme/model/db/fidelitycard.json");
         String json = "[\n";
-        for(FidelityCard f: fidelity_cards) {
+        for(FidelityCard f: fidelityCards) {
             json += f.toString();
         }
         String result = json.substring(0, json.length()-2);

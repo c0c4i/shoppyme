@@ -78,8 +78,8 @@ public class SupervisorAreaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        save_product_button.setDisable(true);
-        save_order_button.setDisable(true);
+        setProductEdit(true);
+        setOrderEdit(true);
 
         loadProductList();
         loadOrderList();
@@ -93,7 +93,7 @@ public class SupervisorAreaController implements Initializable {
         productsList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                save_product_button.setDisable(false);
+                setProductEdit(false);
                 clearErrorMessage();
                 selectedProduct = productsList.getSelectionModel().getSelectedItem();
                 if(selectedProduct != null) {
@@ -111,7 +111,7 @@ public class SupervisorAreaController implements Initializable {
         orderList.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                save_order_button.setDisable(false);
+                setOrderEdit(false);
                 clearErrorMessage();
                 selectedOrder = orderList.getSelectionModel().getSelectedItem();
                 if(selectedOrder != null) {
@@ -273,6 +273,26 @@ public class SupervisorAreaController implements Initializable {
         error_label.setVisible(false);
         error_rectangle.setVisible(false);
         order_saved_label.setVisible(false);
+    }
+
+    public void setProductEdit(boolean disabled){
+        save_product_button.setDisable(disabled);
+        product_name_textield.setDisable(disabled);
+        product_type_combobox.setDisable(disabled);
+        product_brand_textield.setDisable(disabled);
+        product_price_textield.setDisable(disabled);
+        product_package_quantity_textield.setDisable(disabled);
+        product_available_textield.setDisable(disabled);
+        integral_checkbox.setDisable(disabled);
+        vegan_checkbox.setDisable(disabled);
+        gluten_free_checkbox.setDisable(disabled);
+        bio_checkbox.setDisable(disabled);
+        lactose_free_checkbox.setDisable(disabled);
+    }
+
+    public void setOrderEdit(boolean disabled){
+        save_order_button.setDisable(disabled);
+        selected_order_status_combobox.setDisable(disabled);
     }
 
     public void Logout() throws IOException {
