@@ -1,28 +1,15 @@
 [
   {
     "id": 1,
-    "username": "123",
+    "username": "mario",
     "password": "123",
     "role": "STAGISTA",
-    "name": "Gigi",
+    "name": "Mario",
     "surname": "Rossi",
-    "address": "Piazza Erbon",
-    "cap": "999",
+    "address": "Via Cavignal",
+    "cap": "123",
     "city": "Verona",
-    "phone": "0444059685",
-    "email": "stefanoc@labizza.it"
-  },
-  {
-    "id": 2,
-    "username": "Gigino",
-    "password": "Geretto",
-    "role": "RESPONSABILE",
-    "name": "Gigi",
-    "surname": "Rossi",
-    "address": "Piazza Erbon",
-    "cap": "999",
-    "city": "Verona",
-    "phone": "0444059685",
-    "email": "stefanoc@labizza.it"
+    "phone": "123",
+    "email": "mario@lidl.it"
   }
 ]

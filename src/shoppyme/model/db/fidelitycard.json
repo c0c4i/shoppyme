@@ -1,17 +1,12 @@
 [
 	{
 		"id": 1, 
-		"emission_date": 18250, 
-		"points": 30
+		"emission_date": 18526, 
+		"points": 9
 	},
 	{
 		"id": 2, 
-		"emission_date": 18455, 
+		"emission_date": 18526, 
 		"points": 77
-	},
-	{
-		"id": 3, 
-		"emission_date": 18455, 
-		"points": 0
 	}
 ]

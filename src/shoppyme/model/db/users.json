@@ -1,41 +1,28 @@
 [
 	{
 		"id": 1, 
-		"name": "Stefano", 
-		"surname": "Caldana", 
-		"address": "Piazza La Bizza", 
-		"cap": "37135", 
-		"phone": "045542269", 
-		"email": "123", 
+		"name": "Samuele", 
+		"surname": "Besoli", 
+		"address": "via ca vignal", 
+		"cap": "123", 
+		"phone": "123", 
+		"email": "sam@univr.it", 
 		"city": "Verona", 
 		"password": "123", 
 		"payment_type": "CREDIT_CARD", 
-		"card_id": 2
-	},
-	{
-		"id": 2, 
-		"name": "Luca", 
-		"surname": "La Bizza", 
-		"address": "via brescia ", 
-		"cap": "112431", 
-		"phone": "3432423", 
-		"email": "luca@labizza.it", 
-		"city": "Brescia", 
-		"password": "123", 
-		"payment_type": "CASH", 
 		"card_id": 1
 	},
 	{
-		"id": 3, 
-		"name": "Sam", 
-		"surname": "Bes", 
+		"id": 2, 
+		"name": "maddalena", 
+		"surname": "pizzolo", 
 		"address": "via mascagni", 
-		"cap": "36040", 
-		"phone": "123", 
-		"email": "sam@gmail.com", 
+		"cap": "123", 
+		"phone": "3383149782", 
+		"email": "mad@libero.it", 
 		"city": "Brendola", 
 		"password": "123", 
-		"payment_type": "NOT_SET", 
-		"card_id": 3
+		"payment_type": "CASH", 
+		"card_id": 2
 	}
 ]

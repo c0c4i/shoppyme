@@ -17,9 +17,7 @@ public class Controller {
 
     private static Controller instance = new Controller();
 
-    private Controller(){
-
-    }
+    private Controller(){}
 
     public static Controller getInstance(){
         return instance;
@@ -66,7 +64,7 @@ public class Controller {
     public static void setCurrentUser(User currentUser) {
         Controller.currentUser = currentUser;
         Stock.updateUser(currentUser);
-    }
+    }   
 
     public static void setCurrentSupervisor(Supervisor supervisor) {
         Controller.currentSupervisor = supervisor;

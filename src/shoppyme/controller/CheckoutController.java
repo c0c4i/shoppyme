@@ -197,7 +197,7 @@ public class CheckoutController implements Initializable {
             return false;
         }
 
-        if(payment_type_combobox == null) {
+        if(payment_type_combobox.getValue() == null) {
             showError("Pagamento Obbligatorio");
             return false;
         }

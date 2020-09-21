@@ -174,7 +174,7 @@ public class SupervisorAreaController implements Initializable {
         selectedProduct.setName(product_name_textield.getText());
         selectedProduct.setType((ProductType) product_type_combobox.getValue());
         selectedProduct.setBrand(product_brand_textield.getText());
-        selectedProduct.setPrice(Float.parseFloat(product_price_textield.getText()));
+        selectedProduct.setPrice(Float.parseFloat(product_price_textield.getText().replace(",", ".")));
         selectedProduct.setPackageQuantity(Integer.parseInt(product_package_quantity_textield.getText()));
         int q = Integer.parseInt(product_available_textield.getText());
         selectedProduct.setProperties(getProperties());

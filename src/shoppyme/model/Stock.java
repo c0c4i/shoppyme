@@ -412,12 +412,19 @@ public class Stock {
         fidelityCards.sort(comparator);
 
         File file = new File("src/shoppyme/model/db/fidelitycard.json");
-        String json = "[\n";
-        for(FidelityCard f: fidelityCards) {
-            json += f.toString();
+
+        String result = "[\n";
+
+        if(fidelityCards.isEmpty()) {
+            result += "]";
+        } else {
+            for(FidelityCard f: fidelityCards) {
+                result += f.toString();
+            }
+            result = result.substring(0, result.length()-2);
+            result += "\n]";
         }
-        String result = json.substring(0, json.length()-2);
-        result += "\n]";
+
 
         try {
             FileWriter fw = new FileWriter(file, false);
@@ -440,12 +447,17 @@ public class Stock {
         users.sort(comparator);
 
         File file = new File("src/shoppyme/model/db/users.json");
-        String json = "[\n";
-        for(User user: users) {
-            json += user.toString();
+
+        String result = "[\n";
+        if(users.isEmpty()) {
+            result += "]";
+        } else {
+            for(User user: users) {
+                result += user.toString();
+            }
+            result = result.substring(0, result.length()-2);
+            result += "\n]";
         }
-        String result = json.substring(0, json.length()-2);
-        result += "\n]";
 
         try {
             FileWriter fw = new FileWriter(file, false);
@@ -468,12 +480,12 @@ public class Stock {
         orders.sort(comparator);
 
         File file = new File("src/shoppyme/model/db/orders.json");
-        String json = "[\n";
+        String result = "[\n";
         for(Order o: orders) {
-            json += o.toString();
+            result += o.toString();
         }
 
-        String result = json.substring(0, json.length()-2);
+        if(!orders.isEmpty()) result = result.substring(0, result.length()-2);
         result += "\n]";
 
         try {

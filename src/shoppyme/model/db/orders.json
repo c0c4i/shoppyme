@@ -1,8 +1,29 @@
 [
 	{
+		"id": 1,
+		"deliveryDate": 18527,
+		"deliveryInterval": [9, 11],
+		"products": [
+			{
+				"id_product": 1,
+				"quantity": 4,
+				"oldPrice": 5.0
+			},
+			{
+				"id_product": 3,
+				"quantity": 1,
+				"oldPrice": 4.0
+			}
+		],
+		"total_price": 24.0,
+		"payment_type": "PAYPAL",
+		"status": "SHIPPED",
+		"user_id": 1
+	},
+	{
 		"id": 2,
-		"deliveryDate": 18457,
-		"deliveryInterval": [14, 16],
+		"deliveryDate": 18527,
+		"deliveryInterval": [9, 11],
 		"products": [
 			{
 				"id_product": 1,
@@ -11,105 +32,49 @@
 			},
 			{
 				"id_product": 3,
-				"quantity": 2,
-				"oldPrice": 4.5
+				"quantity": 1,
+				"oldPrice": 4.0
+			}
+		],
+		"total_price": 9.0,
+		"payment_type": "CREDIT_CARD",
+		"status": "PROCESSING",
+		"user_id": 1
+	},
+	{
+		"id": 3,
+		"deliveryDate": 18536,
+		"deliveryInterval": [11, 13],
+		"products": [
+			{
+				"id_product": 3,
+				"quantity": 1,
+				"oldPrice": 4.0
 			},
 			{
 				"id_product": 4,
-				"quantity": 1,
+				"quantity": 7,
 				"oldPrice": 6.0
 			},
 			{
-				"id_product": 5,
-				"quantity": 1,
-				"oldPrice": 10.0
-			},
-			{
 				"id_product": 6,
-				"quantity": 1,
+				"quantity": 4,
 				"oldPrice": 4.0
 			},
 			{
 				"id_product": 7,
 				"quantity": 1,
 				"oldPrice": 3.0
+			},
+			{
+				"id_product": 8,
+				"quantity": 2,
+				"oldPrice": 6.0
 			}
 		],
-		"total_price": 37.0,
+		"total_price": 77.0,
 		"payment_type": "CASH",
-		"status": "DELIVERED",
-		"user_id": 1
-	},
-	{
-		"id": 3,
-		"deliveryDate": 18457,
-		"deliveryInterval": [14, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 3,
-				"oldPrice": 5.0
-			},
-			{
-				"id_product": 3,
-				"quantity": 1,
-				"oldPrice": 4.5
-			},
-			{
-				"id_product": 4,
-				"quantity": 1,
-				"oldPrice": 6.0
-			},
-			{
-				"id_product": 5,
-				"quantity": 1,
-				"oldPrice": 10.0
-			},
-			{
-				"id_product": 6,
-				"quantity": 1,
-				"oldPrice": 4.0
-			}
-		],
-		"total_price": 39.5,
-		"payment_type": "CREDIT_CARD",
-		"status": "DELIVERED",
-		"user_id": 1
-	},
-	{
-		"id": 3,
-		"deliveryDate": 18457,
-		"deliveryInterval": [14, 16],
-		"products": [
-			{
-				"id_product": 1,
-				"quantity": 3,
-				"oldPrice": 5.0
-			},
-			{
-				"id_product": 3,
-				"quantity": 1,
-				"oldPrice": 4.5
-			},
-			{
-				"id_product": 4,
-				"quantity": 1,
-				"oldPrice": 6.0
-			},
-			{
-				"id_product": 5,
-				"quantity": 1,
-				"oldPrice": 10.0
-			},
-			{
-				"id_product": 6,
-				"quantity": 1,
-				"oldPrice": 4.0
-			}
-		],
-		"total_price": 39.5,
-		"payment_type": "CREDIT_CARD",
-		"status": "DELIVERED",
-		"user_id": 1
+		"status": "SHIPPED",
+		"user_id": 2
 	}
 ]
